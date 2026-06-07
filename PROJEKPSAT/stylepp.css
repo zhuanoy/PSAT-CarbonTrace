@@ -1,0 +1,497 @@
+/* ── Page Hero (sama pola dengan materi.html) ── */
+    .page-hero-pp {
+      background:
+        radial-gradient(ellipse at 20% 0%,  rgba(52,211,153,0.25) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 100%, rgba(253,230,138,0.18) 0%, transparent 50%),
+        linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+    }
+    body.dark .page-hero-pp {
+      background:
+        radial-gradient(ellipse at 20% 0%,  rgba(16,185,129,0.16) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 100%, rgba(234,179,8,0.10) 0%, transparent 50%),
+        linear-gradient(135deg, #071c12 0%, #0d2b1c 100%);
+    }
+
+    /* ── Section wrapper ── */
+    .pp-section {
+      padding: 64px 0 80px;
+      background:
+        radial-gradient(ellipse at 100% 0%,   rgba(167,243,208,0.22) 0%, transparent 45%),
+        radial-gradient(ellipse at 0%   100%,  rgba(253,230,138,0.15) 0%, transparent 45%),
+        var(--bg-main);
+    }
+    body.dark .pp-section {
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(16,185,129,0.07) 0%, transparent 45%),
+        var(--bg-main);
+    }
+
+    /* ── Section header override ── */
+    .pp-header { text-align: center; margin-bottom: 48px; }
+    .pp-header h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 800; margin-bottom: 10px;
+      color: var(--green-900);
+    }
+    body.dark .pp-header h2 { color: var(--green-200); }
+    .pp-header p { color: var(--text-secondary); font-size: 0.97rem; font-weight: 500; }
+
+    /* ── Badge label ── */
+    .badge-label {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--green-600); color: #fff;
+      padding: 5px 16px; border-radius: 100px;
+      font-size: 0.78rem; font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: 0.3px;
+      box-shadow: 0 3px 10px rgba(5,150,105,0.3);
+    }
+
+    /* ── Anggota cards ── */
+    .anggota-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-bottom: 52px;
+    }
+    .anggota-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-top: 4px solid var(--green-500);
+      border-radius: var(--radius-lg);
+      padding: 20px 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition);
+    }
+    .anggota-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--green-400);
+    }
+    .anggota-avatar {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--green-400), var(--green-600));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin: 0 auto 12px;
+      box-shadow: 0 4px 14px rgba(5,150,105,0.3);
+    }
+    .anggota-nama {
+      font-family: var(--font-heading);
+      font-size: 0.9rem; font-weight: 800;
+      color: var(--text-main); margin-bottom: 4px;
+    }
+    .anggota-no {
+      font-size: 0.75rem; color: var(--text-muted); font-weight: 500;
+    }
+
+    /* ── Divider ── */
+    .section-divider {
+      border: none;
+      border-top: 2px dashed var(--border-color);
+      margin: 48px 0;
+    }
+
+    /* ── Tabel pembagian tugas ── */
+    .tabel-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      border: 1.5px solid var(--border-color);
+      margin-bottom: 36px;
+    }
+    .tabel-tugas {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      background: var(--bg-card);
+    }
+
+    /* Head */
+    .tabel-tugas thead tr th {
+      background: var(--green-700);
+      color: #fff;
+      padding: 14px 18px;
+      text-align: left;
+      font-family: var(--font-heading);
+      font-size: 0.82rem; font-weight: 700;
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+    }
+    .tabel-tugas thead tr th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+    .tabel-tugas thead tr th:last-child  { border-radius: 0 var(--radius-sm) 0 0; }
+
+    /* Sub-head (kategori) */
+    .tabel-tugas .row-subhead td {
+      background: var(--green-50);
+      color: var(--green-800);
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.82rem;
+      padding: 9px 18px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--green-200);
+    }
+    body.dark .tabel-tugas .row-subhead td {
+      background: rgba(16,185,129,0.08);
+      color: var(--green-300);
+      border-bottom-color: rgba(16,185,129,0.2);
+    }
+
+    /* Body rows */
+    .tabel-tugas tbody tr { transition: background var(--transition); }
+    .tabel-tugas tbody tr:hover { background: var(--green-50); }
+    body.dark .tabel-tugas tbody tr:hover { background: rgba(16,185,129,0.07); }
+    .tabel-tugas td {
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+    .tabel-tugas tbody tr:last-child td { border-bottom: none; }
+
+    /* Kolom No */
+    .tabel-tugas .col-no {
+      width: 40px; text-align: center;
+      font-weight: 700; color: var(--green-600);
+    }
+
+    /* Nama badge */
+    .nama-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--green-100);
+      color: var(--green-800);
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-weight: 700; font-size: 0.82rem;
+      white-space: nowrap;
+    }
+    body.dark .nama-chip {
+      background: rgba(16,185,129,0.15);
+      color: var(--green-300);
+    }
+
+    /* Status badge */
+    .status-chip {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 0.75rem; font-weight: 700;
+    }
+    .status-utama   { background: var(--green-600); color: #fff; }
+    .status-bantu   { background: var(--green-100); color: var(--green-800); }
+    body.dark .status-bantu { background: rgba(16,185,129,0.15); color: var(--green-300); }
+    .status-review  { background: #fef9c3; color: #a16207; }
+    body.dark .status-review { background: rgba(250,204,21,0.1); color: #fde047; }
+
+    /* Halaman tag */
+    .page-tag {
+      display: inline-block;
+      background: #dbeafe; color: #1d4ed8;
+      padding: 2px 9px; border-radius: 100px;
+      font-size: 0.75rem; font-weight: 600;
+      margin: 2px 2px 2px 0;
+    }
+    body.dark .page-tag { background: rgba(29,78,216,0.15); color: #93c5fd; }
+
+    /* ── Info box ── */
+    .info-box {
+      background: var(--green-50);
+      border: 1px solid var(--green-300);
+      border-left: 5px solid var(--green-500);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    body.dark .info-box {
+      background: rgba(16,185,129,0.07);
+      border-color: rgba(16,185,129,0.3);
+    }
+    .info-box strong { color: var(--green-700); }
+    body.dark .info-box strong { color: var(--green-400); }
+
+    /* ── Ringkasan per-orang ── */
+    .ringkasan-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-top: 40px;
+    }
+    .ringkasan-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition);
+    }
+    .ringkasan-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .ringkasan-head {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 14px;
+    }
+    .ringkasan-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green-400), var(--green-700));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+      box-shadow: 0 3px 10px rgba(5,150,105,0.3);
+    }
+    .ringkasan-nama {
+      font-family: var(--font-heading);
+      font-size: 0.95rem; font-weight: 800;
+      color: var(--text-main);
+    }
+    .ringkasan-role {
+      font-size: 0.78rem; color: var(--text-muted); font-weight: 500;
+    }
+    .ringkasan-list {
+      list-style: none; padding: 0;
+    }
+    .ringkasan-list li {
+      position: relative; padding: 5px 0 5px 18px;
+      font-size: 0.87rem; color: var(--text-secondary);
+      border-bottom: 1px dashed var(--border-color);
+    }
+    .ringkasan-list li:last-child { border-bottom: none; }
+    .ringkasan-list li::before {
+      content: '▸'; position: absolute; left: 0;
+      color: var(--green-500); font-size: 0.75rem; top: 7px;
+    }
+
+    @media (max-width: 600px) {
+      .anggota-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    /* ── Foto Dokumentasi Rapat ── */
+    .rapat-foto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .rapat-foto-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1.5px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+    }
+    /* ── Label judul foto rapat ── */
+    .rapat-foto-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: var(--green-700);
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    body.dark .rapat-foto-label {
+      background: rgba(5, 150, 105, 0.85);
+    }
+    .rapat-foto-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .rapat-foto-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .rapat-foto-card:hover img { transform: scale(1.04); }
+    @media (max-width: 600px) {
+      .rapat-foto-grid { grid-template-columns: 1fr; }
+    }
+    /* ════════════════════════════════════════
+       PEER DEBUGGING SECTION — Photo Focus
+    ════════════════════════════════════════ */
+
+    .peer-debug-wrapper {
+      background: linear-gradient(160deg, #0b1d12 0%, #081510 60%, #050f09 100%);
+      border: 1.5px solid rgba(16,185,129,0.22);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(16,185,129,0.08),
+        0 24px 64px rgba(0,0,0,0.45),
+        0 0 60px rgba(16,185,129,0.04) inset;
+      margin-bottom: 36px;
+    }
+
+    /* ── Top bar ── */
+    .debug-topbar {
+      display: flex; align-items: center; gap: 12px;
+      padding: 11px 20px;
+      background: rgba(0,0,0,0.4);
+      border-bottom: 1px solid rgba(16,185,129,0.14);
+    }
+    .debug-topbar-dots { display: flex; gap: 7px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot-red    { background: #ff5f57; box-shadow: 0 0 6px rgba(255,95,87,0.55); }
+    .dot-yellow { background: #ffbd2e; box-shadow: 0 0 6px rgba(255,189,46,0.55); }
+    .dot-green  { background: #28c840; box-shadow: 0 0 6px rgba(40,200,64,0.55); }
+    .debug-topbar-title {
+      flex: 1; font-family: 'Courier New', monospace;
+      font-size: 0.77rem; color: rgba(167,243,208,0.55); letter-spacing: 0.2px;
+    }
+    .debug-topbar-badge {
+      font-size: 0.63rem; font-weight: 800; letter-spacing: 1.6px;
+      color: #f87171; padding: 3px 10px;
+      border: 1px solid rgba(248,113,113,0.4); border-radius: 100px;
+      animation: badge-blink 1.8s ease-in-out infinite;
+    }
+    @keyframes badge-blink {
+      0%,100% { opacity:1; box-shadow: 0 0 8px rgba(248,113,113,0.35); }
+      50%      { opacity:0.55; box-shadow: none; }
+    }
+
+    /* ── HERO PHOTO ── */
+    .debug-hero-photo {
+      position: relative;
+      margin: 24px 28px 0;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid rgba(16,185,129,0.28);
+      box-shadow:
+        0 0 0 1px rgba(16,185,129,0.1),
+        0 12px 40px rgba(0,0,0,0.6),
+        0 0 30px rgba(16,185,129,0.08) inset;
+      /* tall aspect so photo is prominent */
+      aspect-ratio: 16/9;
+    }
+    .debug-hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+      filter: brightness(0.88) contrast(1.06) saturate(0.85);
+      transition: transform 0.6s ease, filter 0.4s ease;
+    }
+    .debug-hero-photo:hover img {
+      transform: scale(1.02);
+      filter: brightness(0.95) contrast(1.06) saturate(0.9);
+    }
+
+    /* Corner brackets */
+    .debug-corner {
+      position: absolute; width: 26px; height: 26px; z-index: 4; pointer-events: none;
+    }
+    .debug-corner.tl { top:10px; left:10px;
+      border-top: 2.5px solid rgba(16,185,129,0.9);
+      border-left: 2.5px solid rgba(16,185,129,0.9); }
+    .debug-corner.tr { top:10px; right:10px;
+      border-top: 2.5px solid rgba(16,185,129,0.9);
+      border-right: 2.5px solid rgba(16,185,129,0.9); }
+    .debug-corner.bl { bottom:10px; left:10px;
+      border-bottom: 2.5px solid rgba(16,185,129,0.9);
+      border-left: 2.5px solid rgba(16,185,129,0.9); }
+    .debug-corner.br { bottom:10px; right:10px;
+      border-bottom: 2.5px solid rgba(16,185,129,0.9);
+      border-right: 2.5px solid rgba(16,185,129,0.9); }
+
+    /* Badge on photo */
+    .debug-hero-badge {
+      position: absolute; bottom: 16px; left: 16px; z-index: 5;
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(0,0,0,0.62);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(16,185,129,0.35);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.73rem; font-weight: 700;
+      color: rgba(167,243,208,0.92);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .dbadge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #28c840;
+      box-shadow: 0 0 8px rgba(40,200,64,0.8);
+      animation: badge-pulse 2s ease-in-out infinite;
+    }
+    @keyframes badge-pulse {
+      0%,100%{ opacity:1; } 50%{ opacity:0.4; }
+    }
+
+    /* ── 3-column keterangan grid ── */
+    .debug-keterangan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      padding: 22px 28px 24px;
+    }
+    .debug-ket-card {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 16px 15px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.03);
+    }
+    .ket-error  { border-left: 3px solid #f87171; background: rgba(248,113,113,0.05); }
+    .ket-process{ border-left: 3px solid #60a5fa; background: rgba(96,165,250,0.05); }
+    .ket-solved { border-left: 3px solid #34d399; background: rgba(52,211,153,0.06); }
+
+    .ket-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 1px; line-height:1; }
+    .ket-body { flex: 1; }
+    .ket-title {
+      font-family: var(--font-heading);
+      font-size: 0.8rem; font-weight: 800;
+      color: rgba(167,243,208,0.9);
+      margin-bottom: 7px; letter-spacing: 0.2px;
+    }
+    .ket-body p {
+      font-size: 0.82rem;
+      color: rgba(167,243,208,0.65);
+      line-height: 1.6; margin: 0;
+    }
+    .ket-body p strong { color: rgba(167,243,208,0.9); }
+    .ket-body code {
+      background: rgba(16,185,129,0.15);
+      color: #6ee7b7;
+      padding: 1px 6px; border-radius: 4px;
+      font-size: 0.79rem;
+    }
+
+    /* ── Bottom bar ── */
+    .debug-bottombar {
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+      padding: 10px 20px;
+      background: rgba(0,0,0,0.3);
+      border-top: 1px solid rgba(16,185,129,0.12);
+      font-size: 0.72rem;
+      color: rgba(167,243,208,0.45);
+      font-family: 'Courier New', monospace;
+    }
+    .debug-status-dot-sm {
+      width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+      background: #28c840;
+      box-shadow: 0 0 6px rgba(40,200,64,0.7);
+    }
+    .debug-bottombar strong { color: rgba(167,243,208,0.7); }
+    .debug-sep { color: rgba(16,185,129,0.3); }
+
+    /* light-mode: keep wrapper dark for terminal feel */
+    body:not(.dark) .peer-debug-wrapper {
+      background: linear-gradient(160deg, #0b1d12 0%, #081510 60%, #050f09 100%);
+    }
+
+    @media (max-width: 768px) {
+      .debug-keterangan-grid { grid-template-columns: 1fr; }
+      .debug-hero-photo { margin: 18px 16px 0; aspect-ratio: 4/3; }
+      .debug-keterangan-grid { padding: 16px; }
+      .debug-topbar-title { display: none; }
+    }

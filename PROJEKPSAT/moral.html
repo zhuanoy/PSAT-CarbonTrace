@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Pesan Moral — CarbonTrace</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Space+Grotesk:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <style>
+    /* === PROGRESS BAR === */
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      z-index: 2000;
+      background: linear-gradient(90deg, var(--green-400), var(--green-600));
+      transition: width 0.1s linear;
+      width: 0%;
+    }
+
+    /* === VERSE HIGHLIGHT CARD === */
+    .ayat-card {
+      background: linear-gradient(135deg, var(--green-700) 0%, var(--green-900) 100%);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      margin: 28px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .ayat-card::before {
+      content: '❝';
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      font-size: 5rem;
+      color: rgba(255, 255, 255, 0.08);
+      font-family: serif;
+      line-height: 1;
+    }
+
+    .ayat-card .arab {
+      font-size: 1.5rem;
+      color: #ffffff;
+      line-height: 2.2;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .ayat-card .terjemah {
+      font-size: 0.92rem;
+      color: var(--green-100);
+      font-style: italic;
+      line-height: 1.75;
+      margin-bottom: 10px;
+    }
+
+    .ayat-card .sumber {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      background: var(--green-400);
+      color: var(--green-900);
+      padding: 4px 14px;
+      border-radius: 100px;
+    }
+
+    .ayat-card .tafsir-singkat {
+      margin-top: 16px;
+      background: rgba(255, 255, 255, 0.10);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      color: var(--green-100);
+      text-align: left;
+      line-height: 1.7;
+    }
+
+    .ayat-card .tafsir-singkat strong {
+      color: #fff;
+    }
+
+    /* === SECTION TABS === */
+    .tab-nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+      background: var(--bg-card);
+      padding: 8px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+
+    .tab-btn {
+      flex: 1;
+      min-width: 120px;
+      padding: 10px 14px;
+      border: none;
+      border-radius: var(--radius-sm);
+      background: transparent;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--transition);
+      text-align: center;
+    }
+
+    .tab-btn.active {
+      background: var(--green-600);
+      color: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tab-btn:hover:not(.active) {
+      background: var(--green-100);
+      color: var(--green-700);
+    }
+
+    body.dark .tab-btn:hover:not(.active) {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--green-300);
+    }
+
+    .tab-panel {
+      display: none;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* === IMPACT CARDS === */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .impact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px 16px;
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .impact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .impact-card .icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .impact-card .label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .impact-card.danger {
+      border-color: #fca5a5;
+      background: #fff5f5;
+    }
+
+    body.dark .impact-card.danger {
+      background: rgba(239, 68, 68, 0.08);
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    /* === TIPS STEPS === */
+    .tips-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .tip-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      transition: transform var(--transition);
+    }
+
+    .tip-step:hover {
+      transform: translateX(4px);
+    }
+
+    .tip-num {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      background: var(--green-600);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+
+    .tip-content .tip-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      margin-bottom: 3px;
+    }
+
+    .tip-content .tip-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* === CALLOUT BOX === */
+    .callout {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 18px 20px;
+      border-radius: var(--radius-md);
+      margin: 20px 0;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    .callout.warning {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      color: #78350f;
+    }
+
+    body.dark .callout.warning {
+      background: rgba(251, 191, 36, 0.10);
+      border-color: rgba(251, 191, 36, 0.3);
+      color: #fde68a;
+    }
+
+    .callout.info {
+      background: var(--green-50);
+      border: 1px solid var(--green-200);
+      color: var(--green-900);
+    }
+
+    body.dark .callout.info {
+      background: rgba(16, 185, 129, 0.10);
+      border-color: var(--border-color);
+      color: var(--green-200);
+    }
+
+    .callout .callout-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    /* === SECTION DIVIDER === */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 36px 0 24px;
+    }
+
+    .section-divider span {
+      height: 2px;
+      flex: 1;
+      background: var(--green-200);
+      border-radius: 1px;
+    }
+
+    .section-divider .divider-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--green-600);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* === MATERI NUMBER BADGE === */
+    .materi-block-title .num-badge {
+      width: 28px;
+      height: 28px;
+      background: var(--green-600);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reading-progress" id="readingProgress"></div>
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">🌿</span>
+      <span class="brand-text">CarbonTrace</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+
+      <a class="nav-link" data-id="beranda" href="index.html">Beranda</a><a class="nav-link" data-id="nav-profil"
+        href="profil.html">Profil</a><a class="nav-link" data-id="materi" href="materi.html">Materi</a><a
+        class="nav-link" data-id="about" href="about.html">About Us</a><a class="nav-link" data-id="nav-kontak"
+        href="kontak-guru.html">Kontak Guru</a>
+    </div>
+    <div class="nav-controls">
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">🌐 EN</button>
+      <button class="dark-toggle" id="darkToggle" onclick="toggleDark()">🌙</button>
+      <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+  </nav>
+  <div class="page-hero page-hero-moral">
+    <div class="container">
+      <h1 class="page-title" data-id="moral-title">🕌 Khotbah: Menjaga Lingkungan &amp; Hemat Energi sebagai Wujud Iman
+      </h1>
+      <p class="page-subtitle" data-id="moral-sub">Pendidikan Agama Islam · Tanggung jawab manusia sebagai khalifah di
+        bumi</p>
+    </div>
+  </div>
+  <div class="khotbah-wrap">
+    <!-- SALAM PEMBUKA -->
+    <div class="khotbah-salam">
+      <div class="arab">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ</div>
+      <div class="terjemah">Semoga keselamatan, rahmat, dan berkah Allah senantiasa tercurah kepada kalian</div>
+    </div>
+    <!-- MUQADDIMAH -->
+    <div class="khotbah-muqaddimah">
+      <strong>Alhamdulillahi rabbil 'alamin.</strong> Segala puji bagi Allah SWT yang telah menciptakan alam semesta
+      dengan segala keindahan dan manfaatnya. Shalawat serta salam semoga senantiasa tercurah kepada Nabi Muhammad SAW,
+      keluarga, sahabat, dan seluruh umatnya hingga akhir zaman.
+      <br /><br />
+      Hadirin yang dirahmati Allah, hari ini kita akan membahas dua hal yang sangat erat kaitannya — <strong>larangan
+        merusak bumi</strong> dan <strong>kewajiban hemat energi</strong> — sebagai bagian dari tanggung jawab kita
+      sebagai khalifah Allah di muka bumi.
+    </div>
+    <!-- AYAT PEMBUKA -->
+    <div class="ayat-box">
+      <div class="arab">يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ حَقَّ تُقَاتِهِ وَلَا تَمُوتُنَّ إِلَّا
+        وَأَنْتُمْ مُسْلِمُونَ</div>
+      <div class="terjemah">"Wahai orang-orang yang beriman! Bertakwalah kepada Allah sebenar-benar takwa kepada-Nya dan
+        janganlah kamu mati kecuali dalam keadaan muslim."</div>
+      <div class="sumber">QS. Ali Imran: 102</div>
+    </div>
+    <!-- TAB NAVIGASI -->
+    <div class="tab-nav" role="tablist">
+      <button class="tab-btn active" data-id="moral-tab1" onclick="switchTab('tab1', this)" role="tab">📖 Larangan
+        Merusak Bumi</button>
+      <button class="tab-btn" data-id="moral-tab2" onclick="switchTab('tab2', this)" role="tab">⚡ Bahaya Israf &amp;
+        Hemat Energi</button>
+      <button class="tab-btn" data-id="moral-tab3" onclick="switchTab('tab3', this)" role="tab">🌿 Penutup &amp;
+        Ikrar</button>
+    </div>
+    <!-- ======== TAB 1: LARANGAN MERUSAK BUMI ======== -->
+    <div class="tab-panel active" id="tab1">
+      <div class="section-divider">
+        <span></span>
+        <div class="divider-label">Bagian 1 dari 2</div><span></span>
+      </div>
+      <!-- MATERI 1 -->
+      <div class="materi-block">
+        <div class="materi-block-title">
+          <span class="num-badge">1</span>
+          Menjaga Lingkungan adalah Perintah Allah SWT
+        </div>
+        <p class="materi-body" data-id="moral-body1">
+          Hadirin yang dirahmati Allah, lingkungan adalah amanah terbesar yang Allah SWT titipkan kepada manusia. Udara,
+          air, hutan, dan seluruh makhluk hidup di sekitar kita adalah bagian dari sistem ciptaan Allah yang saling
+          bergantung. Manusia diberi kecerdasan bukan untuk merusaknya, melainkan untuk menjaganya.
+        </p>
+        <div class="ayat-card">
+          <div class="arab">وَلَا تُفْسِدُوا فِي الْأَرْضِ بَعْدَ إِصْلَاحِهَا</div>
+          <div class="terjemah">"Dan janganlah kamu membuat kerusakan di muka bumi setelah Allah memperbaikinya."</div>
+          <div class="sumber">QS. Al-A'raf: 56</div>
+          <div class="tafsir-singkat">
+            <strong>➡️ Maksudnya:</strong> Allah telah menciptakan bumi dengan keseimbangan yang sempurna — hutan, air,
+            udara, dan makhluk hidup saling berkaitan. Manusia tidak boleh merusak keseimbangan ini, seperti membuang
+            sampah sembarangan, mencemari sungai, atau menebang hutan secara liar.
+          </div>
+        </div>
+        <p class="materi-body" data-id="moral-body2">
+          Kerusakan lingkungan bukan hanya masalah sosial — ini adalah pelanggaran terhadap amanah Allah. Banjir, tanah
+          longsor, pencemaran udara, dan berkurangnya sumber air bersih semuanya merupakan akibat dari perilaku manusia
+          yang tidak bertanggung jawab terhadap alam.
+        </p>
+        <div class="impact-grid">
+          <div class="impact-card danger"><span class="icon">🌊</span>
+            <div class="label">Banjir &amp; tanah longsor</div>
+          </div>
+          <div class="impact-card danger"><span class="icon">🌫️</span>
+            <div class="label">Pencemaran udara</div>
+          </div>
+          <div class="impact-card danger"><span class="icon">💧</span>
+            <div class="label">Krisis air bersih</div>
+          </div>
+          <div class="impact-card danger"><span class="icon">🐾</span>
+            <div class="label">Kepunahan satwa liar</div>
+          </div>
+        </div>
+      </div>
+      <!-- MATERI 2 -->
+      <div class="materi-block">
+        <div class="materi-block-title">
+          <span class="num-badge">2</span>
+          Bencana Alam adalah Akibat Perbuatan Manusia
+        </div>
+        <div class="ayat-card">
+          <div class="arab">ظَهَرَ الْفَسَادُ فِي الْبَرِّ وَالْبَحْرِ بِمَا كَسَبَتْ أَيْدِي النَّاسِ لِيُذِيقَهُمْ
+            بَعْضَ الَّذِي عَمِلُوا لَعَلَّهُمْ يَرْجِعُونَ</div>
+          <div class="terjemah">"Telah tampak kerusakan di darat dan di laut disebabkan oleh perbuatan tangan manusia;
+            Allah menghendaki agar mereka merasakan sebagian dari (akibat) perbuatan mereka, agar mereka kembali (ke
+            jalan yang benar)."</div>
+          <div class="sumber">QS. Ar-Rum: 41</div>
+          <div class="tafsir-singkat">
+            <strong>➡️ Maksudnya:</strong> Banyak bencana alam seperti banjir bandang, pencemaran laut, dan perubahan
+            iklim terjadi akibat ulah manusia sendiri. Ini adalah peringatan keras agar manusia segera sadar dan
+            memperbaiki perilakunya sebelum kerusakan semakin parah.
+          </div>
+        </div>
+        <div class="callout warning">
+          <span class="callout-icon">⚠️</span>
+          <span>Ayat ini bukan sekadar peringatan masa lalu. Perubahan iklim global yang kita rasakan hari ini adalah
+            bukti nyata dari kerusakan yang diperbuat tangan-tangan manusia selama berabad-abad.</span>
+        </div>
+      </div>
+      <!-- MATERI 3 -->
+      <div class="materi-block">
+        <div class="materi-block-title">
+          <span class="num-badge">3</span>
+          Merusak Tanaman dan Hewan adalah Perbuatan yang Dibenci Allah
+        </div>
+        <div class="ayat-card">
+          <div class="arab">وَإِذَا تَوَلَّىٰ سَعَىٰ فِي الْأَرْضِ لِيُفْسِدَ فِيهَا وَيُهْلِكَ الْحَرْثَ وَالنَّسْلَ ۗ
+            وَاللَّهُ لَا يُحِبُّ الْفَسَادَ</div>
+          <div class="terjemah">"…dan apabila ia berpaling (dari kamu), ia berjalan di bumi untuk mengadakan kerusakan
+            padanya, dan merusak tanam-tanaman dan binatang ternak, dan Allah tidak menyukai kerusakan."</div>
+          <div class="sumber">QS. Al-Baqarah: 205</div>
+          <div class="tafsir-singkat">
+            <strong>➡️ Maksudnya:</strong> Merusak lingkungan, termasuk menghancurkan tumbuhan dan membunuh hewan secara
+            tidak wajar, adalah perbuatan yang dibenci oleh Allah. Allah secara tegas menyatakan bahwa Dia tidak
+            menyukai kerusakan dalam bentuk apapun.
+          </div>
+        </div>
+        <div class="callout info">
+          <span class="callout-icon">🌱</span>
+          <span>Menanam pohon, tidak membuang sampah sembarangan, dan menjaga kebersihan sungai adalah amalan nyata yang
+            mencerminkan bahwa kita mencintai apa yang Allah cintai.</span>
+        </div>
+        <ul class="amalan-list">
+          <li data-id="moral-li1">Tidak membuang sampah sembarangan di jalan maupun di sungai</li>
+          <li data-id="moral-li2">Tidak menebang pohon secara liar tanpa izin dan keperluan yang jelas</li>
+          <li data-id="moral-li3">Tidak mencemari sumber air dengan limbah atau sampah plastik</li>
+          <li data-id="moral-li4">Ikut serta dalam kegiatan bersih lingkungan di rumah dan sekolah</li>
+          <li data-id="moral-li5">Merawat tanaman dan tidak menyiksa hewan tanpa alasan yang dibenarkan</li>
+        </ul>
+      </div>
+    </div><!-- END TAB 1 -->
+    <!-- ======== TAB 2: ISRAF & HEMAT ENERGI ======== -->
+    <div class="tab-panel" id="tab2">
+      <div class="section-divider">
+        <span></span>
+        <div class="divider-label">Bagian 2 dari 2</div><span></span>
+      </div>
+      <div class="materi-block">
+        <div class="materi-block-title">
+          <span class="num-badge">4</span>
+          Israf dan Tabzir: Pemborosan yang Dilarang dalam Islam
+        </div>
+        <p class="materi-body" data-id="moral-body3">
+          Saudaraku yang dirahmati Allah, dalam kehidupan sehari-hari, sering kali kita menggunakan energi listrik dan
+          bahan bakar tanpa berpikir panjang. Lampu dibiarkan menyala, <em>charger</em> tetap terpasang, kendaraan
+          digunakan tanpa kebutuhan yang mendesak. Kita menganggapnya hal biasa — padahal dalam ajaran Islam, perilaku
+          boros dikenal dengan istilah <strong>israf</strong> (berlebih-lebihan) dan <strong>tabzir</strong>
+          (menghambur-hamburkan), yang sangat dilarang.
+        </p>
+        <div class="ayat-card">
+          <div class="arab">إِنَّ الْمُبَذِّرِينَ كَانُوا إِخْوَانَ الشَّيَاطِينِ ۖ وَكَانَ الشَّيْطَانُ لِرَبِّهِ
+            كَفُورًا</div>
+          <div class="terjemah">"Sesungguhnya orang-orang yang boros itu adalah saudara-saudara setan, dan setan itu
+            sangat ingkar kepada Tuhannya."</div>
+          <div class="sumber">QS. Al-Isra: 27</div>
+          <div class="tafsir-singkat">
+            <strong>➡️ Maksudnya:</strong> Boros bukan hanya kebiasaan buruk — Allah menyebutnya sebagai perilaku yang
+            mendekatkan manusia pada sifat-sifat setan. Ini adalah peringatan keras agar kita menghindari segala bentuk
+            pemborosan dalam kehidupan sehari-hari.
+          </div>
+        </div>
+        <div class="ayat-card">
+          <div class="arab">وَلَا تُسْرِفُوا ۚ إِنَّهُ لَا يُحِبُّ الْمُسْرِفِينَ</div>
+          <div class="terjemah">"Dan janganlah kamu berlebih-lebihan. Sesungguhnya Allah tidak menyukai orang-orang yang
+            berlebih-lebihan."</div>
+          <div class="sumber">QS. Al-A'raf: 31</div>
+          <div class="tafsir-singkat">
+            <strong>➡️ Maksudnya:</strong> Allah secara langsung melarang gaya hidup berlebihan dalam hal apapun —
+            termasuk dalam penggunaan energi. Hemat bukan berarti pelit; hemat adalah bentuk ketaatan kepada Allah dan
+            kepedulian terhadap sesama.
+          </div>
+        </div>
+      </div>
+      <div class="materi-block">
+        <div class="materi-block-title">
+          <span class="num-badge">5</span>
+          Mengapa Hemat Energi adalah Bagian dari Iman?
+        </div>
+        <p class="materi-body" data-id="moral-body4">
+          Energi yang kita gunakan setiap hari bukanlah sesuatu yang tanpa dampak. Listrik yang kita pakai berasal dari
+          proses yang panjang — sering kali melibatkan pembakaran bahan bakar fosil yang mencemari udara dan merusak
+          lingkungan. Begitu pula bahan bakar kendaraan yang kita gunakan setiap hari.
+        </p>
+        <div class="callout warning">
+          <span class="callout-icon">🔥</span>
+          <span><strong>Ketika kita boros energi</strong>, kita tidak hanya merugikan diri sendiri — kita ikut
+            berkontribusi dalam kerusakan alam yang sudah dilarang Allah dalam Al-Qur'an. Hemat energi adalah bagian
+            dari menjaga bumi sebagai amanah Allah.</span>
+        </div>
+        <div class="impact-grid">
+          <div class="impact-card"><span class="icon">💡</span>
+            <div class="label">Matikan lampu saat tidak digunakan</div>
+          </div>
+          <div class="impact-card"><span class="icon">🔌</span>
+            <div class="label">Cabut charger setelah selesai</div>
+          </div>
+          <div class="impact-card"><span class="icon">🚶</span>
+            <div class="label">Jalan kaki atau bersepeda untuk jarak dekat</div>
+          </div>
+          <div class="impact-card"><span class="icon">💧</span>
+            <div class="label">Hemat penggunaan air setiap hari</div>
+          </div>
+        </div>
+        <div class="section-divider">
+          <span></span>
+          <div class="divider-label">Langkah Nyata</div><span></span>
+        </div>
+        <div class="tips-steps">
+          <div class="tip-step">
+            <div class="tip-num">1</div>
+            <div class="tip-content">
+              <div class="tip-title">Matikan lampu saat meninggalkan ruangan</div>
+              <div class="tip-desc">Kebiasaan kecil ini bisa menghemat energi hingga 10-15% per bulan di rumahmu.</div>
+            </div>
+          </div>
+          <div class="tip-step">
+            <div class="tip-num">2</div>
+            <div class="tip-content">
+              <div class="tip-title">Cabut charger dan perangkat elektronik bila tidak dipakai</div>
+              <div class="tip-desc">Perangkat yang masih tersambung listrik tetap mengonsumsi daya meskipun tidak aktif
+                digunakan.</div>
+            </div>
+          </div>
+          <div class="tip-step">
+            <div class="tip-num">3</div>
+            <div class="tip-content">
+              <div class="tip-title">Gunakan kendaraan seperlunya</div>
+              <div class="tip-desc">Untuk jarak dekat, berjalan kaki atau bersepeda lebih sehat dan ramah lingkungan.
+              </div>
+            </div>
+          </div>
+          <div class="tip-step">
+            <div class="tip-num">4</div>
+            <div class="tip-content">
+              <div class="tip-title">Kurangi penggunaan plastik sekali pakai</div>
+              <div class="tip-desc">Plastik membutuhkan energi besar untuk diproduksi dan ratusan tahun untuk terurai di
+                alam.</div>
+            </div>
+          </div>
+          <div class="tip-step">
+            <div class="tip-num">5</div>
+            <div class="tip-content">
+              <div class="tip-title">Hemat air dalam keseharian</div>
+              <div class="tip-desc">Menutup keran saat menggosok gigi atau menggunakan air seperlunya adalah ibadah
+                kecil yang besar maknanya.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- END TAB 2 -->
+    <!-- ======== TAB 3: PENUTUP & IKRAR ======== -->
+    <div class="tab-panel" id="tab3">
+      <!-- PENUTUP -->
+      <div class="khotbah-penutup">
+        <strong>Hadirin yang dirahmati Allah,</strong><br /><br />
+        Dari penjelasan yang telah disampaikan, kita memahami dua hal penting:
+        <br /><br />
+        <strong>Pertama</strong>, menjaga lingkungan adalah perintah Allah. Merusaknya — baik dengan mencemari sungai,
+        menebang hutan liar, maupun membunuh satwa secara tidak wajar — adalah perbuatan yang dibenci Allah dan dapat
+        mendatangkan bencana bagi kita sendiri.
+        <br /><br />
+        <strong>Kedua</strong>, hemat energi adalah bagian dari iman. Boros atau israf bukan sekadar kebiasaan buruk —
+        Allah menyebutnya sebagai perilaku saudara setan. Setiap watt listrik yang kita hemat, setiap tetes air yang
+        kita jaga, adalah bentuk ketaatan yang nyata kepada Allah SWT.
+
+        <div class="ayat-box" style="margin: 24px 0 16px;">
+          <div class="arab">إِنَّ اللّٰهَ يُحِبُّ الْمُحْسِنِينَ</div>
+          <div class="terjemah">"Sesungguhnya Allah menyukai orang-orang yang berbuat kebaikan."</div>
+          <div class="sumber">QS. Al-Baqarah: 195</div>
+        </div>
+
+        Marilah kita jadikan menjaga lingkungan dan berhemat energi sebagai bagian dari ibadah harian kita. Bukan karena
+        terpaksa, tetapi karena kita sadar bahwa bumi ini adalah amanah dari Allah yang harus kita jaga dan kembalikan
+        dalam keadaan yang lebih baik.
+        <br /><br />
+        Semoga Allah SWT memberikan kepada kita kesadaran, kemudahan, dan kekuatan untuk senantiasa menjaga alam yang
+        telah dianugerahkan-Nya. <strong>Aamiin ya Rabbal 'alamin.</strong>
+      </div>
+      <!-- SALAM PENUTUP -->
+      <div class="khotbah-salam-akhir">
+        <div class="arab">آمِينَ يَا رَبَّ الْعَالَمِينَ</div>
+        <div class="arab" style="font-size:1.1rem;">وَالسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ</div>
+        <div class="terjemah">Semoga keselamatan, rahmat, dan berkah Allah senantiasa tercurah kepada kalian</div>
+      </div>
+      <!-- IKRAR -->
+      <div class="pledge-section">
+        <h2 data-id="moral-ikrar-title">📝 Ikrar Menjaga Lingkungan &amp; Hemat Energi</h2>
+        <div class="pledge-text">
+          <p>Saya berjanji untuk menjaga kebersihan dan kelestarian lingkungan sebagai wujud tanggung jawab kepada Allah
+            SWT.</p>
+          <p>Saya tidak akan membuang sampah sembarangan dan akan memilah sampah sesuai jenisnya.</p>
+          <p>Saya akan menghemat penggunaan air dan listrik dalam kehidupan sehari-hari.</p>
+          <p>Saya akan mematikan lampu dan mencabut charger saat tidak digunakan.</p>
+          <p>Saya akan menanam dan merawat tanaman di sekitar lingkungan saya.</p>
+          <p>Saya akan mengajak orang-orang di sekitar saya untuk ikut menjaga kebersihan dan berhemat energi.</p>
+          <p><strong>Karena menjaga bumi dan menghindari pemborosan adalah amanah dan perintah Allah SWT kepada kita
+              sebagai khalifah di bumi.</strong></p>
+        </div>
+        <button class="pledge-btn" data-id="moral-pledge-btn" onclick="takePledge()">🌿 Saya Berjanji Menjaga Bumi &amp;
+          Hemat Energi</button>
+        <div class="pledge-success" id="pledgeSuccess">
+          <span>✅</span>
+          <span>Alhamdulillah! Semoga Allah SWT membimbing kita menjadi hamba yang bertanggung jawab. آمِينَ 🌍</span>
+        </div>
+      </div>
+    </div><!-- END TAB 3 -->
+  </div><!-- END khotbah-wrap -->
+
+  &lt;<!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-text footer-logo">🌿 CarbonTrace</div>
+          <p data-id="footer-desc">Platform edukasi jejak karbon untuk generasi muda peduli lingkungan.</p>
+        </div>
+        <div class="footer-links">
+          <h4 data-id="footer-menu">Menu</h4>
+          <a data-id="nav-beranda" href="index.html">Beranda</a>
+          <a data-id="nav-materi" href="materi.html">Materi</a>
+          <a href="about.html">About Us</a>
+        </div>
+        <div class="footer-info">
+          <h4 data-id="footer-info-title">Info</h4>
+          <p data-id="footer-info-p1">Proyek RPL Final</p>
+          <p data-id="footer-info-p2">SMA/SMK 2025</p>
+          <p>🇮🇩 Indonesia</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="footer-quote">
+          <span class="fq-leaf" data-id="footer-quote-text">🌿 Rawatlah bumi dengan bijak, karena kebaikan kecil hari ini akan menjadi keberkahan
+            bagi kehidupan di masa depan</span>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 CarbonTrace — <span data-id="footer-copy">Dibuat dengan ❤️ untuk bumi yang lebih baik</span></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <a class="back-to-materi-btn" data-id="back-to-materi" href="materi.html">
+    <span class="btn-arrow">←</span> Kembali ke Materi
+  </a>
+  <script src="script.js"></script>
+  <script>
+    // Reading progress bar
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      document.getElementById('readingProgress').style.width = progress + '%';
+    });
+
+    // Tab switcher
+    function switchTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+      window.scrollTo({ top: document.querySelector('.tab-nav').offsetTop - 80, behavior: 'smooth' });
+    }
+
+    // Pledge
+    function takePledge() {
+      document.getElementById('pledgeSuccess').style.display = 'flex';
+      document.querySelector('.pledge-btn').style.display = 'none';
+      const colors = ['#22c55e', '#16a34a', '#4ade80', '#bbf7d0', '#fbbf24'];
+      for (let i = 0; i < 40; i++) {
+        const c = document.createElement('div');
+        c.style.cssText = `position:fixed;width:8px;height:8px;border-radius:50%;background:${colors[Math.floor(Math.random() * colors.length)]};left:${Math.random() * 100}vw;top:-10px;animation:confettiFall ${1 + Math.random() * 2}s ease-in forwards;z-index:9999;pointer-events:none;`;
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 3000);
+      }
+    }
+  </script>
+</body>
+
+</html>

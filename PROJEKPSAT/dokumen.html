@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Berkas Tambahan — CarbonTrace</title>
+  <link href="style.css" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Space+Grotesk:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <style>
+    .back-to-materi-btn {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      background: var(--green-600);
+      color: white;
+      border-radius: 100px;
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(5, 150, 105, 0.38);
+      transition: all 0.25s ease;
+    }
+
+    .back-to-materi-btn:hover {
+      background: var(--green-700);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(5, 150, 105, 0.45);
+      color: white;
+    }
+
+    .back-to-materi-btn .btn-arrow {
+      transition: transform 0.2s;
+    }
+
+    .back-to-materi-btn:hover .btn-arrow {
+      transform: translateX(-3px);
+    }
+
+    @media (max-width: 600px) {
+      .back-to-materi-btn {
+        bottom: 20px;
+        right: 16px;
+        padding: 10px 16px;
+        font-size: 0.8rem;
+      }
+    }
+
+    .dokumen-center-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .feature-card-dokumen {
+      width: 100%;
+      max-width: 380px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">🌿</span>
+      <span class="brand-text">CarbonTrace</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+
+      <a class="nav-link" data-id="beranda" href="index.html">Beranda</a><a class="nav-link" data-id="nav-profil"
+        href="profil.html">Profil</a><a class="nav-link" data-id="materi" href="materi.html">Materi</a><a
+        class="nav-link" data-id="about" href="about.html">About Us</a><a class="nav-link" data-id="nav-kontak"
+        href="kontak-guru.html">Kontak Guru</a>
+    </div>
+    <div class="nav-controls">
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">🌐 EN</button>
+      <button class="dark-toggle" id="darkToggle" onclick="toggleDark()">🌙</button>
+      <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+  </nav>
+  <div class="page-hero page-hero-calc">
+    <div class="container">
+      <h1 class="page-title" data-id="dokumen-title">📄 Berkas Tambahan</h1>
+      <p class="page-subtitle" data-id="dokumen-sub">Unduh dan lihat dokumen pendukung proyek CarbonTrace berdasarkan
+        mata pelajaran</p>
+    </div>
+  </div>
+  <section class="features-section" style="padding-top: 60px; padding-bottom: 80px;">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-id="dokumen-sec-h">Pilih Dokumen yang Ingin Dilihat</h2>
+        <p data-id="dokumen-sec-p">Klik salah satu kartu di bawah untuk membuka dokumen pendukung sesuai mata pelajaran
+        </p>
+      </div>
+      <div class="features-grid">
+        <a class="feature-card" href="matematika.html">
+          <div class="feature-icon">🧮</div>
+          <h3 data-id="dok-card1-h">Tabel Emisi Harian</h3>
+          <p data-id="dok-card1-p">Rumus perhitungan emisi karbon, lembar kerja statistik, dan soal latihan bertema
+            lingkungan hidup.</p>
+          <span class="feature-tag" data-id="dok-card1-tag">Matematika</span>
+        </a>
+        <a class="feature-card" href="senbud.html">
+          <div class="feature-icon">🎨</div>
+          <h3 data-id="dok-card2-h">Wireframe Estetis Web</h3>
+          <p data-id="dok-card2-p">Panduan membuat poster lingkungan, naskah drama, dan referensi karya seni dari bahan
+            daur ulang.</p>
+          <span class="feature-tag" data-id="dok-card2-tag">Seni Budaya</span>
+        </a>
+        <a class="feature-card" href="pp.html">
+          <div class="feature-icon">🦅</div>
+          <h3 data-id="dok-card3-h">Pembagian Tugas</h3>
+          <p data-id="dok-card3-p">Nilai Pancasila dalam pelestarian lingkungan, gotong royong, serta hak dan kewajiban
+            warga negara.</p>
+          <span class="feature-tag" data-id="dok-card3-tag">Pendidikan Pancasila</span>
+        </a>
+        <a class="feature-card" href="ipas.html">
+          <div class="feature-icon">🔬</div>
+          <h3 data-id="dok-card4-h">Referensi Ilmiah Faktor Emisi</h3>
+          <p data-id="dok-card4-p">Penyelidikan Ilmiah Guna Menemukan Koefisien Faktor Emisi Karbon.</p>
+          <span class="feature-tag" data-id="dok-card4-tag">Projek IPAS</span>
+        </a>
+        <a class="feature-card" href="infor.html">
+          <div class="feature-icon">💻</div>
+          <h3 data-id="dok-card5-h">Flowchart</h3>
+          <p data-id="dok-card5-p">Dokumentasi proyek CarbonTrace, flowchart kalkulator karbon, dan panduan literasi
+            digital lingkungan.</p>
+          <span class="feature-tag" data-id="dok-card5-tag">Informatika</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-text footer-logo">🌿 CarbonTrace</div>
+          <p data-id="footer-desc">Platform edukasi jejak karbon untuk generasi muda peduli lingkungan.</p>
+        </div>
+        <div class="footer-links">
+          <h4 data-id="footer-menu">Menu</h4>
+          <a data-id="nav-beranda" href="index.html">Beranda</a>
+          <a data-id="nav-materi" href="materi.html">Materi</a>
+          <a href="about.html">About Us</a>
+        </div>
+        <div class="footer-info">
+          <h4 data-id="footer-info-title">Info</h4>
+          <p data-id="footer-info-p1">Proyek RPL Final</p>
+          <p data-id="footer-info-p2">SMA/SMK 2025</p>
+          <p>🇮🇩 Indonesia</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="footer-quote">
+          <span class="fq-leaf" data-id="footer-quote-text">🌿 Rawatlah bumi dengan bijak, karena kebaikan kecil hari
+            ini akan menjadi keberkahan bagi kehidupan di masa depan</span>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 CarbonTrace — <span data-id="footer-copy">Dibuat dengan ❤️ untuk bumi yang lebih baik</span></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <a class="back-to-materi-btn" data-id="back-to-materi" href="materi.html">
+    <span class="btn-arrow">←</span> Kembali ke Materi
+  </a>
+  <script src="script.js"></script>
+</body>
+
+</html>

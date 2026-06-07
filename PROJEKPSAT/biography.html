@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Biografi Tokoh Lingkungan — CarbonTrace</title>
+  <link href="style.css" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Space+Grotesk:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <style>
+    .back-to-materi-btn {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      background: var(--green-600);
+      color: white;
+      border-radius: 100px;
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(5, 150, 105, 0.38);
+      transition: all 0.25s ease;
+    }
+
+    .back-to-materi-btn:hover {
+      background: var(--green-700);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(5, 150, 105, 0.45);
+      color: white;
+    }
+
+    .back-to-materi-btn .btn-arrow {
+      transition: transform 0.2s;
+    }
+
+    .back-to-materi-btn:hover .btn-arrow {
+      transform: translateX(-3px);
+    }
+
+    @media (max-width: 600px) {
+      .back-to-materi-btn {
+        bottom: 20px;
+        right: 16px;
+        padding: 10px 16px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">🌿</span>
+      <span class="brand-text">CarbonTrace</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+
+      <a class="nav-link" data-id="beranda" href="index.html">Beranda</a><a class="nav-link" data-id="nav-profil"
+        href="profil.html">Profil Siswa</a><a class="nav-link" data-id="materi" href="materi.html">Materi</a><a
+        class="nav-link" data-id="about" href="about.html">About Us</a><a class="nav-link" data-id="nav-kontak"
+        href="kontak-guru.html">Kontak Guru</a>
+    </div>
+    <div class="nav-controls">
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">🌐 EN</button>
+      <button class="dark-toggle" id="darkToggle" onclick="toggleDark()">🌙</button>
+      <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+  </nav>
+  <div class="page-hero page-hero-bio">
+    <div class="container">
+      <h1 class="page-title" data-id="bio-title">🌟 Biografi Tokoh Lingkungan</h1>
+      <p class="page-subtitle" data-id="bio-sub">Mengenal para pejuang bumi yang menginspirasi dunia</p>
+    </div>
+  </div>
+  <section class="content-section">
+    <div class="container">
+      <div class="article-intro">
+        <p data-id="bio-intro">Teks biografi adalah jenis teks naratif objektif yang berisi kisah atau riwayat hidup
+          seseorang yang ditulis oleh orang lain (bukan diri sendiri). Teks ini dibuat berdasarkan fakta dan pengalaman
+          nyata dengan tujuan untuk memberikan informasi, inspirasi, serta keteladanan kepada pembaca.</p>
+      </div>
+      <!-- Aleta Baun  -->
+      <div class="bio-card">
+        <div class="bio-header">
+          <div class="bio-avatar">
+            <div class="avatar-placeholder greta-avatar">
+              <img class="tokoh" src="tokoh.jpeg" />
+            </div>
+          </div>
+          <div class="bio-info">
+            <h2>Aleta Baun</h2>
+            <div class="bio-tags">
+              <span class="bio-tag">Nusa Tenggara Timur</span>
+              <span class="bio-tag">Aktivis Lingkungan</span>
+              <span class="bio-tag">1966 – Sekarang</span>
+            </div>
+            <blockquote class="bio-quote" data-id="aleta-quote">"Hutan, tanah, air, dan batu adalah bagian yang sangat
+              penting bagi kehidupan masyarakat kami."</blockquote>
+          </div>
+        </div>
+        <div class="bio-body">
+          <div class="bio-section">
+            <div class="bio-section-label">
+              <span class="section-num">①</span>
+              <h3 data-id="orientasi">Orientasi</h3>
+            </div>
+            <p data-id="aleta-o1">Aleta Baun adalah seorang aktivis lingkungan hidup yang berasal dari Pulau Timor, Nusa
+              Tenggara Timur. Ia dikenal karena perjuangannya dalam menjaga hutan dan sumber daya alam yang menjadi
+              sumber kehidupan masyarakat adat di daerahnya.</p>
+            <p data-id="aleta-o2">Aleta Baun lahir pada tahun 1966 di Mollo, Timor Tengah Selatan. Sejak kecil, ia sudah
+              diajarkan untuk mencintai alam dan menjaga kelestarian lingkungan. Menurutnya, hutan, tanah, air, dan batu
+              merupakan bagian yang sangat penting bagi kehidupan masyarakat setempat.</p>
+          </div>
+          <div class="bio-section">
+            <div class="bio-section-label">
+              <span class="section-num">②</span>
+              <h3 data-id="peristiwa">Peristiwa Penting</h3>
+            </div>
+            <div class="bio-timeline">
+              <div class="bio-event">
+                <div class="bio-event-year">2000-an</div>
+                <div class="bio-event-content">
+                  <h4 data-id="ae1-title">Penolakan Tambang Marmer</h4>
+                  <p data-id="ae1-desc">Pada awal tahun 2000-an, Aleta Baun memimpin masyarakat untuk menolak kegiatan
+                    penambangan marmer yang dianggap dapat merusak lingkungan dan mengancam kehidupan warga. Bersama
+                    para perempuan adat, ia melakukan aksi damai dengan menenun di lokasi tambang sebagai bentuk protes
+                    terhadap kerusakan alam.</p>
+                </div>
+              </div>
+              <div class="bio-event">
+                <div class="bio-event-year"></div>
+                <div class="bio-event-content">
+                  <h4 data-id="ae2-title">Aksi Damai Berbulan-bulan</h4>
+                  <p data-id="ae2-desc">Aksi tersebut berlangsung selama berbulan-bulan. Para perempuan tetap menenun di
+                    sekitar area tambang sebagai simbol bahwa mereka ingin mempertahankan tanah dan hutan yang menjadi
+                    sumber kehidupan masyarakat Mollo. Meskipun menghadapi berbagai tantangan, mereka tetap berjuang
+                    dengan cara yang damai dan tidak menggunakan kekerasan.</p>
+                </div>
+              </div>
+              <div class="bio-event">
+                <div class="bio-event-year"></div>
+                <div class="bio-event-content">
+                  <h4 data-id="ae3-title">Edukasi Lingkungan untuk Generasi Muda</h4>
+                  <p data-id="ae3-desc">Selain mengajak masyarakat menolak penambangan, Aleta Baun juga aktif memberikan
+                    pemahaman tentang pentingnya menjaga lingkungan kepada generasi muda. Ia sering terlibat dalam
+                    kegiatan pelestarian alam, seperti menanam pohon dan menjaga sumber mata air agar tetap bersih dan
+                    terawat.</p>
+                </div>
+              </div>
+              <div class="bio-event">
+                <div class="bio-event-year">2013</div>
+                <div class="bio-event-content">
+                  <h4 data-id="ae4-title">Goldman Environmental Prize</h4>
+                  <p data-id="ae4-desc">Perjuangan yang dilakukan Aleta Baun akhirnya membuahkan hasil. Beberapa
+                    kegiatan penambangan berhasil dihentikan sehingga kawasan hutan dan pegunungan di wilayah Mollo
+                    tetap terjaga. Atas dedikasinya dalam melindungi lingkungan, ia menerima berbagai penghargaan, salah
+                    satunya penghargaan internasional berupa Goldman Environmental Prize pada tahun 2013.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bio-section">
+            <div class="bio-section-label">
+              <span class="section-num">③</span>
+              <h3 data-id="reorientasi">Reorientasi</h3>
+            </div>
+            <p data-id="aleta-r1">Sampai sekarang, Aleta Baun masih menjadi inspirasi bagi banyak orang untuk menjaga
+              lingkungan dan menghargai kearifan lokal. Semangat dan perjuangannya menunjukkan bahwa setiap orang bisa
+              ikut berperan dalam melestarikan alam demi masa depan yang lebih baik.</p>
+            <p data-id="aleta-r2">Kisah hidup Aleta Baun membuktikan bahwa perubahan dapat dimulai dari kepedulian
+              terhadap lingkungan sekitar. Dengan keberanian, kerja sama, dan rasa cinta terhadap alam, ia berhasil
+              menggerakkan masyarakat untuk melindungi tanah kelahiran mereka dari kerusakan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-text footer-logo">🌿 CarbonTrace</div>
+          <p data-id="footer-desc">Platform edukasi jejak karbon untuk generasi muda peduli lingkungan.</p>
+        </div>
+        <div class="footer-links">
+          <h4 data-id="footer-menu">Menu</h4>
+          <a data-id="nav-beranda" href="index.html">Beranda</a>
+          <a data-id="nav-materi" href="materi.html">Materi</a>
+          <a href="about.html">About Us</a>
+        </div>
+        <div class="footer-info">
+          <h4 data-id="footer-info-title">Info</h4>
+          <p data-id="footer-info-p1">Proyek RPL Final</p>
+          <p data-id="footer-info-p2">SMA/SMK 2025</p>
+          <p>🇮🇩 Indonesia</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="footer-quote">
+          <span class="fq-leaf" data-id="footer-quote-text">🌿 Rawatlah bumi dengan bijak, karena kebaikan kecil hari ini akan menjadi keberkahan
+            bagi kehidupan di masa depan</span>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 CarbonTrace — <span data-id="footer-copy">Dibuat dengan ❤️ untuk bumi yang lebih baik</span></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- TOMBOL BACK KE MATERI -->
+  <a class="back-to-materi-btn" data-id="back-to-materi" href="materi.html">
+    <span class="btn-arrow">←</span> Kembali ke Materi
+  </a>
+  <script src="script.js"></script>
+</body>
+
+</html>

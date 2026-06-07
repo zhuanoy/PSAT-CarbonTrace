@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Sejarah Emisi — CarbonTrace</title>
+  <link href="style.css" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Space+Grotesk:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <style>
+    /* ── CAUSALITY SECTION ─────────────────────────────── */
+    .causality-section {
+      margin: 3.5rem 0;
+    }
+
+    .section-heading-accent {
+      font-family: var(--font-heading);
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 2rem;
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .section-heading-accent::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background: linear-gradient(180deg, var(--green-400), var(--green-700));
+      border-radius: 4px;
+    }
+
+    .causality-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 2.5rem;
+    }
+
+    .causality-block {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.2rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .causality-block:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .cause-block {
+      border-top: 4px solid #f59e0b;
+    }
+
+    .cause-block::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle at top right, rgba(245, 158, 11, 0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    .effect-block {
+      border-top: 4px solid var(--green-500);
+    }
+
+    .effect-block::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    .causality-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .cause-label {
+      color: #d97706;
+    }
+
+    .effect-label {
+      color: var(--green-600);
+    }
+
+    .label-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .cause-dot {
+      background: #f59e0b;
+    }
+
+    .effect-dot {
+      background: var(--green-500);
+    }
+
+    .causality-title {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.2rem;
+    }
+
+    .causality-period {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+      font-style: italic;
+    }
+
+    .causality-desc {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.2rem;
+      line-height: 1.65;
+    }
+
+    .causality-points {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .cp-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--bg-main);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 1rem;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    .cp-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .irony-item {
+      border: 1.5px solid rgba(239, 68, 68, 0.25);
+      background: rgba(239, 68, 68, 0.05);
+    }
+
+    .causality-arrow-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 0.8rem 0;
+    }
+
+    .causality-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .arrow-line {
+      width: 2px;
+      height: 28px;
+      background: linear-gradient(180deg, #f59e0b, var(--green-500));
+      border-radius: 2px;
+    }
+
+    .arrow-label {
+      font-size: 0.72rem;
+      font-style: italic;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+
+    .arrow-head {
+      font-size: 1rem;
+      color: var(--green-500);
+      line-height: 1;
+    }
+
+    .emission-compare-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .ec-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      padding: 1.4rem 1.6rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+    }
+
+    .ec-flag {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .ec-label {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.8rem;
+    }
+
+    .ec-bar-wrap {
+      height: 8px;
+      background: var(--bg-main);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .ec-maju .ec-bar {
+      background: linear-gradient(90deg, #f59e0b, #dc2626);
+      height: 100%;
+      border-radius: 4px;
+      animation: barGrow 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .ec-berkembang .ec-bar {
+      background: linear-gradient(90deg, var(--green-400), var(--green-600));
+      height: 100%;
+      border-radius: 4px;
+      animation: barGrow 1.4s 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes barGrow {
+      from {
+        width: 0 !important;
+      }
+    }
+
+    .ec-value {
+      font-size: 1.1rem;
+      font-weight: 800;
+      font-family: var(--font-heading);
+      color: var(--text-main);
+      margin-bottom: 0.2rem;
+    }
+
+    .ec-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ── ESSAY SECTION ─────────────────────────────── */
+    .essay-section {
+      margin: 3.5rem 0 2rem;
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    .essay-header {
+      background: linear-gradient(135deg, var(--green-800) 0%, var(--green-900) 100%);
+      padding: 2.5rem 2.8rem 2rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .essay-header::before {
+      content: '📜';
+      position: absolute;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 6rem;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    .essay-tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      color: #a7f3d0;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 100px;
+      margin-bottom: 0.9rem;
+    }
+
+    .essay-title {
+      font-family: var(--font-heading);
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: white;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .essay-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #6ee7b7, transparent);
+      border-radius: 2px;
+    }
+
+    .essay-body {
+      padding: 2.5rem 2.8rem;
+    }
+
+    .essay-paragraph {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text-main);
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: essayFadeIn 0.55s forwards;
+    }
+
+    .ep-1 {
+      animation-delay: 0.1s;
+    }
+
+    .ep-2 {
+      animation-delay: 0.2s;
+    }
+
+    .ep-3 {
+      animation-delay: 0.3s;
+    }
+
+    .ep-4 {
+      animation-delay: 0.4s;
+    }
+
+    .ep-5 {
+      animation-delay: 0.5s;
+    }
+
+    @keyframes essayFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .ep-dropcap {
+      float: left;
+      font-family: var(--font-heading);
+      font-size: 3.8rem;
+      font-weight: 900;
+      line-height: 0.8;
+      color: var(--green-600);
+      margin: 6px 10px 0 0;
+    }
+
+    .essay-highlight {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: linear-gradient(135deg, #ecfdf5, #f0fff8);
+      border-left: 4px solid var(--green-500);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 1.4rem 1.6rem;
+      margin: 1.6rem 0;
+    }
+
+    body.dark .essay-highlight {
+      background: linear-gradient(135deg, rgba(5, 150, 105, 0.12), rgba(5, 150, 105, 0.06));
+    }
+
+    .eh-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .essay-highlight p {
+      font-size: 0.98rem;
+      line-height: 1.8;
+      color: var(--text-main);
+    }
+
+    .essay-highlight strong {
+      color: var(--green-700);
+    }
+
+    .essay-closing {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-style: italic;
+    }
+
+    .closing-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-color);
+    }
+
+    @media (max-width: 700px) {
+      .emission-compare-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .essay-header,
+      .essay-body {
+        padding: 1.6rem 1.4rem;
+      }
+
+      .essay-title {
+        font-size: 1.2rem;
+      }
+
+      .ep-dropcap {
+        font-size: 2.8rem;
+      }
+
+      .section-heading-accent {
+        font-size: 1.2rem;
+      }
+
+      .causality-block {
+        padding: 1.4rem 1.2rem;
+      }
+    }
+  </style>
+  <style>
+    .back-to-materi-btn {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      background: var(--green-600);
+      color: white;
+      border-radius: 100px;
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(5, 150, 105, 0.38);
+      transition: all 0.25s ease;
+    }
+
+    .back-to-materi-btn:hover {
+      background: var(--green-700);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(5, 150, 105, 0.45);
+      color: white;
+    }
+
+    .back-to-materi-btn .btn-arrow {
+      transition: transform 0.2s;
+    }
+
+    .back-to-materi-btn:hover .btn-arrow {
+      transform: translateX(-3px);
+    }
+
+    @media (max-width: 600px) {
+      .back-to-materi-btn {
+        bottom: 20px;
+        right: 16px;
+        padding: 10px 16px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">🌿</span>
+      <span class="brand-text">CarbonTrace</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+
+      <a class="nav-link" data-id="beranda" href="index.html">Beranda</a><a class="nav-link" data-id="nav-profil"
+        href="profil.html">Profil</a><a class="nav-link" data-id="materi" href="materi.html">Materi</a><a
+        class="nav-link" data-id="about" href="about.html">About Us</a><a class="nav-link" data-id="nav-kontak"
+        href="kontak-guru.html">Kontak Guru</a>
+    </div>
+    <div class="nav-controls">
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">🌐 EN</button>
+      <button class="dark-toggle" id="darkToggle" onclick="toggleDark()">🌙</button>
+      <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+  </nav>
+  <div class="page-hero page-hero-hist">
+    <div class="container">
+      <h1 class="page-title" data-id="hist-title">📜 Sejarah Emisi Karbon</h1>
+      <p class="page-subtitle" data-id="hist-sub">Perjalanan panjang revolusi industri dan dampaknya terhadap lingkungan
+      </p>
+    </div>
+  </div>
+  <section class="content-section">
+    <div class="container">
+      <!-- INTRO -->
+      <div class="article-intro">
+        <p data-id="hist-intro">
+          Emisi karbon dioksida (CO₂) yang mengancam iklim bumi tidak terjadi dalam semalam. Ia merupakan warisan dari
+          empat gelombang revolusi industri yang mengubah cara manusia bekerja, berproduksi, dan berkonsumsi. Memahami
+          sejarah ini adalah kunci untuk mengambil langkah yang tepat di masa depan.
+        </p>
+      </div>
+      <!-- TIMELINE INTERAKTIF -->
+      <div class="timeline-container">
+        <h2 data-id="timeline-title">Timeline Revolusi Industri &amp; Emisi Karbon</h2>
+        <div class="timeline">
+          <div class="timeline-item left" onclick="toggleTimelineDetail(this)">
+            <div class="timeline-marker">1.0</div>
+            <div class="timeline-content">
+              <div class="timeline-year">1760 – 1840</div>
+              <h3 data-id="rev1-title">Revolusi Industri 1.0</h3>
+              <h4>Mesin Uap &amp; Batubara</h4>
+              <div class="timeline-detail" style="display:none">
+                <div class="timeline-emoji">🏭</div>
+                <p data-id="rev1-p1">Revolusi Industri Pertama dimulai di Inggris pada pertengahan abad ke-18. Penemuan
+                  mesin uap oleh James Watt (1769) menjadi titik balik sejarah manusia. Untuk pertama kalinya, manusia
+                  tidak lagi bergantung sepenuhnya pada tenaga otot atau angin.</p>
+                <p data-id="rev1-p2">Batubara menjadi bahan bakar utama yang menggerakkan mesin-mesin pabrik, lokomotif,
+                  dan kapal. Penggunaan batubara secara masif inilah yang memulai peningkatan emisi CO₂ secara
+                  signifikan di atmosfer bumi.</p>
+                <div class="timeline-stats">
+                  <div class="t-stat"><span>~1 GtCO₂</span><small data-id="rev1-emisi">Emisi/tahun (estimasi)</small>
+                  </div>
+                  <div class="t-stat"><span>UK &amp; Eropa</span><small data-id="rev1-pusat">Pusat Revolusi</small>
+                  </div>
+                  <div class="t-stat"><span>Batubara</span><small data-id="rev1-energi">Sumber Energi Utama</small>
+                  </div>
+                </div>
+                <div class="timeline-impact">
+                  <h5 data-id="rev1-dampak-title">Dampak Lingkungan:</h5>
+                  <ul>
+                    <li data-id="rev1-d1">Polusi udara pertama akibat asap pabrik</li>
+                    <li data-id="rev1-d2">Deforestasi untuk bahan bakar dan lahan pabrik</li>
+                    <li data-id="rev1-d3">Pencemaran sungai di kota-kota industri</li>
+                  </ul>
+                </div>
+              </div>
+              <span class="timeline-toggle" data-id="baca-selengkapnya">Baca selengkapnya ▼</span>
+            </div>
+          </div>
+          <div class="timeline-item right" onclick="toggleTimelineDetail(this)">
+            <div class="timeline-marker">2.0</div>
+            <div class="timeline-content">
+              <div class="timeline-year">1870 – 1914</div>
+              <h3 data-id="rev2-title">Revolusi Industri 2.0</h3>
+              <h4>Listrik, Minyak &amp; Baja</h4>
+              <div class="timeline-detail" style="display:none">
+                <div class="timeline-emoji">⚡</div>
+                <p data-id="rev2-p1">Revolusi Industri Kedua ditandai dengan penggunaan listrik, pengembangan industri
+                  baja, dan mulai digunakannya minyak bumi sebagai bahan bakar. Thomas Edison dan Nikola Tesla menjadi
+                  tokoh sentral era ini.</p>
+                <p data-id="rev2-p2">Produksi massal mulai diperkenalkan oleh Henry Ford. Jalur perakitan (assembly
+                  line) memungkinkan produksi mobil dan barang-barang konsumsi secara besar-besaran, yang secara
+                  langsung meningkatkan konsumsi energi dan emisi karbon global.</p>
+                <div class="timeline-stats">
+                  <div class="t-stat"><span>~3 GtCO₂</span><small data-id="rev2-emisi">Emisi/tahun</small></div>
+                  <div class="t-stat"><span>AS &amp; Jerman</span><small data-id="rev2-pusat">Pusat Revolusi</small>
+                  </div>
+                  <div class="t-stat"><span>Minyak &amp; Listrik</span><small data-id="rev2-energi">Sumber
+                      Energi</small></div>
+                </div>
+                <div class="timeline-impact">
+                  <h5 data-id="rev2-dampak-title">Dampak Lingkungan:</h5>
+                  <ul>
+                    <li data-id="rev2-d1">Industri minyak bumi mulai mencemari tanah dan laut</li>
+                    <li data-id="rev2-d2">Polusi udara kota meningkat drastis</li>
+                    <li data-id="rev2-d3">Eksploitasi sumber daya alam besar-besaran dimulai</li>
+                  </ul>
+                </div>
+              </div>
+              <span class="timeline-toggle" data-id="baca-selengkapnya">Baca selengkapnya ▼</span>
+            </div>
+          </div>
+          <div class="timeline-item left" onclick="toggleTimelineDetail(this)">
+            <div class="timeline-marker">3.0</div>
+            <div class="timeline-content">
+              <div class="timeline-year">1960 – 2000</div>
+              <h3 data-id="rev3-title">Revolusi Industri 3.0</h3>
+              <h4>Komputer, Elektronik &amp; Otomasi</h4>
+              <div class="timeline-detail" style="display:none">
+                <div class="timeline-emoji">💻</div>
+                <p data-id="rev3-p1">Revolusi Industri Ketiga ditandai dengan kemunculan komputer, elektronik, dan
+                  teknologi informasi. Era ini membawa otomasi industri, internet, dan revolusi digital yang mengubah
+                  cara kerja manusia secara fundamental.</p>
+                <p data-id="rev3-p2">Meski teknologi berkembang, emisi karbon terus meningkat karena ekspansi industri
+                  global, pertumbuhan populasi, dan konsumsi energi yang belum beralih ke energi terbarukan. Di era
+                  inilah kesadaran akan perubahan iklim mulai muncul dengan lahirnya IPCC pada 1988.</p>
+                <div class="timeline-stats">
+                  <div class="t-stat"><span>~20 GtCO₂</span><small data-id="rev3-emisi">Emisi/tahun</small></div>
+                  <div class="t-stat"><span>Global</span><small data-id="rev3-pusat">Cakupan</small></div>
+                  <div class="t-stat"><span>Nuklir &amp; Gas</span><small data-id="rev3-energi">Energi Baru</small>
+                  </div>
+                </div>
+                <div class="timeline-impact">
+                  <h5 data-id="rev3-dampak-title">Dampak Lingkungan:</h5>
+                  <ul>
+                    <li data-id="rev3-d1">Konsentrasi CO₂ melewati 350 ppm untuk pertama kali</li>
+                    <li data-id="rev3-d2">Penipisan lapisan ozon ditemukan (1985)</li>
+                    <li data-id="rev3-d3">KTT Bumi Rio de Janeiro pertama kali membahas perubahan iklim (1992)</li>
+                  </ul>
+                </div>
+              </div>
+              <span class="timeline-toggle" data-id="baca-selengkapnya">Baca selengkapnya ▼</span>
+            </div>
+          </div>
+          <div class="timeline-item right" onclick="toggleTimelineDetail(this)">
+            <div class="timeline-marker">4.0</div>
+            <div class="timeline-content">
+              <div class="timeline-year">2010 – Sekarang</div>
+              <h3 data-id="rev4-title">Revolusi Industri 4.0</h3>
+              <h4>AI, IoT &amp; Ekonomi Digital</h4>
+              <div class="timeline-detail" style="display:none">
+                <div class="timeline-emoji">🤖</div>
+                <p data-id="rev4-p1">Revolusi Industri Keempat adalah era kecerdasan buatan (AI), Internet of Things
+                  (IoT), big data, robotika, dan konektivitas ultra-cepat. Batas antara dunia fisik, digital, dan
+                  biologis semakin kabur.</p>
+                <p data-id="rev4-p2">Di sisi lain, era ini juga membawa harapan baru. Energi surya, angin, dan baterai
+                  penyimpanan semakin terjangkau. Perjanjian Paris 2015 menetapkan target pembatasan kenaikan suhu
+                  global 1,5°C. Indonesia menargetkan net zero emission pada 2060.</p>
+                <div class="timeline-stats">
+                  <div class="t-stat"><span>~37 GtCO₂</span><small data-id="rev4-emisi">Emisi/tahun (2023)</small></div>
+                  <div class="t-stat"><span>2050</span><small data-id="rev4-target">Target Net Zero Global</small></div>
+                  <div class="t-stat"><span>EBT 30%</span><small data-id="rev4-energi">Target Indonesia 2025</small>
+                  </div>
+                </div>
+                <div class="timeline-impact">
+                  <h5 data-id="rev4-dampak-title">Peluang &amp; Tantangan:</h5>
+                  <ul>
+                    <li data-id="rev4-d1">Kendaraan listrik dan solar panel menjadi makin terjangkau</li>
+                    <li data-id="rev4-d2">Data center dan blockchain mengonsumsi energi sangat besar</li>
+                    <li data-id="rev4-d3">Generasi muda mendorong gerakan zero waste dan climate action</li>
+                  </ul>
+                </div>
+              </div>
+              <span class="timeline-toggle" data-id="baca-selengkapnya">Baca selengkapnya ▼</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SEBAB AKIBAT -->
+      <div class="causality-section">
+        <h2 class="section-heading-accent">⚖️ Hubungan Sebab-Akibat: Kolonialisme, Industrialisasi &amp; Ketimpangan
+          Emisi Global</h2>
+        <div class="causality-flow">
+          <!-- SEBAB -->
+          <div class="causality-block cause-block">
+            <div class="causality-label cause-label">
+              <span class="label-dot cause-dot"></span>
+              SEBAB — Masa Lalu
+            </div>
+            <h3 class="causality-title">Kolonialisme &amp; Industrialisasi Barat</h3>
+            <p class="causality-period">Abad ke-18 hingga ke-20</p>
+            <p class="causality-desc">Pada era ini, negara-negara Barat mengalami revolusi industri yang ditandai dengan
+              pembangunan besar-besaran mesin dan pabrik berbahan bakar fosil.</p>
+            <div class="causality-points">
+              <div class="cp-item">
+                <span class="cp-icon">🏭</span>
+                <span>Penggunaan masif batu bara &amp; bahan bakar fosil</span>
+              </div>
+              <div class="cp-item">
+                <span class="cp-icon">⛏️</span>
+                <span>Eksploitasi sumber daya alam dari negara jajahan (Asia, Afrika, Amerika Latin)</span>
+              </div>
+              <div class="cp-item">
+                <span class="cp-icon">🪵</span>
+                <span>Negara berkembang dipaksa jadi penyedia bahan mentah tanpa memperhatikan kelestarian
+                  lingkungan</span>
+              </div>
+              <div class="cp-item">
+                <span class="cp-icon">🚫</span>
+                <span>Negara jajahan tidak mendapat kesempatan berkembang secara adil</span>
+              </div>
+            </div>
+          </div>
+          <!-- PANAH -->
+          <div class="causality-arrow-wrap">
+            <div class="causality-arrow">
+              <div class="arrow-line"></div>
+              <div class="arrow-label">mengakibatkan</div>
+              <div class="arrow-head">▼</div>
+            </div>
+          </div>
+          <!-- AKIBAT -->
+          <div class="causality-block effect-block">
+            <div class="causality-label effect-label">
+              <span class="label-dot effect-dot"></span>
+              AKIBAT — Masa Kini
+            </div>
+            <h3 class="causality-title">Ketimpangan Emisi Global</h3>
+            <p class="causality-period">Abad ke-21 — Sekarang</p>
+            <p class="causality-desc">Negara maju adalah penyumbang emisi terbesar dalam sejarah, namun negara
+              berkembang yang justru menanggung dampak terbesar.</p>
+            <div class="causality-points">
+              <div class="cp-item">
+                <span class="cp-icon">🌡️</span>
+                <span>Perubahan iklim: cuaca ekstrem, banjir, kekeringan</span>
+              </div>
+              <div class="cp-item">
+                <span class="cp-icon">🌊</span>
+                <span>Kenaikan suhu global &amp; permukaan laut</span>
+              </div>
+              <div class="cp-item">
+                <span class="cp-icon">🌿</span>
+                <span>Kerusakan ekosistem yang tak terpulihkan</span>
+              </div>
+              <div class="cp-item irony-item">
+                <span class="cp-icon">⚠️</span>
+                <span><strong>Ironi:</strong> Negara berkembang emisinya kecil, namun dituntut menurunkan emisi dan
+                  menanggung dampak paling besar</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- PERBANDINGAN EMISI -->
+        <div class="emission-compare-wrap">
+          <div class="ec-card ec-maju">
+            <div class="ec-flag">🌍</div>
+            <div class="ec-label">Negara Maju (Barat)</div>
+            <div class="ec-bar-wrap">
+              <div class="ec-bar" style="width:85%"></div>
+            </div>
+            <div class="ec-value">~85% emisi historis</div>
+            <div class="ec-note">Penyumbang terbesar dalam sejarah</div>
+          </div>
+          <div class="ec-card ec-berkembang">
+            <div class="ec-flag">🌏</div>
+            <div class="ec-label">Negara Berkembang</div>
+            <div class="ec-bar-wrap">
+              <div class="ec-bar" style="width:15%"></div>
+            </div>
+            <div class="ec-value">~15% emisi historis</div>
+            <div class="ec-note">Menanggung dampak terbesar</div>
+          </div>
+        </div>
+      </div>
+      <!-- ESAI SEJARAH -->
+      <div class="essay-section">
+        <div class="essay-header">
+          <div class="essay-tag">✍️ Narasi Sejarah</div>
+          <h2 class="essay-title">Jejak Langkah Industrialisasi Menuju Krisis Iklim</h2>
+          <div class="essay-divider"></div>
+        </div>
+        <div class="essay-body">
+          <div class="essay-paragraph ep-1">
+            <span class="ep-dropcap">S</span>
+            ejak dimulainya revolusi industri pada abad ke-18, dunia mengalami perubahan besar dalam cara manusia hidup
+            dan bekerja. Mesin-mesin berbahan bakar batu bara mulai menggantikan tenaga manusia dan hewan. Pabrik-pabrik
+            bermunculan, produksi meningkat, dan ekonomi negara-negara Barat berkembang pesat.
+          </div>
+          <div class="essay-paragraph ep-2">
+            Namun, kemajuan ini tidak datang tanpa konsekuensi. Untuk memenuhi kebutuhan industri, negara-negara Barat
+            melakukan eksploitasi besar-besaran terhadap sumber daya alam, termasuk dari wilayah jajahan di Asia,
+            Afrika, dan Amerika Latin. Hutan ditebang, tambang dikeruk, dan bahan bakar fosil dibakar tanpa henti.
+          </div>
+          <div class="essay-paragraph ep-3">
+            Selama berabad-abad, aktivitas ini menghasilkan emisi gas rumah kaca dalam jumlah besar yang terakumulasi di
+            atmosfer bumi. Pada saat itu, dampaknya belum terasa secara langsung. Namun, seiring waktu, akumulasi emisi
+            tersebut mulai menunjukkan akibatnya dalam bentuk perubahan iklim global.
+          </div>
+          <div class="essay-highlight">
+            <span class="eh-icon">💡</span>
+            <p>Memasuki abad ke-21, dunia menghadapi krisis iklim yang semakin nyata. Suhu bumi meningkat, es di kutub
+              mencair, permukaan air laut naik, dan bencana alam semakin sering terjadi. Ironisnya,
+              <strong>negara-negara berkembang yang dulunya menjadi objek eksploitasi justru menjadi pihak yang paling
+                rentan</strong> terhadap dampak ini.
+            </p>
+          </div>
+          <div class="essay-paragraph ep-4">
+            Jejak langkah industrialisasi yang dahulu dianggap sebagai simbol kemajuan, kini menjadi pengingat bahwa
+            pembangunan tanpa keseimbangan dapat membawa dampak jangka panjang bagi bumi. Oleh karena itu, diperlukan
+            kesadaran global untuk memperbaiki kesalahan masa lalu dengan menerapkan gaya hidup berkelanjutan dan ramah
+            lingkungan.
+          </div>
+          <div class="essay-paragraph ep-5">
+            Dengan memahami sejarah ini, diharapkan generasi sekarang dapat mengambil pelajaran penting: bahwa kemajuan
+            harus berjalan seiring dengan tanggung jawab menjaga bumi sebagai satu-satunya tempat hidup manusia.
+          </div>
+          <div class="essay-closing">
+            <div class="closing-line"></div>
+            <span>— CarbonTrace Education</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-text footer-logo">🌿 CarbonTrace</div>
+          <p data-id="footer-desc">Platform edukasi jejak karbon untuk generasi muda peduli lingkungan.</p>
+        </div>
+        <div class="footer-links">
+          <h4 data-id="footer-menu">Menu</h4>
+          <a data-id="nav-beranda" href="index.html">Beranda</a>
+          <a data-id="nav-materi" href="materi.html">Materi</a>
+          <a href="about.html">About Us</a>
+        </div>
+        <div class="footer-info">
+          <h4 data-id="footer-info-title">Info</h4>
+          <p data-id="footer-info-p1">Proyek RPL Final</p>
+          <p data-id="footer-info-p2">SMA/SMK 2025</p>
+          <p>🇮🇩 Indonesia</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="footer-quote">
+          <span class="fq-leaf" data-id="footer-quote-text">🌿 Rawatlah bumi dengan bijak, karena kebaikan kecil hari ini akan menjadi keberkahan
+            bagi kehidupan di masa depan</span>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 CarbonTrace — <span data-id="footer-copy">Dibuat dengan ❤️ untuk bumi yang lebih baik</span></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- TOMBOL BACK KE MATERI -->
+  <a class="back-to-materi-btn" data-id="back-to-materi" href="materi.html">
+    <span class="btn-arrow">←</span> Kembali ke Materi
+  </a>
+  <script src="script.js"></script>
+  <script>
+    function toggleTimelineDetail(el) {
+      const detail = el.querySelector('.timeline-detail');
+      const toggle = el.querySelector('.timeline-toggle');
+      if (detail.style.display === 'none') {
+        detail.style.display = 'block';
+        toggle.textContent = toggle.textContent.replace('▼', '▲');
+      } else {
+        detail.style.display = 'none';
+        toggle.textContent = toggle.textContent.replace('▲', '▼');
+      }
+    }
+  </script>
+</body>
+
+</html>

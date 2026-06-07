@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profil Siswa — CarbonTrace</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Space+Grotesk:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<style>
+    .profil-hero {
+      background: linear-gradient(135deg, var(--green-600) 0%, var(--green-800) 100%);
+      padding: calc(var(--nav-height) + 48px) 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profil-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(255, 255, 255, 0.12) 0%, transparent 60%);
+    }
+
+    .profil-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .profil-hero p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+      position: relative;
+    }
+
+    .profil-page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .profil-section-title {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .profil-section-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .students-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .student-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .student-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--green-400);
+    }
+
+    .student-card-header {
+      background: linear-gradient(135deg, var(--green-600), var(--green-800));
+      padding: 24px 20px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .student-card-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+    }
+
+    .student-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.8);
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .student-avatar-placeholder {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      border: 3px solid rgba(255, 255, 255, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .student-header-info {
+      position: relative;
+      z-index: 1;
+    }
+
+    .student-card-name {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 2px;
+      line-height: 1.2;
+    }
+
+    .student-card-nipd {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.75);
+      font-family: monospace;
+      margin-bottom: 6px;
+    }
+
+    .student-card-prodi {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .student-card-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sc-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .sc-field-row {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .sc-field-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .sc-field-val {
+      font-size: 0.88rem;
+      color: var(--text-main);
+      font-weight: 600;
+      padding: 7px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-main);
+      border: 1.5px solid var(--border-color);
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+    }
+
+    .sc-field-val.empty {
+      color: var(--text-muted);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 0.82rem;
+    }
+
+    .sc-song-row {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .sc-song-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-main);
+      border: 1.5px solid var(--border-color);
+      min-height: 36px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .sc-song-link:hover {
+      border-color: var(--green-400);
+      background: var(--green-50);
+    }
+
+    .sc-song-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .sc-song-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--green-700);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sc-song-link.empty {
+      pointer-events: none;
+    }
+
+    .sc-song-link.empty .sc-song-title {
+      color: var(--text-muted);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 0.82rem;
+    }
+
+    .lampiran-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 28px 32px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .lampiran-title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lampiran-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 700px) {
+      .students-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sc-two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .profil-page-wrap {
+        padding: 32px 16px 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+<div class="nav-brand"><a href="index.html"><span class="brand-icon">🌿</span><span class="brand-text">CarbonTrace</span></a></div>
+<div class="nav-links" div="" id="navLinks">
+
+<a class="nav-link" data-id="beranda" href="index.html">Beranda</a><a class="nav-link active" data-id="nav-profil" href="profil.html">Profil</a><a class="nav-link" data-id="materi" href="materi.html">Materi</a><a class="nav-link" data-id="about" href="about.html">About Us</a><a class="nav-link" data-id="nav-kontak" href="kontak-guru.html">Kontak Guru</a></div>
+<div class="nav-controls">
+<button class="lang-toggle" id="langToggle" onclick="toggleLang()">🌐 EN</button>
+<button class="dark-toggle" id="darkToggle" onclick="toggleDark()">🌙</button>
+<button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+</div>
+</nav>
+<div class="profil-hero">
+<h1 data-id="profil-title">👤 Profil Siswa</h1>
+<p data-id="profil-sub">Data lengkap anggota kelompok Projek RPL — X PPLG · SMK Negeri 4 Kendal</p>
+</div>
+<div class="profil-page-wrap">
+<div class="profil-section-title" data-id="profil-section-title">📋 Anggota Kelompok</div>
+<p class="profil-section-sub" data-id="profil-section-sub">Data profil anggota kelompok Projek RPL Tahun Pelajaran
+      2025/2026.</p>
+<div class="students-grid" id="studentsGrid"></div>
+<div class="lampiran-section">
+<div class="lampiran-title">📎 Galeri &amp; Lampiran Kelompok</div>
+<p class="lampiran-sub" data-id="profil-lampiran-sub">Foto dokumen, karya, dan portofolio kelompok.</p>
+
+
+<div id="lampiranGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;">
+<img src="fandi.jpeg" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;border:1px solid var(--border-color);"/>
+<img src="zhuan.jpeg" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;border:1px solid var(--border-color);"/>
+<img src="fina.jpeg" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;border:1px solid var(--border-color);"/>
+<img src="frida.jpeg" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;border:1px solid var(--border-color);"/>
+<img src="imey.jpeg" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;border:1px solid var(--border-color);"/>
+<img src="lydia.jpeg" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;border:1px solid var(--border-color);"/>
+</div>
+</div>
+</div>
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<div class="brand-text footer-logo">🌿 CarbonTrace</div>
+<p data-id="footer-desc">Platform edukasi jejak karbon untuk generasi muda peduli lingkungan.</p>
+</div>
+<div class="footer-links">
+<h4 data-id="footer-menu">Menu</h4>
+<a data-id="nav-beranda" href="index.html">Beranda</a>
+<a data-id="nav-materi" href="materi.html">Materi</a>
+<a href="about.html">About Us</a>
+</div>
+<div class="footer-info">
+<h4 data-id="footer-info-title">Info</h4>
+<p data-id="footer-info-p1">Proyek RPL Final</p>
+<p data-id="footer-info-p2">SMA/SMK 2025</p>
+<p>🇮🇩 Indonesia</p>
+</div>
+</div>
+<div class="footer-quote">
+<span class="fq-leaf" data-id="footer-quote-text">🌿 Rawatlah bumi dengan bijak, karena kebaikan kecil hari ini akan menjadi keberkahan bagi
+          kehidupan di masa depan</span>
+</div>
+<div class="footer-bottom">
+<p>© 2025 CarbonTrace — <span data-id="footer-copy">Dibuat dengan ❤️ untuk bumi yang lebih baik</span></p>
+</div>
+</div>
+</footer>
+<script src="script.js"></script>
+<script>
+
+    const STUDENTS = [
+      {
+        foto: 'fandi.jpeg',
+        emoji: '🌿',
+        nama: 'MUHAMMAD NUR AFFANDI MUBAROQ',
+        nipd: '8286',
+        prodi: 'PPLG',
+        tugas: 'Full Stack Dev, Pembagian Tugas Anggota, Desain Website ',
+        song: 'Pompeii - Bastille',
+        songUrl: 'https://open.spotify.com/track/6fNhZRFEkBfgW39W3wKARJ',
+      },
+      {
+        foto: 'zhuan.jpeg',
+        emoji: '🍃',
+        nama: 'ZHUAN ANGGORO RAHARJA',
+        nipd: '8302',
+        prodi: 'PPLG',
+        tugas: 'Full Stack Dev ,(QA) Engineer, Membuat Flowchart, Membuat kalkulator emisi Carbon ',
+        song: 'Pedih - LastChild',
+        songUrl: 'https://open.spotify.com/track/2d0XrrIcgqpSZ6BOMLruNY?si=89b98b207a3e46b0',
+      },
+      {
+        foto: 'fina.jpeg',
+        emoji: '🌱',
+        nama: 'FINA AINURROHMAH',
+        nipd: '8277',
+        prodi: 'PPLG',
+        tugas: 'Membuat ppt, Membuat Wire Frame, Mengedit Foto Profil',
+        song: 'la la lost you',
+        songUrl: 'https://open.spotify.com/track/0QZLSImbxep9NyhhlCGOWh?si=cIUK9AV5QRydr1yNvKDXtA',
+      },
+      {
+        foto: 'frida.jpeg',
+        emoji: '🌾',
+        nama: 'ALFRIDA RACHMA MELATI',
+        nipd: '8268',
+        prodi: 'PPLG',
+        tugas: 'Membuat ppt, mencari materi Bahasa jawa, sejarah, pjok',
+        song: ' I Wanna Be Yours - Arctic Monkeys',
+        songUrl: '- https://open.spotify.com/track/5XeFesFbtLpXzIVDNQP22n?si=Lfhj1UbESbed-va6Ka9_Ig%0A',
+      },
+      {
+        foto: 'imey.jpeg',
+        emoji: '🌻',
+        nama: 'SABBRINA IMEYLLIA WINNE',
+        nipd: '8299',
+        prodi: 'PPLG',
+        tugas: 'Membuat ppt, Mencari materi bahasa Indonesia, Matematika, Mengedit foto profil',
+        song: 'Dear God -Avanged Sevenfold',
+        songUrl: 'https://open.spotify.com/track/275Dgie4QjOc0fR011VVhN?si=43eeb6541d984c90',
+      },
+      {
+        foto: 'lydia.jpeg',
+        emoji: '🌊',
+        nama: 'LIDIA NOVIANA',
+        nipd: '8282',
+        prodi: 'PPLG',
+        tugas: 'Membuat ppt, Mencari Materi Pabp, ipas ',
+        song: 'The Winner Takes It All- ABBA',
+        songUrl: 'https://open.spotify.com/track/3oEkrIfXfSh9zGnE7eBzSV?si=T0nYIHmSR4SVb2zpOcPyDg%0A',
+      },
+    ];
+
+    /* ── Fallback jika foto gagal load ── */
+    function imgFallback(el, emoji) {
+      const div = document.createElement('div');
+      div.className = 'student-avatar-placeholder';
+      div.textContent = emoji;
+      el.replaceWith(div);
+    }
+
+    /* ── Render kartu siswa ── */
+    function renderStudents() {
+      const grid = document.getElementById('studentsGrid');
+      grid.innerHTML = STUDENTS.map(s => {
+
+        const avatarHtml = s.foto
+          ? `<img class="student-avatar" src="${s.foto}" alt="${s.nama}" onerror="imgFallback(this,'${s.emoji}')">`
+          : `<div class="student-avatar-placeholder">${s.emoji}</div>`;
+
+        const field = (label, val) => `
+      <div class="sc-field-row">
+        <span class="sc-field-label">${label}</span>
+        <span class="sc-field-val${val ? '' : ' empty'}">${val || 'Belum diisi'}</span>
+      </div>`;
+
+        const songField = (label, title, url) => {
+          const hasLink = url && url.trim() !== '';
+          return `
+      <div class="sc-song-row">
+        <span class="sc-field-label">${label}</span>
+        ${hasLink
+              ? `<a href="${url}" target="_blank" rel="noopener" class="sc-song-link">
+               <span class="sc-song-icon">🎵</span>
+               <span class="sc-song-title">${title || 'Lihat Lagu'}</span>
+               <span style="margin-left:auto;font-size:0.7rem;color:var(--text-muted);">↗</span>
+             </a>`
+              : `<span class="sc-song-link empty">
+               <span class="sc-song-icon">🎵</span>
+               <span class="sc-song-title">${title || 'Belum diisi'}</span>
+             </span>`
+            }
+      </div>`;
+        };
+
+        return `
+    <div class="student-card">
+      <div class="student-card-header">
+        ${avatarHtml}
+        <div class="student-header-info">
+          <div class="student-card-name">${s.nama}</div>
+          <div class="student-card-nipd">NIPD: ${s.nipd || '—'}</div>
+          <span class="student-card-prodi">${s.prodi || 'PPLG'}</span>
+        </div>
+      </div>
+      <div class="student-card-body">
+        <div class="sc-two-col">
+          ${field('Nama Lengkap', s.nama)}
+          ${field('NIPD', s.nipd)}
+        </div>
+        <div class="sc-two-col">
+          ${field('Program Keahlian', s.prodi)}
+        </div>
+        ${field('Tugas', s.tugas)}
+        ${songField('Favorite Song', s.song, s.songUrl)}
+      </div>
+    </div>`;
+      }).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', renderStudents);
+  </script>
+</body>
+</html>

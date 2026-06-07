@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>About Us — CarbonTrace</title>
+    <link href="style.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Space+Grotesk:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand">
+            <span class="brand-icon">🌿</span>
+            <span class="brand-text">CarbonTrace</span>
+        </div>
+        <div class="nav-links" id="navLinks">
+
+            <a class="nav-link" data-id="beranda" href="index.html">Beranda</a><a class="nav-link" data-id="nav-profil"
+                href="profil.html">Profil Siswa</a><a class="nav-link" data-id="materi" href="materi.html">Materi</a><a
+                class="nav-link" data-id="about" href="about.html">About Us</a><a class="nav-link" data-id="nav-kontak"
+                href="kontak-guru.html">Kontak Guru</a>
+        </div>
+        <div class="nav-controls">
+            <button class="lang-toggle" id="langToggle" onclick="toggleLang()">🌐 EN</button>
+            <button class="dark-toggle" id="darkToggle" onclick="toggleDark()">🌙</button>
+            <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+    <div class="page-hero page-hero-about">
+        <div class="container">
+            <h1 class="page-title" data-id="about-title">🌐 About CarbonTrace</h1>
+            <p class="page-subtitle" data-id="about-sub">A carbon footprint calculator built for the next generation</p>
+        </div>
+    </div>
+    <section class="content-section">
+        <div class="container">
+            <!-- ABOUT APP -->
+            <div class="about-intro">
+                <div class="about-logo-big">🌿</div>
+                <div class="about-text">
+                    <h2 data-id="about-what-h">What is CarbonTrace?</h2>
+                    <p>CarbonTrace is a web-based carbon footprint calculator and environmental education platform
+                        designed for Indonesian students and the general public. Developed as a final project for the
+                        Software Engineering course, it integrates knowledge from various subjects including
+                        Mathematics, History, Physical Education, Indonesian Language, Religion, and Local Content
+                        (Javanese Language).</p>
+                    <p>The name "CarbonTrace" comes from two words: <strong>Carbon</strong> (which refers to carbon
+                        emissions that contribute to climate change) and <strong>Trace</strong> (which means to track or
+                        monitor). Together, CarbonTrace means tracking and understanding carbon footprints, helping
+                        users measure their daily environmental impact and encouraging more sustainable lifestyle
+                        choices to reduce carbon emissions and protect the environment.</p>
+                </div>
+            </div>
+            <!-- MISSION & VISION -->
+            <div class="mv-grid">
+                <div class="mv-card">
+                    <div class="mv-icon">🎯</div>
+                    <h3 data-id="about-mv1-h">Our Mission</h3>
+                    <p>To provide an accessible, educational, and user-friendly platform that empowers Indonesian youth
+                        to understand, measure, and reduce their carbon footprint through daily lifestyle changes.</p>
+                </div>
+                <div class="mv-card">
+                    <div class="mv-icon">🔭</div>
+                    <h3 data-id="about-mv2-h">Our Vision</h3>
+                    <p>A generation of environmentally conscious Indonesian citizens who make data-driven decisions
+                        about their lifestyle choices, contributing to Indonesia's net-zero emission target by 2060.</p>
+                </div>
+            </div>
+            <!-- HOW TO USE -->
+            <div class="how-to-use">
+                <h2 data-id="about-how-h">📖 How to Use CarbonTrace</h2>
+                <div class="usage-steps">
+                    <div class="usage-step">
+                        <div class="usage-num">1</div>
+                        <div class="usage-content">
+                            <h4>Navigate the Carbon Calculator</h4>
+                            <p>Go to the <a href="calculator.html">Calculator page</a> and enter your daily electricity
+                                consumption (in kWh), weekly fuel consumption (in liters), and daily travel distance (in
+                                km). Click "Calculate" to see your carbon footprint results instantly.</p>
+                        </div>
+                    </div>
+                    <div class="usage-step">
+                        <div class="usage-num">2</div>
+                        <div class="usage-content">
+                            <h4>Understand Your Results</h4>
+                            <p>Your results will show your total CO₂ emissions in kilograms per day, broken down by
+                                category (electricity, fuel, and distance). You'll also receive a rating: Low (&lt;10 kg
+                                CO₂), Medium (10–30 kg CO₂), or High (&gt;30 kg CO₂).</p>
+                        </div>
+                    </div>
+                    <div class="usage-step">
+                        <div class="usage-num">3</div>
+                        <div class="usage-content">
+                            <h4>Save and Track Your History</h4>
+                            <p>Click "Save History" to store your calculation results locally in your browser. This
+                                allows you to track your carbon footprint over time and see whether your efforts to
+                                reduce emissions are working.</p>
+                        </div>
+                    </div>
+                    <div class="usage-step">
+                        <div class="usage-num">4</div>
+                        <div class="usage-content">
+                            <h4>Learn and Get Inspired</h4>
+                            <p>Explore other sections: learn about the History of Carbon Emissions, get Health Tips for
+                                eco-friendly activities, read Biographies of environmental heroes, and reflect on the
+                                Moral Messages about environmental stewardship.</p>
+                        </div>
+                    </div>
+                    <div class="usage-step">
+                        <div class="usage-num">5</div>
+                        <div class="usage-content">
+                            <h4>Toggle Language &amp; Dark Mode</h4>
+                            <p>Use the 🌐 button in the navigation bar to switch between Bahasa Indonesia and English.
+                                Use the 🌙 button to toggle between light and dark mode for comfortable reading in any
+                                environment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- GLOSSARY -->
+            <div class="glossary-section">
+                <h2>📚 Key Vocabulary / Kamus Istilah</h2>
+                <p class="glossary-desc">Understanding the terminology used in carbon footprint calculation is essential
+                    for interpreting your results correctly.</p>
+                <div class="glossary-table-wrap">
+                    <table class="glossary-table">
+                        <thead>
+                            <tr>
+                                <th>Bahasa Indonesia</th>
+                                <th>English</th>
+                                <th>Definition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jejak Karbon</td>
+                                <td><strong>Carbon Footprint</strong></td>
+                                <td>The total amount of greenhouse gases generated by human activities, expressed as CO₂
+                                    equivalent.</td>
+                            </tr>
+                            <tr>
+                                <td>Emisi</td>
+                                <td><strong>Emission</strong></td>
+                                <td>The release of gases or particles into the atmosphere, particularly greenhouse gases
+                                    like CO₂.</td>
+                            </tr>
+                            <tr>
+                                <td>Energi</td>
+                                <td><strong>Energy</strong></td>
+                                <td>The capacity to do work; in this context, electrical energy measured in
+                                    kilowatt-hours (kWh).</td>
+                            </tr>
+                            <tr>
+                                <td>Lingkungan</td>
+                                <td><strong>Environment</strong></td>
+                                <td>The natural world, including the air, water, land, plants, and animals that surround
+                                    us.</td>
+                            </tr>
+                            <tr>
+                                <td>Perhitungan</td>
+                                <td><strong>Calculation</strong></td>
+                                <td>The process of using mathematical formulas to determine a numerical result.</td>
+                            </tr>
+                            <tr>
+                                <td>Gas Rumah Kaca</td>
+                                <td><strong>Greenhouse Gas</strong></td>
+                                <td>Gases that trap heat in the Earth's atmosphere, including CO₂, methane, and water
+                                    vapor.</td>
+                            </tr>
+                            <tr>
+                                <td>Perubahan Iklim</td>
+                                <td><strong>Climate Change</strong></td>
+                                <td>Long-term shifts in global temperatures and weather patterns, largely driven by
+                                    human activities.</td>
+                            </tr>
+                            <tr>
+                                <td>Energi Terbarukan</td>
+                                <td><strong>Renewable Energy</strong></td>
+                                <td>Energy from sources naturally replenished on a human timescale, such as solar, wind,
+                                    and hydro.</td>
+                            </tr>
+                            <tr>
+                                <td>Net Zero</td>
+                                <td><strong>Net Zero</strong></td>
+                                <td>A state where the amount of greenhouse gas emissions produced equals the amount
+                                    removed from the atmosphere.</td>
+                            </tr>
+                            <tr>
+                                <td>Bahan Bakar Fosil</td>
+                                <td><strong>Fossil Fuel</strong></td>
+                                <td>Natural fuels such as coal, oil, and gas, formed from the remains of ancient
+                                    organisms.</td>
+                            </tr>
+                            <tr>
+                                <td>Deforestasi</td>
+                                <td><strong>Deforestation</strong></td>
+                                <td>The large-scale removal of forests, often resulting in damage to ecosystems and
+                                    increased CO₂ levels.</td>
+                            </tr>
+                            <tr>
+                                <td>Emisi Faktor</td>
+                                <td><strong>Emission Factor</strong></td>
+                                <td>A coefficient representing the average emission rate of a given pollutant per unit
+                                    of activity.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- TECH STACK -->
+            <div class="tech-section">
+                <h2 data-id="about-tech-h">🛠️ Technology Used</h2>
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <div class="tech-icon">🌐</div>
+                        <h4>HTML5</h4>
+                        <p>Semantic markup for structured, accessible web content</p>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">🎨</div>
+                        <h4>CSS3</h4>
+                        <p>Modern styling with CSS variables, Flexbox, and Grid layouts</p>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">⚡</div>
+                        <h4>JavaScript ES6+</h4>
+                        <p>Vanilla JavaScript for calculations, DOM manipulation, and local storage</p>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">📊</div>
+                        <h4>Chart.js</h4>
+                        <p>Interactive data visualization for emission breakdowns and charts</p>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">📱</div>
+                        <h4>Responsive Design</h4>
+                        <p>Mobile-first approach ensuring compatibility across all devices</p>
+                    </div>
+                    <div class="tech-card">
+                        <div class="tech-icon">🌙</div>
+                        <h4>Dark Mode</h4>
+                        <p>System-aware dark mode toggle for comfortable viewing</p>
+                    </div>
+                </div>
+            </div>
+            <!-- ACKNOWLEDGMENTS -->
+            <div class="acknowledgment">
+                <h2 data-id="about-ack-h">🙏 Acknowledgments</h2>
+                <p>This project was developed as a final project for <strong>Rekayasa Perangkat Lunak (RPL)</strong>
+                    class. We would like to thank our teachers and mentors for their guidance and support. This project
+                    integrates knowledge from the following subjects:</p>
+                <div class="subject-tags">
+                    <span class="subject-tag">Mathematics — Calculation Formulas</span>
+                    <span class="subject-tag">History — Industrial Revolution Timeline</span>
+                    <span class="subject-tag">Physical Education (PJOK) — Health Tips</span>
+                    <span class="subject-tag">Bahasa Indonesia — Biography Texts</span>
+                    <span class="subject-tag">Religion — Moral Messages</span>
+                    <span class="subject-tag">Local Content — Bahasa Jawa Dialogues</span>
+                    <span class="subject-tag">English — International Content</span>
+                    <span class="subject-tag">Informatics — System Flowchart</span>
+                    <span class="subject-tag">Arts &amp; Culture — UI/UX Design</span>
+                    <span class="subject-tag">Pancasila — Project Logbook</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="brand-text footer-logo">🌿 CarbonTrace</div>
+                    <p data-id="footer-desc">Platform edukasi jejak karbon untuk generasi muda peduli lingkungan.</p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-id="footer-menu">Menu</h4>
+                    <a data-id="nav-beranda" href="index.html">Beranda</a>
+                    <a data-id="nav-materi" href="materi.html">Materi</a>
+                    <a href="about.html">About Us</a>
+                </div>
+                <div class="footer-info">
+                    <h4 data-id="footer-info-title">Info</h4>
+                    <p data-id="footer-info-p1">Proyek RPL Final</p>
+                    <p data-id="footer-info-p2">SMA/SMK 2025</p>
+                    <p>🇮🇩 Indonesia</p>
+                </div>
+            </div>
+            <div class="footer-quote">
+                <span class="fq-leaf" data-id="footer-quote-text">🌿 Rawatlah bumi dengan bijak, karena kebaikan kecil hari ini akan menjadi keberkahan bagi kehidupan di masa depan</span>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 CarbonTrace — <span data-id="footer-copy">Dibuat dengan ❤️ untuk bumi yang lebih baik</span></p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

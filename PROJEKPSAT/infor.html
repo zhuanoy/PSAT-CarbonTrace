@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Materi Kalkulator Karbon — CarbonTrace</title>
+  <link href="style.css" rel="stylesheet" />
+  <style>
+    /* ── TOC NAV ── */
+    .toc-nav {
+      position: sticky;
+      top: calc(var(--nav-height) + 12px);
+      z-index: 100;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow-sm);
+      margin: 20px auto 0;
+      max-width: 1100px;
+    }
+
+    .toc-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-right: 4px;
+    }
+
+    .toc-btn {
+      padding: 5px 13px;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--green-700);
+      background: var(--green-50);
+      border: 1.5px solid var(--green-200);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+
+    .toc-btn:hover {
+      background: var(--green-600);
+      color: #fff;
+      border-color: var(--green-600);
+    }
+
+    /* ── MATERI SECTION ── */
+    .materi-section {
+      padding: 56px 0 32px;
+      background:
+        radial-gradient(ellipse at 100% 0%, rgba(167, 243, 208, 0.22) 0%, transparent 45%),
+        radial-gradient(ellipse at 0% 100%, rgba(253, 230, 138, 0.15) 0%, transparent 40%),
+        var(--bg-main);
+    }
+
+    body.dark .materi-section {
+      background: radial-gradient(ellipse at 100% 0%, rgba(16, 185, 129, 0.07) 0%, transparent 45%), var(--bg-main);
+    }
+
+    /* ── MATERI BLOCK ── */
+    .materi-block {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 40px 44px;
+      margin-bottom: 36px;
+      box-shadow: var(--shadow-md);
+      scroll-margin-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .materi-block::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--green-400), var(--green-600));
+      border-radius: 6px 0 0 6px;
+    }
+
+    @media (max-width: 640px) {
+      .materi-block {
+        padding: 28px 20px;
+      }
+    }
+
+    .materi-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .materi-num {
+      min-width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, var(--green-500), var(--green-700));
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(5, 150, 105, 0.35);
+    }
+
+    .materi-heading {
+      flex: 1;
+    }
+
+    .materi-heading h2 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .materi-heading .materi-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .materi-desc {
+      color: var(--text-secondary);
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-bottom: 28px;
+      font-weight: 500;
+    }
+
+    /* ── KOMPONEN GRID ── */
+    .komponen-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 680px) {
+      .komponen-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .komponen-card {
+      background: var(--bg-main);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 22px 20px;
+      transition: all var(--transition);
+    }
+
+    .komponen-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--green-400);
+    }
+
+    .komponen-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .komponen-card h4 {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--green-700);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .komponen-card ul {
+      padding-left: 0;
+    }
+
+    .komponen-card ul li {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      padding: 4px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .komponen-card ul li::before {
+      content: '▸';
+      color: var(--green-500);
+      flex-shrink: 0;
+    }
+
+    /* ── FLOWCHART ── */
+    .flowchart-wrap {
+      background: var(--bg-main);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .flowchart-wrap img {
+      max-width: 420px;
+      width: 100%;
+      border-radius: var(--radius-md);
+      filter: drop-shadow(0 4px 16px rgba(5, 150, 105, 0.12));
+    }
+
+    body.dark .flowchart-wrap img {
+      filter: invert(0.88) hue-rotate(100deg) drop-shadow(0 4px 16px rgba(16, 185, 129, 0.2));
+    }
+
+    .flowchart-caption {
+      margin-top: 14px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    .simbol-legend {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .simbol-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      background: var(--bg-main);
+      border: 1.5px solid var(--border-color);
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    /* ── IF-ELSE TABLE ── */
+    .ifelse-table-wrap {
+      overflow-x: auto;
+      margin-top: 8px;
+    }
+
+    .ifelse-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .ifelse-table th {
+      background: var(--green-600);
+      color: #fff;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      padding: 12px 16px;
+      text-align: left;
+    }
+
+    .ifelse-table th:first-child {
+      border-radius: var(--radius-sm) 0 0 0;
+    }
+
+    .ifelse-table th:last-child {
+      border-radius: 0 var(--radius-sm) 0 0;
+    }
+
+    .ifelse-table td {
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .ifelse-table tr:nth-child(even) td {
+      background: var(--green-50);
+    }
+
+    body.dark .ifelse-table tr:nth-child(even) td {
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    .badge-level {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 12px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .badge-rendah {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .badge-sedang {
+      background: #fef9c3;
+      color: #713f12;
+    }
+
+    .badge-tinggi {
+      background: #fee2e2;
+      color: #7f1d1d;
+    }
+
+    .badge-sangat {
+      background: #fce7f3;
+      color: #831843;
+    }
+
+    body.dark .badge-rendah {
+      background: rgba(16, 185, 129, 0.2);
+      color: #6ee7b7;
+    }
+
+    body.dark .badge-sedang {
+      background: rgba(234, 179, 8, 0.15);
+      color: #fde68a;
+    }
+
+    body.dark .badge-tinggi {
+      background: rgba(239, 68, 68, 0.15);
+      color: #fca5a5;
+    }
+
+    body.dark .badge-sangat {
+      background: rgba(236, 72, 153, 0.15);
+      color: #f9a8d4;
+    }
+
+    /* ── CODE BLOCK ── */
+    .code-block {
+      background: #0d2218;
+      border: 1px solid var(--green-800);
+      border-radius: var(--radius-md);
+      padding: 22px 24px;
+      overflow-x: auto;
+      margin-top: 16px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+
+    .code-block .c-kw {
+      color: #34d399;
+      font-weight: 700;
+    }
+
+    .code-block .c-op {
+      color: #a7f3d0;
+    }
+
+    .code-block .c-val {
+      color: #fde68a;
+    }
+
+    .code-block .c-cm {
+      color: #6ee7b7;
+      opacity: 0.6;
+      font-style: italic;
+    }
+
+    .code-block .c-str {
+      color: #86efac;
+    }
+
+    /* ── TIPE DATA TABLE ── */
+    .tipedata-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 8px;
+    }
+
+    .tipedata-table th {
+      background: var(--green-600);
+      color: #fff;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      padding: 12px 16px;
+      text-align: left;
+    }
+
+    .tipedata-table th:first-child {
+      border-radius: var(--radius-sm) 0 0 0;
+    }
+
+    .tipedata-table th:last-child {
+      border-radius: 0 var(--radius-sm) 0 0;
+    }
+
+    .tipedata-table td {
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-weight: 500;
+      vertical-align: top;
+    }
+
+    .tipedata-table tr:nth-child(even) td {
+      background: var(--green-50);
+    }
+
+    body.dark .tipedata-table tr:nth-child(even) td {
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    .dtype-tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: var(--green-100);
+      color: var(--green-800);
+      border: 1px solid var(--green-300);
+    }
+
+    body.dark .dtype-tag {
+      background: rgba(16, 185, 129, 0.12);
+      color: #6ee7b7;
+      border-color: var(--green-700);
+    }
+
+    /* ── TRACE TABLE ── */
+    .trace-wrap {
+      overflow-x: auto;
+      margin-top: 8px;
+    }
+
+    .trace-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.83rem;
+    }
+
+    .trace-table th {
+      background: var(--green-700);
+      color: #fff;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      padding: 10px 14px;
+      text-align: center;
+    }
+
+    .trace-table td {
+      padding: 9px 14px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .trace-table tr:nth-child(even) td {
+      background: var(--green-50);
+    }
+
+    body.dark .trace-table tr:nth-child(even) td {
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    .trace-ok {
+      color: #059669;
+      font-weight: 700;
+    }
+
+    .trace-ulang {
+      color: #d97706;
+      font-weight: 700;
+    }
+
+    /* ── LOOP GRID ── */
+    .loop-section-title {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 14px;
+      margin-top: 28px;
+    }
+
+    .loop-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .loop-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .loop-card {
+      border-radius: var(--radius-md);
+      padding: 18px;
+    }
+
+    .loop-card-danger {
+      background: rgba(239, 68, 68, 0.07);
+      border: 1.5px solid rgba(239, 68, 68, 0.25);
+    }
+
+    .loop-card-safe {
+      background: rgba(16, 185, 129, 0.07);
+      border: 1.5px solid rgba(16, 185, 129, 0.25);
+    }
+
+    .loop-card-label {
+      font-weight: 700;
+      font-size: 0.88rem;
+      margin-bottom: 8px;
+    }
+
+    .loop-card-danger .loop-card-label {
+      color: #dc2626;
+    }
+
+    .loop-card-safe .loop-card-label {
+      color: #059669;
+    }
+
+    /* ── INFO BOX ── */
+    .info-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--green-50);
+      border: 1px solid var(--green-200);
+      border-left: 4px solid var(--green-500);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-top: 22px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      line-height: 1.7;
+    }
+
+    body.dark .info-box {
+      background: rgba(16, 185, 129, 0.07);
+      border-color: rgba(16, 185, 129, 0.25);
+      border-left-color: var(--green-500);
+    }
+
+    .info-box .info-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ── BACK BUTTON ── */
+    .back-to-materi-btn {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      background: var(--green-600);
+      color: white;
+      border-radius: 100px;
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(5, 150, 105, 0.38);
+      transition: all 0.25s ease;
+    }
+
+    .back-to-materi-btn:hover {
+      background: var(--green-700);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(5, 150, 105, 0.45);
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .back-to-materi-btn {
+        bottom: 20px;
+        right: 16px;
+        padding: 10px 16px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Space+Grotesk:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <a href="index.html"><span class="brand-icon">🌿</span><span class="brand-text">CarbonTrace</span></a>
+    </div>
+    <div class="nav-links" id="navLinks">
+
+      <a class="nav-link" data-id="beranda" href="index.html">Beranda</a><a class="nav-link" data-id="nav-profil"
+        href="profil.html">Profil</a><a class="nav-link active" data-id="materi" href="materi.html">Materi</a><a
+        class="nav-link" data-id="about" href="about.html">About Us</a><a class="nav-link" data-id="nav-kontak"
+        href="kontak-guru.html">Kontak Guru</a>
+    </div>
+    <div class="nav-controls">
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">🌐 EN</button>
+      <button class="dark-toggle" id="darkToggle" onclick="toggleDark()">🌙</button>
+      <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+  </nav>
+  <!-- PAGE HERO -->
+  <div class="page-hero page-hero-hist">
+    <div class="container">
+      <h1 class="page-title">🖥️ Perancangan Kalkulator Karbon</h1>
+      <p class="page-subtitle">Dekomposisi sistem, flowchart, logika, tipe data, dan validasi alur</p>
+    </div>
+  </div>
+  <!-- TOC NAV -->
+  <div class="toc-nav">
+    <span class="toc-label">Topik:</span>
+    <a class="toc-btn" href="#dekomposisi">① Dekomposisi</a>
+    <a class="toc-btn" href="#flowchart">② Flowchart</a>
+    <a class="toc-btn" href="#percabangan">③ Percabangan</a>
+    <a class="toc-btn" href="#tipedata">④ Tipe Data</a>
+    <a class="toc-btn" href="#validasi">⑤ Validasi Alur</a>
+  </div>
+  <!-- MATERI SECTION -->
+  <section class="materi-section">
+    <div class="container">
+      <!-- ① DEKOMPOSISI -->
+      <div class="materi-block" id="dekomposisi">
+        <div class="materi-header">
+          <div class="materi-num">①</div>
+          <div class="materi-heading">
+            <h2>Dekomposisi Masalah</h2>
+            <span class="materi-sub">Arsitektur kalkulator karbon — Input · Proses · Output</span>
+          </div>
+        </div>
+        <p class="materi-desc">
+          Dekomposisi adalah teknik memecah masalah besar menjadi bagian-bagian kecil yang lebih mudah diselesaikan.
+          Kalkulator jejak karbon dibagi menjadi tiga sub-komponen utama yang saling terhubung:
+        </p>
+        <div class="komponen-grid">
+          <div class="komponen-card">
+            <div class="komponen-icon">📥</div>
+            <h4>Input</h4>
+            <ul>
+              <li>Penggunaan BBM (liter/hari)</li>
+              <li>Konsumsi listrik (kWh/bulan)</li>
+              <li>Jarak transportasi (km/hari)</li>
+              <li>Jenis &amp; frekuensi makanan</li>
+              <li>Moda transportasi</li>
+            </ul>
+          </div>
+          <div class="komponen-card">
+            <div class="komponen-icon">⚙️</div>
+            <h4>Proses</h4>
+            <ul>
+              <li>Kalkulasi emisi per kategori</li>
+              <li>Jumlah total CO₂e (kg)</li>
+              <li>Validasi nilai input (&gt; 0)</li>
+              <li>Klasifikasi kategori emisi</li>
+              <li>Penentuan saran tindakan</li>
+            </ul>
+          </div>
+          <div class="komponen-card">
+            <div class="komponen-icon">📤</div>
+            <h4>Output</h4>
+            <ul>
+              <li>Total emisi (kg CO₂e)</li>
+              <li>Kategori: Rendah / Sedang / Tinggi</li>
+              <li>Grafik breakdown emisi</li>
+              <li>Saran praktis pengurangan</li>
+              <li>Perbandingan rata-rata global</li>
+            </ul>
+          </div>
+        </div>
+        <div class="info-box">
+          <span class="info-icon">💡</span>
+          <span>Dengan memisahkan sistem menjadi tiga komponen, setiap bagian dapat dikembangkan, diuji, dan diperbaiki
+            secara independen — meningkatkan keterbacaan kode dan kemudahan pemeliharaan.</span>
+        </div>
+      </div>
+      <!-- ② FLOWCHART -->
+      <div class="materi-block" id="flowchart">
+        <div class="materi-header">
+          <div class="materi-num">②</div>
+          <div class="materi-heading">
+            <h2>Rancangan Flowchart</h2>
+            <span class="materi-sub">Diagram alir logika program menggunakan simbol standar ANSI</span>
+          </div>
+        </div>
+        <p class="materi-desc">
+          Flowchart (diagram alir) adalah representasi visual dari urutan langkah logika program.
+          Simbol standar ANSI digunakan agar diagram dapat dipahami secara universal oleh siapapun.
+        </p>
+        <div class="flowchart-wrap" style="padding:32px 20px;">
+          <!-- LEGENDA SIMBOL ANSI -->
+          <div class="simbol-legend" style="justify-content:center; margin-bottom:24px;">
+            <div class="simbol-item">⬭ Terminal (Mulai/Selesai)</div>
+            <div class="simbol-item">▭ Proses</div>
+            <div class="simbol-item">◇ Keputusan (Ya/Tidak)</div>
+            <div class="simbol-item">⬯ Input/Output</div>
+          </div>
+          <!-- FLOWCHART SVG WEBSITE -->
+          <div style="overflow-x:auto; display:flex; justify-content:center;">
+            <svg
+              style="max-width:700px; width:100%; font-family:'Montserrat','Space Grotesk',sans-serif; font-size:13px;"
+              viewbox="0 0 980 1160" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arr" markerheight="6" markerwidth="6" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+                  <path d="M1,1 L9,5 L1,9" fill="none" stroke="#222" stroke-linejoin="round" stroke-width="1.5"></path>
+                </marker>
+              </defs>
+              <!-- ① MULAI -->
+              <ellipse cx="490" cy="36" fill="white" rx="70" ry="24" stroke="#111" stroke-width="1.5"></ellipse>
+              <text font-size="13" font-weight="700" text-anchor="middle" x="490" y="41">MULAI</text>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.5" x1="490" x2="490" y1="60" y2="76"></line>
+              <!-- ② Buka Website jajargenjang (miring kanan) top=78 bot=122 -->
+              <polygon fill="white" points="380,78 600,78 640,122 420,122" stroke="#111" stroke-width="1.5"></polygon>
+              <text font-size="11" text-anchor="middle" x="490" y="98">Buka Website CarbonTrace /</text>
+              <text font-size="11" text-anchor="middle" x="490" y="114">CarbonTrace</text>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.5" x1="490" x2="490" y1="122" y2="138"></line>
+              <!-- ③ Halaman Home Ditampilkan rect top=140 bot=184 -->
+              <rect fill="white" height="44" stroke="#111" stroke-width="1.5" width="260" x="360" y="140"></rect>
+              <text font-size="12" text-anchor="middle" x="490" y="167">Halaman Home Ditampilkan</text>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.5" x1="490" x2="490" y1="184" y2="200"></line>
+              <!-- ④ Pilih Menu? diamond: top(490,202) right(620,244) bot(490,286) left(360,244) -->
+              <polygon fill="white" points="490,202 620,244 490,286 360,244" stroke="#111" stroke-width="1.5"></polygon>
+              <text font-size="12" text-anchor="middle" x="490" y="249">Pilih Menu?</text>
+              <!-- TIDAK dari Pilih Menu: right tip(620,244) → kanan x=660 → naik y=162 → kiri ke kanan rect Halaman Home(620,162) -->
+              <polyline fill="none" marker-end="url(#arr)" points="620,244 660,244 660,162 622,162" stroke="#555"
+                stroke-dasharray="6,4" stroke-width="1.2"></polyline>
+              <text fill="#555" font-size="11" x="625" y="238">Tidak</text>
+              <!-- Loop TIDAK dari Materi Dipilih → right tip Pilih Menu (620,244): garis putus-putus dari kanan -->
+              <!-- Digambar di sini supaya di bawah elemen lain, arah: dari (620,516) → kanan ke (940,516) → naik ke (940,244) → kiri ke (622,244) -->
+              <polyline fill="none" marker-end="url(#arr)" points="620,516 940,516 940,244 622,244" stroke="#555"
+                stroke-dasharray="6,4" stroke-width="1.2"></polyline>
+              <text fill="#555" font-size="11" x="700" y="510">Tidak</text>
+              <!-- Cabang 5 menu dari bottom Pilih Menu (490,286) → y=312 → horizontal → 5 arrow turun -->
+              <line stroke="#222" stroke-width="1.2" x1="490" x2="490" y1="286" y2="312"></line>
+              <line stroke="#222" stroke-width="1.2" x1="80" x2="900" y1="312" y2="312"></line>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="80" x2="80" y1="312" y2="328"></line>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="250" x2="250" y1="312" y2="328"></line>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="490" x2="490" y1="312" y2="328"></line>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="720" x2="720" y1="312" y2="328"></line>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="900" x2="900" y1="312" y2="328"></line>
+              <!-- 5 MENU BOXES top=330 bot=370 -->
+              <rect fill="white" height="40" stroke="#111" stroke-width="1.5" width="124" x="18" y="330"></rect>
+              <text font-size="10" text-anchor="middle" x="80" y="355">Home / Beranda</text>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="80" x2="80" y1="370" y2="386"></line>
+              <rect fill="white" height="40" stroke="#111" stroke-width="1.5" width="124" x="188" y="330"></rect>
+              <text font-size="10" text-anchor="middle" x="250" y="355">Materi (Subject)</text>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="250" x2="250" y1="370" y2="386"></line>
+              <rect fill="white" height="40" stroke="#111" stroke-width="1.5" width="124" x="428" y="330"></rect>
+              <text font-size="10" text-anchor="middle" x="490" y="355">About Us</text>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="490" x2="490" y1="370" y2="386"></line>
+              <rect fill="white" height="40" stroke="#111" stroke-width="1.5" width="124" x="658" y="330"></rect>
+              <text font-size="10" text-anchor="middle" x="720" y="355">Profil Siswa</text>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="720" x2="720" y1="370" y2="386"></line>
+              <rect fill="white" height="40" stroke="#111" stroke-width="1.5" width="124" x="838" y="330"></rect>
+              <text font-size="10" text-anchor="middle" x="900" y="355">Kontak Guru</text>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="900" x2="900" y1="370" y2="386"></line>
+              <!-- 5 SUB-MENU BOXES top=388 bot=428 -->
+              <rect fill="white" height="40" stroke="#111" stroke-width="1.5" width="124" x="18" y="388"></rect>
+              <text font-size="10" text-anchor="middle" x="80" y="413">Lihat Informasi</text>
+              <rect fill="white" height="40" stroke="#111" stroke-dasharray="6,3" stroke-width="1.5" width="136" x="182"
+                y="388"></rect>
+              <text font-size="10" text-anchor="middle" x="250" y="406">Pilih Mata</text>
+              <text font-size="10" text-anchor="middle" x="250" y="422">Pelajaran</text>
+              <rect fill="white" height="40" stroke="#111" stroke-width="1.5" width="136" x="422" y="388"></rect>
+              <text font-size="10" text-anchor="middle" x="490" y="406">Lihat Info Tim</text>
+              <text font-size="10" text-anchor="middle" x="490" y="422">&amp; Proyek</text>
+              <rect fill="white" height="40" stroke="#111" stroke-width="1.5" width="130" x="655" y="388"></rect>
+              <text font-size="10" text-anchor="middle" x="720" y="406">Lihat Profil</text>
+              <text font-size="10" text-anchor="middle" x="720" y="422">Siswa</text>
+              <rect fill="white" height="40" stroke="#111" stroke-width="1.5" width="124" x="838" y="388"></rect>
+              <text font-size="10" text-anchor="middle" x="900" y="406">Lihat Kontak</text>
+              <text font-size="10" text-anchor="middle" x="900" y="422">Guru</text>
+              <!-- Konverge sub-menu → horizontal y=456 → Materi Dipilih? -->
+              <line stroke="#222" stroke-width="1.2" x1="80" x2="80" y1="428" y2="456"></line>
+              <line stroke="#222" stroke-width="1.2" x1="250" x2="250" y1="428" y2="456"></line>
+              <line stroke="#222" stroke-width="1.2" x1="490" x2="490" y1="428" y2="456"></line>
+              <line stroke="#222" stroke-width="1.2" x1="720" x2="720" y1="428" y2="456"></line>
+              <line stroke="#222" stroke-width="1.2" x1="900" x2="900" y1="428" y2="456"></line>
+              <line stroke="#222" stroke-width="1.2" x1="80" x2="900" y1="456" y2="456"></line>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="490" x2="490" y1="456" y2="472"></line>
+              <!-- ⑤ Materi Dipilih? diamond: top(490,474) right(620,516) bot(490,558) left(360,516) -->
+              <polygon fill="white" points="490,474 620,516 490,558 360,516" stroke="#111" stroke-width="1.5"></polygon>
+              <text font-size="12" text-anchor="middle" x="490" y="510">Materi</text>
+              <text font-size="12" text-anchor="middle" x="490" y="528">Dipilih?</text>
+              <!-- YA: bottom(490,558) → y=580 → horizontal → 6 sub-materi -->
+              <line stroke="#222" stroke-width="1.2" x1="490" x2="490" y1="558" y2="580"></line>
+              <text fill="#222" font-size="11" x="498" y="574">Ya</text>
+              <line stroke="#222" stroke-width="1.2" x1="62" x2="818" y1="580" y2="580"></line>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="62" x2="62" y1="580" y2="596"></line>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="198" x2="198" y1="580" y2="596"></line>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="334" x2="334" y1="580" y2="596"></line>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="490" x2="490" y1="580" y2="596"></line>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="626" x2="626" y1="580" y2="596"></line>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="818" x2="818" y1="580" y2="596"></line>
+              <!-- 6 SUB-MATERI BOXES top=598 bot=650 -->
+              <rect fill="white" height="52" stroke="#111" stroke-width="1.5" width="120" x="2" y="598"></rect>
+              <text font-size="9" text-anchor="middle" x="62" y="620">Kalkulator Karbon</text>
+              <text font-size="9" text-anchor="middle" x="62" y="634">(DPK PPLG)</text>
+              <rect fill="white" height="52" stroke="#111" stroke-width="1.5" width="120" x="138" y="598"></rect>
+              <text font-size="9" text-anchor="middle" x="198" y="620">Sejarah Emisi</text>
+              <text font-size="9" text-anchor="middle" x="198" y="634">(Sejarah)</text>
+              <rect fill="white" height="52" stroke="#111" stroke-width="1.5" width="120" x="274" y="598"></rect>
+              <text font-size="9" text-anchor="middle" x="334" y="620">Tips Sehat</text>
+              <text font-size="9" text-anchor="middle" x="334" y="634">(PJOK)</text>
+              <rect fill="white" height="52" stroke="#111" stroke-width="1.5" width="120" x="430" y="598"></rect>
+              <text font-size="9" text-anchor="middle" x="490" y="617">Tokoh Lingkungan</text>
+              <text font-size="9" text-anchor="middle" x="490" y="631">(Bhs Indonesia)</text>
+              <rect fill="white" height="52" stroke="#111" stroke-width="1.5" width="120" x="566" y="598"></rect>
+              <text font-size="9" text-anchor="middle" x="626" y="620">Pesan Moral</text>
+              <text font-size="9" text-anchor="middle" x="626" y="634">(Agama)</text>
+              <rect fill="white" height="52" stroke="#111" stroke-width="1.5" width="120" x="758" y="598"></rect>
+              <text font-size="9" text-anchor="middle" x="818" y="620">Basa Jawa</text>
+              <text font-size="9" text-anchor="middle" x="818" y="634">(Muatan Lokal)</text>
+              <!-- Konverge sub-materi → horizontal y=668 → Tampilkan Materi -->
+              <line stroke="#222" stroke-width="1.2" x1="62" x2="62" y1="650" y2="668"></line>
+              <line stroke="#222" stroke-width="1.2" x1="198" x2="198" y1="650" y2="668"></line>
+              <line stroke="#222" stroke-width="1.2" x1="334" x2="334" y1="650" y2="668"></line>
+              <line stroke="#222" stroke-width="1.2" x1="490" x2="490" y1="650" y2="668"></line>
+              <line stroke="#222" stroke-width="1.2" x1="626" x2="626" y1="650" y2="668"></line>
+              <line stroke="#222" stroke-width="1.2" x1="818" x2="818" y1="650" y2="668"></line>
+              <line stroke="#222" stroke-width="1.2" x1="62" x2="818" y1="668" y2="668"></line>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.2" x1="490" x2="490" y1="668" y2="684"></line>
+              <!-- ⑥ Tampilkan Materi Pembelajaran rect top=686 bot=730 -->
+              <rect fill="white" height="44" stroke="#111" stroke-width="1.5" width="300" x="340" y="686"></rect>
+              <text font-size="12" text-anchor="middle" x="490" y="713">Tampilkan Materi Pembelajaran</text>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.5" x1="490" x2="490" y1="730" y2="746"></line>
+              <!-- ⑦ Baca dan Pelajari Materi jajargenjang top=748 bot=792 (miring kanan) -->
+              <!-- kiri-atas=360 kanan-atas=610 kanan-bawah=650 kiri-bawah=400 -->
+              <polygon fill="white" points="360,748 610,748 650,792 400,792" stroke="#111" stroke-width="1.5"></polygon>
+              <text font-size="12" text-anchor="middle" x="490" y="775">Baca dan Pelajari Materi</text>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.5" x1="490" x2="490" y1="792" y2="808"></line>
+              <!-- ⑧ Gunakan Kalkulator? diamond: top(490,810) right(630,854) bot(490,898) left(350,854) -->
+              <polygon fill="white" points="490,810 630,854 490,898 350,854" stroke="#111" stroke-width="1.5"></polygon>
+              <text font-size="12" text-anchor="middle" x="490" y="848">Gunakan</text>
+              <text font-size="12" text-anchor="middle" x="490" y="866">Kalkulator?</text>
+              <!-- YA → kanan ke Input Data: right tip(630,854) → (700,854) -->
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.5" x1="630" x2="698" y1="854" y2="854"></line>
+              <text fill="#222" font-size="11" x="636" y="847">Ya</text>
+              <!-- Input Data jajargenjang top=832 bot=876 (miring kanan) -->
+              <polygon fill="white" points="700,832 880,832 900,876 720,876" stroke="#111" stroke-width="1.5"></polygon>
+              <text font-size="10" text-anchor="middle" x="800" y="852">Input Data</text>
+              <text font-size="10" text-anchor="middle" x="800" y="868">(Listrik, BBM, Perjalanan)</text>
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.5" x1="800" x2="800" y1="876" y2="892"></line>
+              <!-- Tampilkan Hasil jajargenjang top=894 bot=938 (miring kanan) -->
+              <polygon fill="white" points="710,894 890,894 910,938 730,938" stroke="#111" stroke-width="1.5"></polygon>
+              <text font-size="10" text-anchor="middle" x="800" y="914">Tampilkan Hasil</text>
+              <text font-size="10" text-anchor="middle" x="800" y="930">Kalkulasi Emisi</text>
+              <!-- Dari Tampilkan Hasil (800,938) → kiri lurus ke right tip Selesai Belajar (630,998) -->
+              <!-- Turun ke y=998, lalu kiri ke 632 -->
+              <polyline fill="none" marker-end="url(#arr)" points="800,938 800,998 632,998" stroke="#222"
+                stroke-width="1.5"></polyline>
+              <!-- TIDAK kiri: left tip(350,854) → x=290 → turun ke y=998 → kanan ke left tip Selesai(348,998) -->
+              <polyline fill="none" marker-end="url(#arr)" points="350,854 290,854 290,998 348,998" stroke="#222"
+                stroke-width="1.5"></polyline>
+              <text fill="#222" font-size="11" x="295" y="847">Tidak</text>
+              <!-- ⑨ Selesai Belajar? diamond: top(490,960) right(630,998) bot(490,1036) left(350,998) -->
+              <polygon fill="white" points="490,960 630,998 490,1036 350,998" stroke="#111" stroke-width="1.5">
+              </polygon>
+              <text font-size="12" text-anchor="middle" x="490" y="992">Selesai</text>
+              <text font-size="12" text-anchor="middle" x="490" y="1010">Belajar?</text>
+              <!-- TIDAK kanan: right tip(630,998) → x=680 → naik ke y=770 → kiri ke titik kanan bawah jajargenjang Baca(650,770) -->
+              <polyline fill="none" marker-end="url(#arr)" points="630,998 680,998 680,770 652,770" stroke="#222"
+                stroke-width="1.5"></polyline>
+              <text fill="#222" font-size="11" x="635" y="990">Tidak</text>
+              <!-- YA ke SELESAI: bottom(490,1036) → turun → ellipse -->
+              <line marker-end="url(#arr)" stroke="#222" stroke-width="1.5" x1="490" x2="490" y1="1036" y2="1052">
+              </line>
+              <text fill="#222" font-size="11" x="500" y="1050">Ya</text>
+              <!-- ⑩ SELESAI ellipse -->
+              <ellipse cx="490" cy="1084" fill="white" rx="70" ry="28" stroke="#111" stroke-width="1.5"></ellipse>
+              <text font-size="13" font-weight="700" text-anchor="middle" x="490" y="1089">SELESAI</text>
+            </svg>
+          </div>
+        </div>
+        <p class="flowchart-caption">
+          Gambar 1 — Diagram alir sistem website CarbonTrace/CarbonTrace menggunakan simbol standar ANSI
+        </p>
+      </div>
+      <div class="info-box">
+        <span class="info-icon">📌</span>
+        <span>Alur dimulai dari <strong>Input</strong> data pengguna → <strong>Hitung</strong> emisi tiap kategori →
+          <strong>Validasi</strong> apakah total &gt; 0 (jika tidak, ulang input) → <strong>Klasifikasi</strong>
+          kategori → <strong>Tampilkan</strong> hasil ke pengguna.</span>
+      </div>
+      <!-- Flowchart Kalkulator Karbon -->
+      <div style="margin-top: 32px;">
+        <h3
+          style="font-family:var(--font-heading); font-size:1.05rem; font-weight:800; color:var(--text-main); margin-bottom:16px;">
+          🧮 Flowchart Kalkulator Karbon
+        </h3>
+        <div class="flowchart-wrap" style="padding:32px 20px;">
+          <div style="overflow-x:auto; display:flex; justify-content:center;">
+            <svg style="max-width:400px; width:100%; font-family:'Montserrat','Space Grotesk',sans-serif;"
+              viewbox="0 0 480 820" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arr2" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+                  <path d="M1,1 L9,5 L1,9" fill="none" stroke="#222" stroke-linejoin="round" stroke-width="1.5"></path>
+                </marker>
+              </defs>
+              <!-- ① MULAI: ellipse cx=240 cy=40 rx=65 ry=24 -->
+              <!-- top=16 bottom=64 -->
+              <ellipse cx="240" cy="40" fill="white" rx="65" ry="24" stroke="#222" stroke-width="1.8"></ellipse>
+              <text font-size="13" font-weight="700" text-anchor="middle" x="240" y="45">Mulai</text>
+              <!-- garis ①→② pusat bawah ellipse (240,64) → pusat atas parallelogram (240,80) -->
+              <line marker-end="url(#arr2)" stroke="#222" stroke-width="1.5" x1="240" x2="240" y1="64" y2="80"></line>
+              <!-- ② INPUT parallelogram: top-y=80, height=52, bottom-y=132 -->
+              <!-- left-top(105,80) right-top(375,80) right-bot(400,132) left-bot(80,132) -->
+              <polygon fill="white" points="135,80 405,80 375,132 105,132" stroke="#222" stroke-width="1.8"></polygon>
+              <text font-size="12" text-anchor="middle" x="240" y="103">Input: BBM, listrik,</text>
+              <text font-size="12" text-anchor="middle" x="240" y="120">transportasi, makanan</text>
+              <!-- garis ②→③ dari (240,132)→(240,150) -->
+              <line marker-end="url(#arr2)" stroke="#222" stroke-width="1.5" x1="240" x2="240" y1="132" y2="148"></line>
+              <!-- ③ Hitung emisi: rect top=150 h=48 bottom=198, cx=240 -->
+              <rect fill="white" height="48" stroke="#222" stroke-width="1.8" width="280" x="100" y="150"></rect>
+              <text font-size="12" text-anchor="middle" x="240" y="179">Hitung emisi tiap kategori</text>
+              <!-- garis ③→④ (240,198)→(240,216) -->
+              <line marker-end="url(#arr2)" stroke="#222" stroke-width="1.5" x1="240" x2="240" y1="198" y2="214"></line>
+              <!-- ④ Jumlahkan total: rect top=216 h=52 bottom=268 -->
+              <rect fill="white" height="52" stroke="#222" stroke-width="1.8" width="300" x="90" y="216"></rect>
+              <text font-size="12" text-anchor="middle" x="240" y="239">Jumlahkan total karbon</text>
+              <text font-size="12" text-anchor="middle" x="240" y="258">(kg CO₂e)</text>
+              <!-- garis ④→⑤ (240,268)→(240,286) -->
+              <line marker-end="url(#arr2)" stroke="#222" stroke-width="1.5" x1="240" x2="240" y1="268" y2="284"></line>
+              <!-- ⑤ Total > 0? diamond: center(240,330) half-w=110 half-h=46 -->
+              <!-- top(240,284) right(350,330) bottom(240,376) left(130,330) -->
+              <polygon fill="white" points="240,284 350,330 240,376 130,330" stroke="#222" stroke-width="1.8"></polygon>
+              <text font-size="12" text-anchor="middle" x="240" y="325">Total</text>
+              <text font-size="12" text-anchor="middle" x="240" y="343">&gt; 0 ?</text>
+              <!-- TIDAK: dari left tip diamond (130,330) → kiri → naik → kembali ke ② -->
+              <!-- (130,330)→(48,330)→(48,106)→(80,106) -->
+              <polyline fill="none" marker-end="url(#arr2)" points="130,330 48,330 48,106 105,106" stroke="#222"
+                stroke-width="1.5"></polyline>
+              <text fill="#222" font-size="11" x="82" y="324">Tidak</text>
+              <!-- Kotak Input Ulang di kiri: x=8 y=306 w=68 h=48 center(42,330) -->
+              <rect fill="white" height="48" stroke="#222" stroke-width="1.8" width="68" x="8" y="306"></rect>
+              <text font-size="11" text-anchor="middle" x="42" y="326">Input</text>
+              <text font-size="11" text-anchor="middle" x="42" y="343">ulang</text>
+              <!-- panah dari Tidak line ke kotak: garis dari (130,330)→(76,330) -->
+              <line marker-end="url(#arr2)" stroke="#222" stroke-width="1.5" x1="130" x2="78" y1="330" y2="330"></line>
+              <!-- garis kembali dari kiri kotak (8,330)→(48,330) naik ke (48,106) sudah di polyline atas -->
+              <!-- garis keluar kiri kotak ke loop: dari (8,330) kiri sudah include di polyline -->
+              <!-- YA: dari bottom tip (240,376)→(240,394) -->
+              <line marker-end="url(#arr2)" stroke="#222" stroke-width="1.5" x1="240" x2="240" y1="376" y2="392"></line>
+              <text fill="#222" font-size="11" x="250" y="390">Ya</text>
+              <!-- ⑥ Tentukan kategori: rect top=394 h=58 bottom=452 -->
+              <rect fill="white" height="58" stroke="#222" stroke-width="1.8" width="320" x="80" y="394"></rect>
+              <text font-size="12" text-anchor="middle" x="240" y="418">Tentukan kategori emisi</text>
+              <text font-size="11" text-anchor="middle" x="240" y="438">Rendah / Sedang / Tinggi / Sangat Tinggi</text>
+              <!-- garis ⑥→⑦ (240,452)→(240,470) -->
+              <line marker-end="url(#arr2)" stroke="#222" stroke-width="1.5" x1="240" x2="240" y1="452" y2="470"></line>
+              <!-- ⑦ Tampilkan parallelogram: top=470 h=52 bottom=522 -->
+              <!-- left-top(105,470) right-top(375,470) right-bot(400,522) left-bot(80,522) -->
+              <polygon fill="white" points="135,470 405,470 375,522 105,522" stroke="#222" stroke-width="1.8"></polygon>
+              <text font-size="12" text-anchor="middle" x="240" y="493">Tampilkan: total CO₂e,</text>
+              <text font-size="12" text-anchor="middle" x="240" y="511">kategori, saran</text>
+              <!-- garis ⑦→⑧ dari tengah bawah parallelogram -->
+              <!-- tengah bawah = antara (80,522) dan (400,522) → (240,522) -->
+              <line marker-end="url(#arr2)" stroke="#222" stroke-width="1.5" x1="240" x2="240" y1="522" y2="538"></line>
+              <!-- ⑧ SELESAI ellipse: cy=562 rx=65 ry=24, top=538 bottom=586 -->
+              <ellipse cx="240" cy="562" fill="white" rx="65" ry="24" stroke="#222" stroke-width="1.8"></ellipse>
+              <text font-size="13" font-weight="700" text-anchor="middle" x="240" y="567">Selesai</text>
+            </svg>
+          </div>
+          <p class="flowchart-caption">
+            Gambar 2 — Diagram alir logika Kalkulator Karbon menggunakan simbol standar ANSI
+          </p>
+        </div>
+      </div>
+      <!-- ③ LOGIKA PERCABANGAN -->
+      <div class="materi-block" id="percabangan">
+        <div class="materi-header">
+          <div class="materi-num">③</div>
+          <div class="materi-heading">
+            <h2>Logika Percabangan (If-Else)</h2>
+            <span class="materi-sub">Alur kondisi untuk mengklasifikasikan tingkat emisi pengguna</span>
+          </div>
+        </div>
+        <p class="materi-desc">
+          Logika percabangan <strong>If-Else</strong> digunakan untuk memilah total emisi pengguna ke dalam 4 kategori
+          khusus
+          berdasarkan ambang batas (threshold) yang telah ditentukan. Setiap kategori memberikan respons dan saran yang
+          berbeda.
+        </p>
+        <div class="ifelse-table-wrap">
+          <table class="ifelse-table">
+            <thead>
+              <tr>
+                <th>Kondisi</th>
+                <th>Kategori</th>
+                <th>Rentang (kg CO₂e/hari)</th>
+                <th>Saran Utama</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>total &lt; 5</code></td>
+                <td><span class="badge-level badge-rendah">🟢 Rendah</span></td>
+                <td>&lt; 5 kg</td>
+                <td>Pertahankan gaya hidup ramah lingkungan</td>
+              </tr>
+              <tr>
+                <td><code>total &lt; 15</code></td>
+                <td><span class="badge-level badge-sedang">🟡 Sedang</span></td>
+                <td>5 – 14 kg</td>
+                <td>Kurangi penggunaan kendaraan pribadi</td>
+              </tr>
+              <tr>
+                <td><code>total &lt; 30</code></td>
+                <td><span class="badge-level badge-tinggi">🔴 Tinggi</span></td>
+                <td>15 – 29 kg</td>
+                <td>Beralih ke energi terbarukan &amp; transportasi publik</td>
+              </tr>
+              <tr>
+                <td><code>total &gt;= 30</code></td>
+                <td><span class="badge-level badge-sangat">🔥 Sangat Tinggi</span></td>
+                <td>≥ 30 kg</td>
+                <td>Audit menyeluruh gaya hidup &amp; konsultasi ahli</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="code-block">
+          <span class="c-cm">// Pseudocode — Logika Percabangan Kategori Emisi</span><br />
+          <span class="c-kw">IF</span> total <span class="c-op">&lt;</span> <span class="c-val">5</span> <span
+            class="c-kw">THEN</span><br />
+              kategori <span class="c-op">=</span> <span class="c-str">"Rendah"</span><br />
+              saran    <span class="c-op">=</span> <span class="c-str">"Pertahankan gaya hidup ramah lingkungan
+            🌿"</span><br />
+          <span class="c-kw">ELSE IF</span> total <span class="c-op">&lt;</span> <span class="c-val">15</span> <span
+            class="c-kw">THEN</span><br />
+              kategori <span class="c-op">=</span> <span class="c-str">"Sedang"</span><br />
+              saran    <span class="c-op">=</span> <span class="c-str">"Kurangi kendaraan pribadi, gunakan transportasi
+            umum 🚌"</span><br />
+          <span class="c-kw">ELSE IF</span> total <span class="c-op">&lt;</span> <span class="c-val">30</span> <span
+            class="c-kw">THEN</span><br />
+              kategori <span class="c-op">=</span> <span class="c-str">"Tinggi"</span><br />
+              saran    <span class="c-op">=</span> <span class="c-str">"Beralih ke energi terbarukan ☀️"</span><br />
+          <span class="c-kw">ELSE</span><br />
+              kategori <span class="c-op">=</span> <span class="c-str">"Sangat Tinggi"</span><br />
+              saran    <span class="c-op">=</span> <span class="c-str">"Audit menyeluruh gaya hidup &amp; konsultasi
+            ahli 🔥"</span><br />
+          <span class="c-kw">END IF</span>
+        </div>
+        <div class="info-box">
+          <span class="info-icon">💡</span>
+          <span>Struktur <strong>IF-ELSE IF-ELSE</strong> menjamin hanya satu cabang yang dieksekusi. Urutan kondisi
+            dari nilai <em>terkecil ke terbesar</em> adalah kunci agar tidak terjadi kesalahan klasifikasi.</span>
+        </div>
+      </div>
+      <!-- ④ TIPE DATA -->
+      <div class="materi-block" id="tipedata">
+        <div class="materi-header">
+          <div class="materi-num">④</div>
+          <div class="materi-heading">
+            <h2>Pemetaan Tipe Data</h2>
+            <span class="materi-sub">Tipe data yang tepat untuk setiap variabel input kalkulator</span>
+          </div>
+        </div>
+        <p class="materi-desc">
+          Pemilihan tipe data yang tepat sangat penting agar kalkulasi berjalan akurat dan efisien.
+          Tipe data yang salah dapat menyebabkan error pembulatan, overflow, atau hasil yang tidak valid.
+        </p>
+        <div style="overflow-x:auto;">
+          <table class="tipedata-table">
+            <thead>
+              <tr>
+                <th>Variabel Input</th>
+                <th>Contoh Nilai</th>
+                <th>Tipe Data</th>
+                <th>Alasan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Penggunaan BBM</td>
+                <td>3.5 liter/hari</td>
+                <td><span class="dtype-tag">float</span></td>
+                <td>Nilai desimal diperlukan untuk akurasi emisi</td>
+              </tr>
+              <tr>
+                <td>Konsumsi Listrik</td>
+                <td>150 kWh/bulan</td>
+                <td><span class="dtype-tag">float</span></td>
+                <td>Bisa mengandung desimal (150.5 kWh)</td>
+              </tr>
+              <tr>
+                <td>Jarak Transportasi</td>
+                <td>12 km/hari</td>
+                <td><span class="dtype-tag">float</span></td>
+                <td>Jarak bisa pecahan (12.5 km)</td>
+              </tr>
+              <tr>
+                <td>Jenis Makanan</td>
+                <td>"daging", "nabati"</td>
+                <td><span class="dtype-tag">string</span></td>
+                <td>Kategori teks, bukan angka</td>
+              </tr>
+              <tr>
+                <td>Frekuensi Daging</td>
+                <td>3 kali/minggu</td>
+                <td><span class="dtype-tag">int</span></td>
+                <td>Bilangan bulat (tidak ada 1.5 kali)</td>
+              </tr>
+              <tr>
+                <td>Moda Transportasi</td>
+                <td>"motor", "bus"</td>
+                <td><span class="dtype-tag">string</span></td>
+                <td>Pilihan kategori teks</td>
+              </tr>
+              <tr>
+                <td>Total Emisi CO₂e</td>
+                <td>12.847 kg</td>
+                <td><span class="dtype-tag">float</span></td>
+                <td>Hasil kalkulasi memerlukan presisi desimal</td>
+              </tr>
+              <tr>
+                <td>Kategori Emisi</td>
+                <td>"Sedang"</td>
+                <td><span class="dtype-tag">string</span></td>
+                <td>Label hasil klasifikasi If-Else</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="info-box">
+          <span class="info-icon">⚠️</span>
+          <span>Gunakan <code>float</code> untuk semua nilai numerik yang mewakili pengukuran fisik. Hindari
+            <code>int</code> untuk nilai kalkulasi emisi karena pembulatan dapat menyebabkan ketidakakuratan signifikan
+            dalam hasil akhir.</span>
+        </div>
+      </div>
+      <!-- ⑤ VALIDASI ALUR -->
+      <div class="materi-block" id="validasi">
+        <div class="materi-header">
+          <div class="materi-num">⑤</div>
+          <div class="materi-heading">
+            <h2>Validasi Alur — Trace Table Testing</h2>
+            <span class="materi-sub">Mendeteksi potensi infinite loop sebelum kode dijalankan</span>
+          </div>
+        </div>
+        <p class="materi-desc">
+          <strong>Trace table</strong> adalah teknik pengujian manual dengan mensimulasikan eksekusi program baris per
+          baris,
+          mencatat nilai variabel di setiap langkah. Tujuannya mendeteksi <em>infinite loop</em> — kondisi di mana
+          program
+          terus berulang tanpa pernah berhenti — sebelum kode diterjemahkan ke bahasa pemrograman.
+        </p>
+        <div class="trace-wrap">
+          <table class="trace-table">
+            <thead>
+              <tr>
+                <th>Iterasi</th>
+                <th>BBM (L)</th>
+                <th>Listrik (kWh)</th>
+                <th>Transport (km)</th>
+                <th>Total CO₂e (kg)</th>
+                <th>Total &gt; 0?</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.00</td>
+                <td>❌ Tidak</td>
+                <td class="trace-ulang">↩ Input Ulang</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>-2</td>
+                <td>0</td>
+                <td>5</td>
+                <td class="trace-ulang">Error</td>
+                <td>❌ Tidak</td>
+                <td class="trace-ulang">↩ Input Ulang</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>2</td>
+                <td>100</td>
+                <td>10</td>
+                <td>8.74</td>
+                <td>✅ Ya</td>
+                <td class="trace-ok">✔ Lanjut → Klasifikasi</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>200</td>
+                <td>30</td>
+                <td>21.30</td>
+                <td>✅ Ya</td>
+                <td class="trace-ok">✔ Lanjut → Kategori Tinggi</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>0.1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0.23</td>
+                <td>✅ Ya</td>
+                <td class="trace-ok">✔ Lanjut → Kategori Rendah</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h4 class="loop-section-title">🔄 Potensi Infinite Loop &amp; Pencegahannya</h4>
+        <div class="loop-grid">
+          <div class="loop-card loop-card-danger">
+            <div class="loop-card-label">❌ Risiko Infinite Loop</div>
+            <div class="code-block" style="margin:0;font-size:0.78rem;">
+              <span class="c-kw">WHILE</span> total <span class="c-op">==</span> <span class="c-val">0</span> <span
+                class="c-kw">DO</span><br />
+                <span class="c-cm">// Jika user terus</span><br />
+                <span class="c-cm">// input 0, loop</span><br />
+                <span class="c-cm">// tidak pernah berhenti!</span><br />
+                input()<br />
+              <span class="c-kw">END WHILE</span>
+            </div>
+          </div>
+          <div class="loop-card loop-card-safe">
+            <div class="loop-card-label">✅ Solusi Pencegahan</div>
+            <div class="code-block" style="margin:0;font-size:0.78rem;">
+              <span class="c-kw">maxCoba</span> <span class="c-op">=</span> <span class="c-val">3</span><br />
+              <span class="c-kw">coba</span> <span class="c-op">=</span> <span class="c-val">0</span><br />
+              <span class="c-kw">WHILE</span> total <span class="c-op">==</span> <span class="c-val">0</span> <span
+                class="c-op">AND</span> coba <span class="c-op">&lt;</span> maxCoba<br />
+                input()<br />
+                coba <span class="c-op">+=</span> <span class="c-val">1</span><br />
+              <span class="c-kw">END WHILE</span>
+            </div>
+          </div>
+        </div>
+        <div class="info-box">
+          <span class="info-icon">🛡️</span>
+          <span>Selalu tambahkan <strong>counter batas percobaan</strong> (maxTry) pada setiap loop input. Ini
+            memastikan program tidak terjebak jika pengguna terus memasukkan nilai tidak valid, sekaligus memberikan
+            pesan error yang informatif.</span>
+        </div>
+      </div>
+    </div><!-- /container -->
+  </section>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-text footer-logo">🌿 CarbonTrace</div>
+          <p data-id="footer-desc">Platform edukasi jejak karbon untuk generasi muda peduli lingkungan.</p>
+        </div>
+        <div class="footer-links">
+          <h4 data-id="footer-menu">Menu</h4>
+          <a data-id="nav-beranda" href="index.html">Beranda</a>
+          <a data-id="nav-materi" href="materi.html">Materi</a>
+          <a href="about.html">About Us</a>
+        </div>
+        <div class="footer-info">
+          <h4 data-id="footer-info-title">Info</h4>
+          <p data-id="footer-info-p1">Proyek RPL Final</p>
+          <p data-id="footer-info-p2">SMA/SMK 2025</p>
+          <p>🇮🇩 Indonesia</p>
+        </div>
+      </div>
+      <div class="footer-quote">
+        <span class="fq-leaf" data-id="footer-quote-text">🌿 Rawatlah bumi dengan bijak, karena kebaikan kecil hari ini akan menjadi keberkahan bagi kehidupan di masa depan</span>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 CarbonTrace — <span data-id="footer-copy">Dibuat dengan ❤️ untuk bumi yang lebih baik</span></p>
+      </div>
+    </div>
+  </footer>
+  <!-- BACK BUTTON -->
+  <a class="back-to-materi-btn" data-id="back-to-materi" href="dokumen.html">
+    <span>←</span> Kembali ke Dokumen
+  </a>
+  <script src="script.js"></script>
+</body>
+
+</html>

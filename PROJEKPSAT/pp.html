@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Pembagian Tugas — CarbonTrace</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Space+Grotesk:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <link href="stylepp.css" rel="stylesheet" />
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">🌿</span>
+      <span class="brand-text">CarbonTrace</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+
+      <a class="nav-link" data-id="beranda" href="index.html">Beranda</a><a class="nav-link" data-id="nav-profil"
+        href="profil.html">Profil</a><a class="nav-link" data-id="materi" href="materi.html">Materi</a><a
+        class="nav-link" data-id="about" href="about.html">About Us</a><a class="nav-link" data-id="nav-kontak"
+        href="kontak-guru.html">Kontak Guru</a>
+    </div>
+    <div class="nav-controls">
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">🌐 EN</button>
+      <button class="dark-toggle" id="darkToggle" onclick="toggleDark()">🌙</button>
+      <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+  </nav>
+  <div class="page-hero page-hero-pp">
+    <div class="container">
+      <h1 class="page-title" data-id="pp-title">👥 Pembagian Tugas Tim</h1>
+      <p class="page-subtitle" data-id="pp-sub">Struktur kerja dan tanggung jawab masing-masing anggota dalam proyek
+        CarbonTrace</p>
+    </div>
+  </div>
+  <section class="pp-section">
+    <div class="container">
+      <div class="badge-label">🏫 Proyek RPL Final · CarbonTrace 2025</div>
+      <!-- Foto Dokumentasi Rapat -->
+      <div class="rapat-foto-grid">
+        <div class="rapat-foto-card">
+          <div class="rapat-foto-label">
+            <span class="rapat-foto-icon">🖥️</span>
+            <span>Rancangan Desain Web CarbonTrace</span>
+          </div>
+          <img alt="Dokumentasi Rapat Tim CarbonTrace" loading="lazy" src="pp1.jpeg" />
+        </div>
+        <div class="rapat-foto-card">
+          <div class="rapat-foto-label">
+            <span class="rapat-foto-icon">🌐</span>
+            <span>Rancangan Desain Web CarbonTrace</span>
+          </div>
+          <img alt="Dokumentasi Rapat Tim CarbonTrace" loading="lazy" src="pp2.jpeg" />
+        </div>
+      </div>
+      <!-- Badge & Header -->
+      <div class="pp-header">
+        <h2 data-id="pp-sec1-h">Anggota Kelompok</h2>
+        <p data-id="pp-sec1-p">6 siswa bekerja sama membangun platform edukasi jejak karbon yang terintegrasi</p>
+      </div>
+      <!-- Kartu Anggota -->
+      <div class="anggota-grid">
+        <div class="anggota-card">
+          <div class="anggota-avatar">👤</div>
+          <div class="anggota-nama">FANDI</div>
+          <div class="anggota-no">Ketua / Coding</div>
+        </div>
+        <div class="anggota-card">
+          <div class="anggota-avatar">👤</div>
+          <div class="anggota-nama">ZHUAN</div>
+          <div class="anggota-no">Coding</div>
+        </div>
+        <div class="anggota-card">
+          <div class="anggota-avatar">👤</div>
+          <div class="anggota-nama">FRIDA</div>
+          <div class="anggota-no">PPT / Materi</div>
+        </div>
+        <div class="anggota-card">
+          <div class="anggota-avatar">👤</div>
+          <div class="anggota-nama">FINA</div>
+          <div class="anggota-no">PPT / Materi</div>
+        </div>
+        <div class="anggota-card">
+          <div class="anggota-avatar">👤</div>
+          <div class="anggota-nama">LIDIA</div>
+          <div class="anggota-no">PPT / Materi</div>
+        </div>
+        <div class="anggota-card">
+          <div class="anggota-avatar">👤</div>
+          <div class="anggota-nama">IMEY</div>
+          <div class="anggota-no">PPT / Materi</div>
+        </div>
+      </div>
+      <hr class="section-divider" />
+      <!-- TABEL PEMBAGIAN TUGAS -->
+      <div class="pp-header" style="margin-bottom:28px;">
+        <h2 data-id="pp-sec2-h">Tabel Pembagian Tugas Lengkap</h2>
+        <p data-id="pp-sec2-p">Rincian tugas teknis dan materi setiap anggota dalam proyek CarbonTrace</p>
+      </div>
+      <div class="tabel-wrap">
+        <table class="tabel-tugas">
+          <thead>
+            <tr>
+              <th class="col-no">No</th>
+              <th>Nama</th>
+              <th>Peran</th>
+              <th>Tugas &amp; Tanggung Jawab</th>
+              <th>Halaman / Mapel</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- BLOK: CODING -->
+            <tr class="row-subhead">
+              <td colspan="6">💻 Tim Coding</td>
+            </tr>
+            <tr>
+              <td class="col-no">1</td>
+              <td><span class="nama-chip">FANDI</span></td>
+              <td>Ketua · Full-stack Dev</td>
+              <td>
+                • Merancang struktur &amp; navigasi keseluruhan situs<br />
+                • Membuat halaman Beranda, Materi, About, Pembagian Tugas<br />
+                • Menjaga konsistensi <code>style.css</code> dan variabel desain<br />
+                • Mengintegrasikan semua halaman dan script.js<br />
+                • Testing, debugging, dan review akhir seluruh web
+              </td>
+              <td>
+                <span class="page-tag">index.html</span>
+                <span class="page-tag">materi.html</span>
+                <span class="page-tag">about.html</span>
+                <span class="page-tag">pp.html</span>
+                <span class="page-tag">style.css</span>
+                <span class="page-tag">script.js</span>
+              </td>
+              <td><span class="status-chip status-utama">Ketua</span></td>
+            </tr>
+            <tr>
+              <td class="col-no">2</td>
+              <td><span class="nama-chip">ZHUAN</span></td>
+              <td> Full-stack Dev</td>
+              <td>
+                • Membangun halaman Kalkulator Karbon beserta logika JS<br />
+                • Membuat halaman Sejarah Emisi (timeline interaktif)<br />
+                • Mengembangkan halaman Tips Sehat, Biografi, Moral, Basa Jawa<br />
+                • Membuat halaman Dokumen, Profil Siswa, Kontak Guru<br />
+                • Memastikan responsivitas dan dark mode berjalan di semua halaman
+              </td>
+              <td>
+                <span class="page-tag">calculator.html</span>
+                <span class="page-tag">calculator.js</span>
+                <span class="page-tag">history.html</span>
+                <span class="page-tag">health.html</span>
+                <span class="page-tag">biography.html</span>
+                <span class="page-tag">moral.html</span>
+                <span class="page-tag">jawa.html</span>
+                <span class="page-tag">dokumen.html</span>
+                <span class="page-tag">profil.html</span>
+                <span class="page-tag">kontak-guru.html</span>
+              </td>
+              <td><span class="status-chip status-utama">Pengembang</span></td>
+            </tr>
+            <!-- BLOK: PPT / MATERI -->
+            <tr class="row-subhead">
+              <td colspan="6">📊 Tim Materi &amp; PPT</td>
+            </tr>
+            <tr>
+              <td class="col-no">3</td>
+              <td><span class="nama-chip">FRIDA</span></td>
+              <td>Penyusun Materi</td>
+              <td>
+                • Menyusun materi dan PPT Bahasa Indonesia (Biografi Tokoh Lingkungan)<br />
+                • Menyusun materi dan PPT Sejarah (Revolusi Industri &amp; Emisi Karbon)<br />
+                • Menyusun materi dan PPT PJOK (Tips Hidup Sehat &amp; Ramah Lingkungan)<br />
+                • Menyusun materi dan PPT Agama (Pesan Moral Menjaga Lingkungan)
+              </td>
+              <td>
+                <span class="page-tag">Bahasa Indonesia</span>
+                <span class="page-tag">Sejarah</span>
+                <span class="page-tag">PJOK</span>
+                <span class="page-tag">Agama</span>
+              </td>
+              <td><span class="status-chip status-konten">PPT / Materi</span></td>
+            </tr>
+            <tr>
+              <td class="col-no">4</td>
+              <td><span class="nama-chip">FINA</span></td>
+              <td>Penyusun Materi</td>
+              <td>
+                • Menyusun materi dan PPT Matematika (Pemodelan Fungsi Linear Emisi)<br />
+                • Menyusun materi dan PPT Informatika (Flowchart &amp; Dokumentasi Proyek)<br />
+                • Menyusun materi dan PPT Muatan Lokal (Pacelathon Basa Jawa)<br />
+                • Menyusun materi dan PPT DPK PPLG (Rekayasa Perangkat Lunak)
+              </td>
+              <td>
+                <span class="page-tag">Matematika</span>
+                <span class="page-tag">Informatika</span>
+                <span class="page-tag">Muatan Lokal</span>
+                <span class="page-tag">DPK PPLG</span>
+              </td>
+              <td><span class="status-chip status-konten">PPT / Materi</span></td>
+            </tr>
+            <tr>
+              <td class="col-no">5</td>
+              <td><span class="nama-chip">LIDIA</span></td>
+              <td>Penyusun Materi</td>
+              <td>
+                • Menyusun materi dan PPT Pendidikan Pancasila (Gotong Royong &amp; Lingkungan)<br />
+                • Menyusun materi dan PPT Seni Budaya (Wireframe &amp; Estetika Desain Web)<br />
+                • Menyusun materi dan PPT Projek IPAS (Sains &amp; Lingkungan Hidup)<br />
+                • Menyusun materi dan PPT Bahasa Inggris (Kosakata &amp; Teks Lingkungan)
+              </td>
+              <td>
+                <span class="page-tag">Pendidikan Pancasila</span>
+                <span class="page-tag">Seni Budaya</span>
+                <span class="page-tag">Projek IPAS</span>
+                <span class="page-tag">Bahasa Inggris</span>
+              </td>
+              <td><span class="status-chip status-konten">PPT / Materi</span></td>
+            </tr>
+            <tr>
+              <td class="col-no">6</td>
+              <td><span class="nama-chip">IMEY</span></td>
+              <td>Penyusun Materi</td>
+              <td>
+                • Menyusun materi dan PPT PABP (Nilai Agama dalam Pelestarian Alam)<br />
+                • Menyusun logbook proyek dan laporan akhir kegiatan<br />
+                • Menyusun materi dan PPT tentang Profil Kelompok &amp; Anggota Tim<br />
+                • Menyusun daftar referensi &amp; sumber data seluruh materi CarbonTrace
+              </td>
+              <td>
+                <span class="page-tag">PABP</span>
+                <span class="page-tag">Logbook</span>
+                <span class="page-tag">Profil Tim</span>
+                <span class="page-tag">Referensi</span>
+              </td>
+              <td><span class="status-chip status-konten">PPT / Materi</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <hr class="section-divider" />
+      <!-- PEER DEBUGGING SECTION -->
+      <div class="pp-header" style="margin-bottom:32px;">
+        <div class="badge-label">🐛 Dokumentasi Nyata · Peer Debugging Session</div>
+        <h2 data-id="pp-sec3-h">Bukti Saling Membantu dalam Debugging</h2>
+        <p data-id="pp-sec3-p">Dokumentasi kegiatan peer debugging antar anggota tim dalam menyelesaikan kendala error
+          kode</p>
+      </div>
+      <div class="peer-debug-wrapper">
+        <!-- Top bar IDE -->
+        <div class="debug-topbar">
+          <div class="debug-topbar-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <div class="debug-topbar-title">📁 carbontrace / calculator.js — VS Code</div>
+          <div class="debug-topbar-badge">● ERROR DETECTED</div>
+        </div>
+        <!-- FOTO BESAR — fokus utama -->
+        <div class="debug-hero-photo">
+          <div class="debug-corner tl"></div>
+          <div class="debug-corner tr"></div>
+          <div class="debug-corner bl"></div>
+          <div class="debug-corner br"></div>
+          <img alt="Bukti Peer Debugging — Fandi dan Zhuan menganalisis error kode di VS Code" loading="lazy"
+            src="gambar4.jpeg" />
+          <!-- Overlay label pojok -->
+          <div class="debug-hero-badge">
+            <span class="dbadge-dot"></span> SESI PEER DEBUGGING AKTIF
+          </div>
+        </div>
+        <!-- KETERANGAN ERROR — 3 kolom di bawah foto -->
+        <div class="debug-keterangan-grid">
+          <div class="debug-ket-card ket-error">
+            <div class="ket-icon">⚠️</div>
+            <div class="ket-body">
+              <div class="ket-title">Error yang Terjadi</div>
+              <p>Pada saat proses pembuatan tampilan website, awalnya desain yang diharapkan tidak muncul sesuai dengan
+                yang telah dirancang. Beberapa elemen terlihat tidak memiliki styling, seperti warna, ukuran, dan posisi
+                yang tidak berubah meskipun kode CSS sudah ditambahkan.</p>
+            </div>
+          </div>
+          <div class="debug-ket-card ket-process">
+            <div class="ket-icon">🔍</div>
+            <div class="ket-body">
+              <div class="ket-title">Proses Debugging Bersama</div>
+              <p> Fandi dan zhuan selaku yang bertugas di bagian program berdiskusi untuk menemukan letak kesalahan
+                logika. Lalu kode diperiksa di Visual Studio Code dengan menelusuri bagian CSS. Ditemukan bahwa beberapa
+                class ditulis tanpa tanda titik (.). Garis peringatan pada editor membantu mengidentifikasi kesalahan
+                tersebut. Setelah itu, dilakukan pengecekan antara HTML dan CSS untuk memastikan kesesuaian nama class..
+              </p>
+            </div>
+          </div>
+          <div class="debug-ket-card ket-solved">
+            <div class="ket-icon">✅</div>
+            <div class="ket-body">
+              <div class="ket-title">Solusi &amp; Hasil</div>
+              <p>Lalu Fandi dan Zhuan menambahkan tanda titik (.) pada setiap pemanggilan class di CSS. Setelah
+                diperbaiki, style kembali diterapkan dengan benar dan tampilan website menjadi rapi serta sesuai desain
+                yang diinginkan. Masalah berhasil diselesaikan dan tidak muncul error lagi.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Bottom bar -->
+        <div class="debug-bottombar">
+          <span class="debug-status-dot-sm"></span>
+          <span>Bug Fixed · Minggu ke-5</span>
+          <span class="debug-sep">·</span>
+          <span>Fase Integrasi &amp; Testing</span>
+          <span class="debug-sep">·</span>
+          <span>Peserta: <strong>Fandi</strong> (Reviewer) &amp; <strong>Zhuan</strong> (Debugger)</span>
+          <span class="debug-sep">·</span>
+          <span>CarbonTrace 2025</span>
+        </div>
+      </div>
+      <hr class="section-divider" />
+      <!-- TIMELINE PROYEK -->
+      <div class="pp-header" style="margin-bottom:28px;">
+        <h2 data-id="pp-sec4-h">📅 Timeline Pengerjaan Proyek</h2>
+        <p data-id="pp-sec4-p">Jadwal kerja selama 6 minggu pengembangan CarbonTrace</p>
+      </div>
+      <div class="tabel-wrap">
+        <table class="tabel-tugas">
+          <thead>
+            <tr>
+              <th class="col-no">No</th>
+              <th>Periode</th>
+              <th>Tahap</th>
+              <th>Kegiatan</th>
+              <th>Kendala</th>
+              <th>Solusi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-no">1</td>
+              <td><strong>Hari-ke 1</strong></td>
+              <td>Perencanaan</td>
+              <td>Diskusi konsep, pembagian tugas, pembuatan wireframe &amp; struktur folder</td>
+              <td>Kesulitan menentukan fitur prioritas dan struktur navigasi yang tepat</td>
+              <td>Diskusi kelompok intensif dan pembuatan wireframe sederhana sebelum mulai koding</td>
+            </tr>
+            <tr>
+              <td class="col-no">2</td>
+              <td><strong>Hari-ke 2</strong></td>
+              <td>Desain Sistem</td>
+              <td>Pembuatan style.css, komponen navbar, footer, dan template halaman dasar</td>
+              <td>Konsistensi warna dan font antar halaman sulit dijaga secara manual</td>
+              <td>Membuat variabel CSS global di <code>style.css</code> agar semua halaman otomatis seragam</td>
+            </tr>
+            <tr>
+              <td class="col-no">3</td>
+              <td><strong>Hari-ke 3</strong></td>
+              <td>Pengembangan Koding</td>
+              <td>Coding semua halaman HTML/CSS/JS oleh Fandi &amp; Zhuan</td>
+              <td>Logika kalkulator karbon kompleks dan tampilan tidak konsisten di berbagai ukuran layar</td>
+              <td>Pemisahan file JS per halaman dan penggunaan CSS Grid/Flexbox untuk responsivitas</td>
+            </tr>
+            <tr>
+              <td class="col-no">4</td>
+              <td><strong>Hari-ke 4</strong></td>
+              <td>Penyusunan Materi</td>
+              <td>Frida, Fina, Lidia, Imey menyusun materi &amp; PPT masing-masing 4 mapel</td>
+              <td>Materi dari berbagai mapel sulit diselaraskan dengan tema lingkungan hidup</td>
+              <td>Koordinasi via grup chat dan pembagian template PPT seragam agar konten terhubung</td>
+            </tr>
+            <tr>
+              <td class="col-no">5</td>
+              <td><strong>Hari-ke 5</strong></td>
+              <td>Integrasi &amp; Testing</td>
+              <td>Menghubungkan semua halaman, uji responsivitas, dark mode, perbaikan bug</td>
+              <td>Beberapa halaman mengalami konflik style dan dark mode tidak konsisten</td>
+              <td>Review bersama menggunakan browser DevTools dan perbaikan variabel CSS secara terpusat</td>
+            </tr>
+            <tr>
+              <td class="col-no">6</td>
+              <td><strong>Hari-ke 6</strong></td>
+              <td>Finalisasi</td>
+              <td>Review akhir, penyusunan dokumen, logbook, latihan presentasi</td>
+              <td>Waktu presentasi terbatas dan anggota belum terbiasa menjelaskan aspek teknis</td>
+              <td>Latihan presentasi bersama dan pembagian segmen presentasi sesuai bidang masing-masing</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <h2 data-id="pp-sec5-h">Siap Mengurangi Jejak Karbon Kamu?</h2>
+        <p data-id="pp-sec5-p">Mulai dengan menghitung emisi harianmu menggunakan Kalkulator Karbon CarbonTrace.</p>
+        <a class="btn btn-white" href="calculator.html">🧮 Buka Kalkulator — Gratis</a>
+      </div>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-text footer-logo">🌿 CarbonTrace</div>
+          <p data-id="footer-desc">Platform edukasi jejak karbon untuk generasi muda peduli lingkungan.</p>
+        </div>
+        <div class="footer-links">
+          <h4 data-id="footer-menu">Menu</h4>
+          <a data-id="nav-beranda" href="index.html">Beranda</a>
+          <a data-id="nav-materi" href="materi.html">Materi</a>
+          <a href="about.html">About Us</a>
+        </div>
+        <div class="footer-info">
+          <h4 data-id="footer-info-title">Info</h4>
+          <p data-id="footer-info-p1">Proyek RPL Final</p>
+          <p data-id="footer-info-p2">SMA/SMK 2025</p>
+          <p>🇮🇩 Indonesia</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="footer-quote">
+          <span class="fq-leaf" data-id="footer-quote-text">🌿 Rawatlah bumi dengan bijak, karena kebaikan kecil hari ini akan menjadi keberkahan
+            bagi kehidupan di masa depan</span>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 CarbonTrace — <span data-id="footer-copy">Dibuat dengan ❤️ untuk bumi yang lebih baik</span></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <a class="back-to-materi-btn" data-id="back-to-materi" href="dokumen.html">
+    <span>←</span> Kembali ke Dokumen
+  </a>
+  <script src="script.js"></script>
+</body>
+
+</html>

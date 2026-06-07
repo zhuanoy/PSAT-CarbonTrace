@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>CarbonTrace — Kalkulator Jejak Karbon</title>
+        <link href="style.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Space+Grotesk:wght@300;400;500;600&amp;display=swap"
+                rel="stylesheet" />
+        <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+        <nav class="navbar" id="navbar">
+                <div class="nav-brand">
+                        <span class="brand-icon">🌿</span>
+                        <span class="brand-text">CarbonTrace</span>
+                </div>
+                <div class="nav-links" id="navLinks">
+                <a class="nav-link" data-id="beranda" href="index.html">Beranda</a><a class="nav-link"
+                        data-id="nav-profil" href="profil.html">Profil</a><a class="nav-link" data-id="materi"
+                        href="materi.html">Materi</a><a class="nav-link" data-id="about" href="about.html">About
+                        Us</a><a class="nav-link" data-id="nav-kontak" href="kontak-guru.html">Kontak Guru</a>
+                </div>
+                <div class="nav-controls">
+                        <button class="lang-toggle" id="langToggle" onclick="toggleLang()">🌐 EN</button>
+                        <button class="dark-toggle" id="darkToggle" onclick="toggleDark()">🌙</button>
+                        <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+                </div>
+        </nav>
+        <!-- HERO SECTION -->
+        <section class="hero">
+                <div class="hero-bg-shapes">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                        <div class="shape shape-3"></div>
+                </div>
+                <div class="hero-content">
+                        <div class="hero-badge" data-id="hero-badge">🌍 Saatnya Bertindak untuk Bumi</div>
+                        <h1 class="hero-title" data-id="hero-title">
+                                Ukur <span class="highlight">Jejak Karbon</span><br />Kamu Sekarang
+                        </h1>
+                        <p class="hero-desc" data-id="hero-desc">
+                                CarbonTrace membantu kamu memahami dampak aktivitas sehari-hari terhadap lingkungan.
+                                Hitung emisi karbon, pelajari sejarahnya, dan ambil langkah nyata untuk bumi yang lebih
+                                baik.
+                        </p>
+                        <div class="hero-buttons">
+                                <a class="btn btn-primary" data-id="btn-mulai" href="calculator.html">
+                                        <i class="fas fa-calculator"></i> Mulai Kalkulasi
+                                </a>
+                                <a class="btn btn-outline" data-id="btn-pelajari" href="about.html">
+                                        <i class="fas fa-info-circle"></i> Pelajari Lebih
+                                </a>
+                        </div>
+                        <div class="hero-stats">
+                                <div class="stat">
+                                        <span class="stat-num">37B</span>
+                                        <span class="stat-label" data-id="stat-1">Ton CO₂/Tahun</span>
+                                </div>
+                                <div class="stat">
+                                        <span class="stat-num">1.5°C</span>
+                                        <span class="stat-label" data-id="stat-2">Target Suhu Global</span>
+                                </div>
+                                <div class="stat">
+                                        <span class="stat-num">2050</span>
+                                        <span class="stat-label" data-id="stat-3">Target Net Zero</span>
+                                </div>
+                        </div>
+                </div>
+                <div class="hero-visual">
+                        <div class="earth-container">
+                                <div class="earth">🌍</div>
+                                <div class="orbit orbit-1">
+                                        <div class="planet">💨</div>
+                                </div>
+                                <div class="orbit orbit-2">
+                                        <div class="planet">🏭</div>
+                                </div>
+                                <div class="orbit orbit-3">
+                                        <div class="planet">🌱</div>
+                                </div>
+                        </div>
+                </div>
+        </section>
+
+        <section class="how-section">
+                <div class="container">
+                        <div class="section-header">
+                                <h2 data-id="how-title">Cara Kerja</h2>
+                                <p data-id="how-sub">3 langkah mudah untuk mengetahui jejak karbon kamu</p>
+                        </div>
+                        <div class="steps-row">
+                                <div class="step-card">
+                                        <div class="step-num">01</div>
+                                        <div class="step-icon">📝</div>
+                                        <h3 data-id="step1-title">Input Data</h3>
+                                        <p data-id="step1-desc">Masukkan penggunaan listrik, konsumsi BBM, dan jarak
+                                                perjalanan kamu per hari/minggu.
+                                        </p>
+                                </div>
+                                <div class="step-arrow">→</div>
+                                <div class="step-card">
+                                        <div class="step-num">02</div>
+                                        <div class="step-icon">⚙️</div>
+                                        <h3 data-id="step2-title">Kalkulasi Otomatis</h3>
+                                        <p data-id="step2-desc">Sistem menghitung emisi menggunakan rumus standar
+                                                internasional secara otomatis.</p>
+                                </div>
+                                <div class="step-arrow">→</div>
+                                <div class="step-card">
+                                        <div class="step-num">03</div>
+                                        <div class="step-icon">📊</div>
+                                        <h3 data-id="step3-title">Lihat Hasilnya</h3>
+                                        <p data-id="step3-desc">Dapatkan laporan lengkap kategori emisi dan saran
+                                                praktis untuk menguranginya.</p>
+                                </div>
+                        </div>
+                </div>
+        </section>
+        <!-- CTA SECTION -->
+        <section class="cta-section">
+                <div class="container">
+                        <div class="cta-box">
+                                <h2 data-id="cta-title">Siap Mengurangi Jejak Karbon Kamu?</h2>
+                                <p data-id="cta-desc">Bergabunglah dengan ribuan orang yang sudah peduli terhadap
+                                        lingkungan.</p>
+                                <a class="btn btn-white" data-id="cta-btn" href="calculator.html">
+                                        <i class="fas fa-leaf"></i> Mulai Sekarang — Gratis
+                                </a>
+                        </div>
+                </div>
+        </section>
+        <!-- FOOTER -->
+        <footer class="footer">
+                <div class="container">
+                        <div class="footer-grid">
+                                <div class="footer-brand">
+                                        <div class="brand-text footer-logo">🌿 CarbonTrace</div>
+                                        <p data-id="footer-desc">Platform edukasi jejak karbon untuk generasi muda
+                                                peduli lingkungan.</p>
+                                </div>
+                                <div class="footer-links">
+                                        <h4 data-id="footer-menu">Menu</h4>
+                                        <a data-id="nav-beranda" href="index.html">Beranda</a>
+                                        <a data-id="nav-materi" href="materi.html">Materi</a>
+                                        <a href="about.html">About Us</a>
+                                </div>
+                                <div class="footer-info">
+                                        <h4 data-id="footer-info-title">Info</h4>
+                                        <p data-id="footer-info-p1">Proyek RPL Final</p>
+                                        <p data-id="footer-info-p2">SMA/SMK 2025</p>
+                                        <p>🇮🇩 Indonesia</p>
+                                </div>
+                        </div>
+                        <div class="container">
+                                <div class="footer-quote">
+                                        <span class="fq-leaf" data-id="footer-quote-text">🌿 Rawatlah bumi dengan bijak, karena kebaikan kecil hari
+                                                ini akan menjadi keberkahan
+                                                bagi kehidupan di masa depan</span>
+                                </div>
+                                <div class="footer-bottom">
+                                        <p>© 2025 CarbonTrace — <span data-id="footer-copy">Dibuat dengan ❤️ untuk bumi
+                                                        yang lebih baik</span></p>
+                                </div>
+                        </div>
+                </div>
+        </footer>
+        <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,2409 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Sejarah Emisi — CarbonTrace</title>
+  <link href="style.css" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Space+Grotesk:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <style>
+    .back-to-materi-btn {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      background: var(--green-600);
+      color: white;
+      border-radius: 100px;
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(5, 150, 105, 0.38);
+      transition: all 0.25s ease;
+    }
+
+    .back-to-materi-btn:hover {
+      background: var(--green-700);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(5, 150, 105, 0.45);
+      color: white;
+    }
+
+    .back-to-materi-btn .btn-arrow {
+      transition: transform 0.2s;
+    }
+
+    .back-to-materi-btn:hover .btn-arrow {
+      transform: translateX(-3px);
+    }
+
+    @media (max-width: 600px) {
+      .back-to-materi-btn {
+        bottom: 20px;
+        right: 16px;
+        padding: 10px 16px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <a href="index.html"><span class="brand-icon">🌿</span><span class="brand-text">CarbonTrace</span></a>
+    </div>
+    <div class="nav-links" id="navLinks">
+
+      <a class="nav-link" data-id="beranda" href="index.html">Beranda</a><a class="nav-link" data-id="nav-profil"
+        href="profil.html">Profil</a><a class="nav-link" data-id="materi" href="materi.html">Materi</a><a
+        class="nav-link" data-id="about" href="about.html">About Us</a><a class="nav-link" data-id="nav-kontak"
+        href="kontak-guru.html">Kontak Guru</a>
+    </div>
+    <div class="nav-controls">
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">🌐 EN</button>
+      <button class="dark-toggle" id="darkToggle" onclick="toggleDark()">🌙</button>
+      <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+  </nav>
+  <div class="page-hero page-hero-hist">
+    <div class="container">
+      <h1 class="page-title" data-id="senbud-title">🎨 Seni &amp; Budaya Digital</h1>
+      <p class="page-subtitle" data-id="senbud-sub-hero">Moodboard, Tipografi, dan Desain UI &amp; Wireframe Web
+        CarbonTrace</p>
+    </div>
+  </div>
+  <!-- MATERI UTAMA -->
+  <main class="senbud-main">
+    <div class="container">
+      <!-- PROGRESS / TOC -->
+      <div class="senbud-toc">
+        <div class="toc-label">📋 Daftar Materi</div>
+        <div class="toc-items">
+          <a class="toc-item" href="#materi-1"><span class="toc-num">1</span> Moodboard</a>
+          <a class="toc-item" href="#materi-2"><span class="toc-num">2</span> Tipografi</a>
+          <a class="toc-item" href="#materi-3"><span class="toc-num">3</span> Desain UI &amp; Wireframe</a>
+        </div>
+      </div>
+      <!-- ══════════════════════════════════ -->
+      <!-- MATERI 1: MOODBOARD -->
+      <!-- ══════════════════════════════════ -->
+      <section class="materi-section" id="materi-1">
+        <div class="materi-header">
+          <div class="materi-badge">Materi 1</div>
+          <h2 class="materi-title" data-id="senbud-sec1-h">🎨 Penyusunan Moodboard</h2>
+          <p class="materi-desc">Palet warna bertema <strong>ekologi-digital</strong> — harmonis, konsisten, dan
+            berfilosofi.</p>
+        </div>
+        <div class="materi-content">
+          <!-- Apa itu Moodboard -->
+          <div class="info-box info-green">
+            <div class="info-icon">💡</div>
+            <div>
+              <strong>Apa itu Moodboard?</strong><br />
+              Moodboard adalah kolase visual berisi warna, font, gambar, dan tekstur yang menjadi <em>panduan
+                estetika</em> sebuah desain web sebelum dibuat. Seperti "peta hati" dari sebuah produk digital.
+            </div>
+          </div>
+          <!-- Palet Warna CarbonTrace -->
+          <h3 class="sub-title" data-id="senbud-sub1-h">🌈 Palet Warna Ekologi-Digital CarbonTrace</h3>
+          <div class="palette-grid">
+            <div class="palette-card" style="--pc: #059669">
+              <div class="palette-swatch" style="background:#059669"></div>
+              <div class="palette-info">
+                <div class="palette-name">Primary Green</div>
+                <div class="palette-hex">#059669</div>
+                <div class="palette-role">Aksi utama, tombol, highlight</div>
+              </div>
+            </div>
+            <div class="palette-card" style="--pc: #10b981">
+              <div class="palette-swatch" style="background:#10b981"></div>
+              <div class="palette-info">
+                <div class="palette-name">Emerald</div>
+                <div class="palette-hex">#10B981</div>
+                <div class="palette-role">Hover, ikon aktif</div>
+              </div>
+            </div>
+            <div class="palette-card" style="--pc: #34d399">
+              <div class="palette-swatch" style="background:#34d399"></div>
+              <div class="palette-info">
+                <div class="palette-name">Mint</div>
+                <div class="palette-hex">#34D399</div>
+                <div class="palette-role">Border, dekorasi ringan</div>
+              </div>
+            </div>
+            <div class="palette-card" style="--pc: #ecfdf5">
+              <div class="palette-swatch" style="background:#ecfdf5; border:1.5px solid #a7f3d0"></div>
+              <div class="palette-info">
+                <div class="palette-name">Foam White</div>
+                <div class="palette-hex">#ECFDF5</div>
+                <div class="palette-role">Background utama</div>
+              </div>
+            </div>
+            <div class="palette-card" style="--pc: #065f46">
+              <div class="palette-swatch" style="background:#065f46"></div>
+              <div class="palette-info">
+                <div class="palette-name">Forest Dark</div>
+                <div class="palette-hex">#065F46</div>
+                <div class="palette-role">Teks heading, footer</div>
+              </div>
+            </div>
+            <div class="palette-card" style="--pc: #38bdf8">
+              <div class="palette-swatch" style="background:#38bdf8"></div>
+              <div class="palette-info">
+                <div class="palette-name">Sky Accent</div>
+                <div class="palette-hex">#38BDF8</div>
+                <div class="palette-role">Aksen digital/teknologi</div>
+              </div>
+            </div>
+          </div>
+          <!-- Filosofi Warna -->
+          <!-- Aturan 60-30-10 -->
+          <div class="rule-highlight">
+            <div class="rh-icon">📐</div>
+            <div>
+              <strong>Aturan 60-30-10 dalam Palet CarbonTrace</strong><br />
+              <span class="rh-pill rh-60">60% Foam White</span> — Latar &amp; ruang kosong
+              <span class="rh-pill rh-30">30% Hijau</span> — Elemen utama
+              <span class="rh-pill rh-10">10% Biru Aksen</span> — Titik fokus
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ══════════════════════════════════ -->
+      <!-- MATERI 2: TIPOGRAFI -->
+      <!-- ══════════════════════════════════ -->
+      <section class="materi-section" id="materi-2">
+        <div class="materi-header">
+          <div class="materi-badge">Materi 2</div>
+          <h2 class="materi-title" data-id="senbud-sec2-h">🔤 Tipografi &amp; Keterbacaan</h2>
+          <p class="materi-desc">Kombinasi font <strong>sans-serif digital</strong> yang indah sekaligus nyaman dibaca
+            di layar.</p>
+        </div>
+        <div class="materi-content">
+          <div class="font-showcase-grid">
+            <!-- Font 1 -->
+            <div class="font-card fc-heading">
+              <div class="fc-label">Font Heading</div>
+              <div class="fc-sample-big" style="font-family:'Montserrat',sans-serif;font-weight:800">Montserrat</div>
+              <div class="fc-sample-sub" style="font-family:'Montserrat',sans-serif;font-weight:600">CarbonTrace — Jejak
+                Karbon Kita</div>
+              <div class="fc-meta">
+                <span class="fc-tag">Sans-serif</span>
+                <span class="fc-tag">Weight: 700–800</span>
+                <span class="fc-tag">Geometric</span>
+              </div>
+              <p class="fc-desc">Montserrat memberikan karakter <strong>modern, tegas, dan berwibawa</strong>. Cocok
+                untuk judul karena lebar hurufnya konsisten dan mudah dibaca dari jarak jauh.</p>
+            </div>
+            <!-- Font 2 -->
+            <div class="font-card fc-body">
+              <div class="fc-label">Font Body</div>
+              <div class="fc-sample-big" style="font-family:'Space Grotesk',sans-serif;font-weight:400">Space Grotesk
+              </div>
+              <div class="fc-sample-sub" style="font-family:'Space Grotesk',sans-serif">Hitung emisi karbon harian kamu
+                dan ambil langkah nyata.</div>
+              <div class="fc-meta">
+                <span class="fc-tag">Sans-serif</span>
+                <span class="fc-tag">Weight: 300–500</span>
+                <span class="fc-tag">Humanist</span>
+              </div>
+              <p class="fc-desc">Space Grotesk memiliki karakter <strong>techy namun hangat</strong>. Spasi antar huruf
+                yang lega membuat teks panjang tetap nyaman dibaca di layar.</p>
+            </div>
+          </div>
+          <!-- Hierarki Teks -->
+          <h3 class="sub-title" data-id="senbud-sub3-h">📏 Hierarki Tipografi</h3>
+          <div class="typo-hierarchy">
+            <div class="typo-row">
+              <div class="typo-label">H1 — Hero Title</div>
+              <div class="typo-sample" style="font-size:2rem;font-weight:800;font-family:'Montserrat',sans-serif">Ukur
+                Jejak Karbon Kamu</div>
+              <div class="typo-spec">Montserrat 800 · 38–48px · Line-height 1.1</div>
+            </div>
+            <div class="typo-row">
+              <div class="typo-label">H2 — Section Title</div>
+              <div class="typo-sample" style="font-size:1.5rem;font-weight:700;font-family:'Montserrat',sans-serif">Cara
+                Kerja CarbonTrace</div>
+              <div class="typo-spec">Montserrat 700 · 24–30px · Line-height 1.25</div>
+            </div>
+            <div class="typo-row">
+              <div class="typo-label">Body — Paragraf</div>
+              <div class="typo-sample" style="font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:400">
+                CarbonTrace membantu kamu memahami dampak aktivitas sehari-hari terhadap lingkungan.</div>
+              <div class="typo-spec">Space Grotesk 400 · 15–17px · Line-height 1.65</div>
+            </div>
+            <div class="typo-row">
+              <div class="typo-label">Caption / Label</div>
+              <div class="typo-sample"
+                style="font-size:0.82rem;font-family:'Space Grotesk',sans-serif;font-weight:500;color:var(--green-600)">
+                🌿 Ton CO₂ per Tahun · Target Net Zero 2050</div>
+              <div class="typo-spec">Space Grotesk 500 · 12–13px · Uppercase tracking</div>
+            </div>
+          </div>
+          <!-- Do & Don't -->
+          <h3 class="sub-title" data-id="senbud-sub4-h">✅ Do &amp; ❌ Don't Tipografi Web</h3>
+          <div class="dodo-grid">
+            <div class="dodo-card dodo-do">
+              <div class="dodo-header">✅ Lakukan Ini</div>
+              <ul class="dodo-list">
+                <li>Gunakan maksimal <strong>2 jenis font</strong> dalam satu halaman</li>
+                <li>Ukuran body minimal <strong>15px</strong> untuk keterbacaan</li>
+                <li>Line-height <strong>1.5–1.7</strong> untuk paragraf panjang</li>
+                <li>Kontras warna teks vs latar minimal <strong>4.5:1</strong> (WCAG AA)</li>
+                <li>Gunakan <strong>font weight berbeda</strong> untuk hierarki</li>
+              </ul>
+            </div>
+            <div class="dodo-card dodo-dont">
+              <div class="dodo-header">❌ Hindari Ini</div>
+              <ul class="dodo-list">
+                <li>Jangan pakai lebih dari <strong>3 font berbeda</strong> — membuat berantakan</li>
+                <li>Hindari teks <strong>italic pada body</strong> — lelah di layar</li>
+                <li>Jangan gunakan teks <strong>ALL CAPS</strong> panjang-panjang</li>
+                <li>Hindari warna teks <strong>abu-abu terlalu terang</strong> di latar putih</li>
+                <li>Jangan pakai font <strong>dekoratif/kaligrafi</strong> untuk konten informasi</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ══════════════════════════════════ -->
+      <!-- MATERI 3: DESAIN KOMPONEN UI -->
+      <!-- ══════════════════════════════════ -->
+      <section class="materi-section" id="materi-3">
+        <div class="materi-header">
+          <div class="materi-badge">Materi 3</div>
+          <h2 class="materi-title" data-id="senbud-sec3-h">🖥️ Desain Komponen UI &amp; Wireframe</h2>
+          <p class="materi-desc">Sketsa <strong>wireframe</strong> tombol, form, panel kalkulasi, dan seluruh halaman
+            web CarbonTrace sebelum dikodekan.</p>
+        </div>
+        <div class="materi-content">
+          <div class="info-box info-blue">
+            <div class="info-icon">📐</div>
+            <div>
+              <strong>Apa itu Wireframe?</strong><br />
+              Wireframe adalah sketsa kasar komponen UI — biasanya hitam-putih — yang menentukan posisi, ukuran, dan
+              fungsi elemen <em>sebelum</em> desainer menambahkan warna dan gaya visual. Seperti blueprint rumah sebelum
+              dicat.
+            </div>
+          </div>
+          <!-- ═══════════════════════════ -->
+          <!-- WIREFRAME HALAMAN WEB -->
+          <!-- ══════════════════════════════════ -->
+          <h3 class="sub-title" data-id="senbud-sub5-h">🖼️ Wireframe Halaman Web CarbonTrace</h3>
+          <div class="info-box info-blue">
+            <div class="info-icon">📱</div>
+            <div>
+              <strong>Wireframe 6 Halaman Utama</strong><br />
+              Rancangan visual seluruh halaman web CarbonTrace — menampilkan struktur layout, navigasi, dan komponen
+              sebelum dikodekan ke HTML/CSS.
+            </div>
+          </div>
+          <div class="wf-pages-grid">
+            <!-- Halaman 1: Beranda -->
+            <div class="wf-page-card">
+              <div class="wf-page-num">01</div>
+              <div class="wf-page-title">🏠 Beranda (Home)</div>
+              <div class="wf-page-mockup">
+                <!-- Navbar -->
+                <div class="wfp-navbar">
+                  <span class="wfp-brand">CarbonTrace</span>
+                  <span class="wfp-school">SMK N 4 KENDAL</span>
+                  <span class="wfp-lang">EN</span>
+                </div>
+                <!-- Hero -->
+                <div class="wfp-hero">
+                  <div class="wfp-hero-left">
+                    <div class="wfp-bar wfp-bar-sm wfp-bar-gray"></div>
+                    <div class="wfp-bar wfp-bar-md wfp-bar-dark"></div>
+                    <div class="wfp-bar wfp-bar-md wfp-bar-green"></div>
+                    <div class="wfp-bar wfp-bar-lg wfp-bar-dark"></div>
+                    <div class="wfp-bar wfp-bar-sm wfp-bar-gray"></div>
+                    <div class="wfp-btns">
+                      <div class="wfp-btn-primary">Mulai</div>
+                      <div class="wfp-btn-outline">Pelajari</div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Feature Icons -->
+                <div class="wfp-features">
+                  <div class="wfp-feat-item">
+                    <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:4px auto 2px"></div>
+                    <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:0 auto;width:50%"></div>
+                  </div>
+                  <div class="wfp-feat-item">
+                    <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:4px auto 2px"></div>
+                    <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:0 auto;width:50%"></div>
+                  </div>
+                  <div class="wfp-feat-item">
+                    <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:4px auto 2px"></div>
+                    <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:0 auto;width:50%"></div>
+                  </div>
+                  <div class="wfp-feat-item">
+                    <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:4px auto 2px"></div>
+                    <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:0 auto;width:50%"></div>
+                  </div>
+                </div>
+                <div class="wfp-footer-bar"></div>
+              </div>
+              <div class="wf-page-desc">Hero section dengan CTA utama, statistik singkat, dan 4 fitur unggulan.</div>
+            </div>
+            <!-- Halaman 2: Materi -->
+            <div class="wf-page-card">
+              <div class="wf-page-num">02</div>
+              <div class="wf-page-title">📚 Materi</div>
+              <div class="wf-page-mockup">
+                <div class="wfp-navbar">
+                  <span class="wfp-brand">CarbonTrace</span>
+                  <span class="wfp-school wfp-active-nav">SMK N 4 KENDAL</span>
+                  <span class="wfp-lang">EN</span>
+                </div>
+                <div style="padding:10px 8px;">
+                  <div class="wfp-bar wfp-bar-md wfp-bar-dark" style="margin:0 auto 8px;text-align:center"></div>
+                  <div class="wfp-bar wfp-bar-sm wfp-bar-gray" style="margin:0 auto 12px"></div>
+                  <div class="wfp-materi-grid">
+                    <div class="wfp-materi-card">
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:4px auto 2px"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:0 auto;width:60%"></div>
+                    </div>
+                    <div class="wfp-materi-card">
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:4px auto 2px"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:0 auto;width:60%"></div>
+                    </div>
+                    <div class="wfp-materi-card">
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:4px auto 2px"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:0 auto;width:60%"></div>
+                    </div>
+                  </div>
+                  <div class="wfp-materi-grid">
+                    <div class="wfp-materi-card">
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:4px auto 2px"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:0 auto;width:60%"></div>
+                    </div>
+                    <div class="wfp-materi-card">
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:4px auto 2px"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:0 auto;width:60%"></div>
+                    </div>
+                    <div class="wfp-materi-card">
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:4px auto 2px"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:0 auto;width:60%"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="wfp-footer-bar"></div>
+              </div>
+              <div class="wf-page-desc">Grid 6 kartu materi dengan ikon, judul, dan tombol navigasi.</div>
+            </div>
+            <!-- Halaman 3: Berkas Tambahan -->
+            <div class="wf-page-card">
+              <div class="wf-page-num">03</div>
+              <div class="wf-page-title">📁 Berkas Tambahan</div>
+              <div class="wf-page-mockup">
+                <div class="wfp-navbar">
+                  <span class="wfp-brand">CarbonTrace</span>
+                  <span class="wfp-school">SMK N 4 KENDAL</span>
+                  <span class="wfp-lang">EN</span>
+                </div>
+                <div style="padding:8px;">
+                  <div class="wfp-bar wfp-bar-md wfp-bar-dark" style="margin:4px auto 6px"></div>
+                  <div class="wfp-bar wfp-bar-sm wfp-bar-gray" style="margin:0 auto 10px"></div>
+                  <div class="wfp-berkas-grid">
+                    <div class="wfp-berkas-card">
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-berkas-card">
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-berkas-card">
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-berkas-card">
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-berkas-card">
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-berkas-card wfp-berkas-add">
+                      <div style="font-size:1.4rem;color:#9ca3af">+</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="wfp-footer-bar"></div>
+              </div>
+              <div class="wf-page-desc">Grid berkas unduhan (XLSX/PDF) dengan tombol tambah berkas baru.</div>
+            </div>
+            <!-- Halaman 4: About Us -->
+            <div class="wf-page-card">
+              <div class="wf-page-num">04</div>
+              <div class="wf-page-title">ℹ️ About Us</div>
+              <div class="wf-page-mockup">
+                <div class="wfp-navbar">
+                  <span class="wfp-brand">CarbonTrace</span>
+                  <span class="wfp-school wfp-active-nav">SMK N 4 KENDAL</span>
+                  <span class="wfp-lang">EN</span>
+                </div>
+                <div style="padding:8px;">
+                  <div style="display:flex;gap:6px;margin-bottom:8px;align-items:flex-start">
+                    <div style="width:28px;height:28px;background:#a7f3d0;border-radius:6px;flex-shrink:0"></div>
+                    <div style="flex:1">
+                      <div class="wfp-bar wfp-bar-md wfp-bar-dark" style="margin-bottom:4px"></div>
+                      <div class="wfp-bar wfp-bar-sm wfp-bar-gray" style="margin-bottom:3px"></div>
+                      <div class="wfp-bar wfp-bar-sm wfp-bar-gray"></div>
+                    </div>
+                  </div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px">
+                    <div class="wfp-about-card"
+                      style="background:#f0fdf4;border:1px solid #86efac;padding:8px;border-radius:8px">
+                      <div style="display:flex;align-items:center;gap:4px;margin-bottom:4px">
+                        <div class="wfp-bar wfp-bar-sm wfp-bar-dark" style="margin:0"></div>
+                      </div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin-bottom:2px"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray"></div>
+                    </div>
+                    <div class="wfp-about-card"
+                      style="background:#f0fdf4;border:1px solid #86efac;padding:8px;border-radius:8px">
+                      <div style="display:flex;align-items:center;gap:4px;margin-bottom:4px">
+                        <div class="wfp-bar wfp-bar-sm wfp-bar-dark" style="margin:0"></div>
+                      </div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin-bottom:2px"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray"></div>
+                    </div>
+                  </div>
+                  <!-- Step timeline -->
+                  <div style="display:flex;align-items:center;gap:3px;padding:6px 4px">
+                    <div class="wfp-step">1</div>
+                    <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="flex:1;height:2px;margin:0"></div>
+                    <div class="wfp-step">2</div>
+                    <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="flex:1;height:2px;margin:0"></div>
+                    <div class="wfp-step">3</div>
+                    <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="flex:1;height:2px;margin:0"></div>
+                    <div class="wfp-step">4</div>
+                  </div>
+                </div>
+                <div class="wfp-footer-bar"></div>
+              </div>
+              <div class="wf-page-desc">Profil tim, visi-misi, dan timeline perjalanan proyek CarbonTrace.</div>
+            </div>
+            <!-- Halaman 5: Profil Siswa -->
+            <div class="wf-page-card">
+              <div class="wf-page-num">05</div>
+              <div class="wf-page-title">👤 Profil Siswa</div>
+              <div class="wf-page-mockup">
+                <div class="wfp-navbar">
+                  <span class="wfp-brand">CarbonTrace</span>
+                  <span class="wfp-school">SMK N 4 KENDAL</span>
+                  <span class="wfp-lang">EN</span>
+                </div>
+                <div style="background:#f0fdf4;padding:8px;margin-bottom:4px;display:flex;align-items:center;gap:6px">
+                  <div style="width:20px;height:20px;background:#d1d5db;border-radius:4px"></div>
+                  <div>
+                    <div class="wfp-bar wfp-bar-md wfp-bar-dark" style="margin-bottom:3px"></div>
+                    <div class="wfp-bar wfp-bar-sm wfp-bar-gray"></div>
+                  </div>
+                </div>
+                <div style="padding:0 6px 6px">
+                  <div class="wfp-bar wfp-bar-xs wfp-bar-green" style="height:2px;border-radius:2px;margin-bottom:8px">
+                  </div>
+                  <div class="wfp-siswa-grid">
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                  </div>
+                  <div class="wfp-siswa-grid" style="margin-top:4px">
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                  </div>
+                  <div
+                    style="display:flex;align-items:center;gap:4px;margin-top:6px;padding:4px 0;border-top:1px solid #d1fae5">
+                    <div class="wfp-bar wfp-bar-md wfp-bar-gray" style="flex:1;margin:0"></div>
+                  </div>
+                </div>
+                <div class="wfp-footer-bar"></div>
+              </div>
+              <div class="wf-page-desc">Daftar kartu siswa dengan kontak email &amp; WhatsApp, plus link dokumen.</div>
+            </div>
+            <!-- Halaman 6: Kontak Guru -->
+            <div class="wf-page-card">
+              <div class="wf-page-num">06</div>
+              <div class="wf-page-title">👩‍🏫 Kontak Guru</div>
+              <div class="wf-page-mockup">
+                <div class="wfp-navbar">
+                  <span class="wfp-brand">CarbonTrace</span>
+                  <span class="wfp-school">SMK N 4 KENDAL</span>
+                  <span class="wfp-lang">EN</span>
+                </div>
+                <div style="background:#f0fdf4;padding:8px;margin-bottom:4px;display:flex;align-items:center;gap:6px">
+                  <div style="width:20px;height:20px;background:#d1d5db;border-radius:4px"></div>
+                  <div>
+                    <div class="wfp-bar wfp-bar-md wfp-bar-dark" style="margin-bottom:3px"></div>
+                    <div class="wfp-bar wfp-bar-sm wfp-bar-gray"></div>
+                  </div>
+                </div>
+                <div style="padding:0 6px 6px">
+                  <!-- Guru info cards row -->
+                  <div style="display:flex;gap:4px;margin-bottom:8px">
+                    <div
+                      style="flex:1;background:#f0fdf4;border:1px solid #a7f3d0;border-radius:6px;padding:5px;text-align:center;font-size:0.65rem;color:#059669">
+                      <br />Data Diri
+                    </div>
+                    <div
+                      style="flex:1;background:#f0fdf4;border:1px solid #a7f3d0;border-radius:6px;padding:5px;text-align:center;font-size:0.65rem;color:#059669">
+                      <br />Mapel
+                    </div>
+                    <div
+                      style="flex:1;background:#f0fdf4;border:1px solid #a7f3d0;border-radius:6px;padding:5px;text-align:center;font-size:0.65rem;color:#059669">
+                      <br />Jadwal
+                    </div>
+                  </div>
+                  <div class="wfp-bar wfp-bar-sm wfp-bar-dark" style="margin-bottom:6px"></div>
+                  <!-- Guru grid -->
+                  <div class="wfp-siswa-grid">
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar" style="background:#d1fae5;color:#059669"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar" style="background:#d1fae5;color:#059669"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar" style="background:#d1fae5;color:#059669"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar" style="background:#d1fae5;color:#059669"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                  </div>
+                  <div class="wfp-siswa-grid" style="margin-top:4px">
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar" style="background:#d1fae5;color:#059669"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar" style="background:#d1fae5;color:#059669"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar" style="background:#d1fae5;color:#059669"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar" style="background:#d1fae5;color:#059669"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                  </div>
+                  <div class="wfp-siswa-grid" style="margin-top:4px">
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar" style="background:#d1fae5;color:#059669"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar" style="background:#d1fae5;color:#059669"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar" style="background:#d1fae5;color:#059669"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                    <div class="wfp-siswa-item">
+                      <div class="wfp-siswa-avatar" style="background:#d1fae5;color:#059669"></div>
+                      <div class="wfp-bar wfp-bar-xs wfp-bar-gray" style="margin:3px auto"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="wfp-footer-bar"></div>
+              </div>
+              <div class="wf-page-desc">Daftar guru dengan info mapel, jadwal, dan kontak email &amp; WhatsApp.</div>
+            </div>
+          </div><!-- /wf-pages-grid -->
+        </div>
+      </section>
+      <!-- RANGKUMAN -->
+      <div class="rangkuman-box">
+        <div class="rb-header">
+          <span class="rb-icon">🌿</span>
+          <h3>Rangkuman Materi Seni &amp; Budaya Digital</h3>
+        </div>
+        <div class="rb-grid">
+          <div class="rb-item"><span class="rb-num">1</span><strong>Moodboard</strong> — Palet ekologi-digital hijau +
+            biru aksen + putih foam dengan aturan 60-30-10.</div>
+          <div class="rb-item"><span class="rb-num">2</span><strong>Tipografi</strong> — Montserrat (heading) + Space
+            Grotesk (body), hierarki jelas, minimal 15px.</div>
+          <div class="rb-item"><span class="rb-num">3</span><strong>Desain UI &amp; Wireframe</strong> — Sketsa 6
+            halaman lengkap: tombol, form, panel kalkulasi, dan seluruh layout web sebelum dikodekan.</div>
+        </div>
+      </div>
+    </div><!-- /container -->
+  </main>
+  <style>
+    /* ══════════════════════════════════════════
+   SENBUD PAGE — ADDITIONAL STYLES
+══════════════════════════════════════════ */
+    .senbud-main {
+      padding: 48px 0 80px;
+    }
+
+    /* TOC */
+    .senbud-toc {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 16px 24px;
+      margin-bottom: 48px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .toc-label {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .toc-items {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .toc-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: var(--green-50);
+      color: var(--green-700);
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 1.5px solid var(--green-200);
+      transition: all var(--transition);
+    }
+
+    .toc-item:hover {
+      background: var(--green-600);
+      color: #fff;
+      border-color: var(--green-600);
+    }
+
+    .toc-num {
+      width: 20px;
+      height: 20px;
+      background: var(--green-600);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .toc-item:hover .toc-num {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* MATERI SECTION */
+    .materi-section {
+      margin-bottom: 72px;
+      scroll-margin-top: 88px;
+    }
+
+    .materi-header {
+      margin-bottom: 32px;
+    }
+
+    .materi-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      background: var(--green-600);
+      color: #fff;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .materi-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: var(--text-main);
+    }
+
+    .materi-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 680px;
+      line-height: 1.7;
+    }
+
+    .sub-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 28px 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* INFO BOX */
+    .info-box {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 18px 22px;
+      border-radius: var(--radius-md);
+      margin-bottom: 24px;
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .info-green {
+      background: var(--green-50);
+      border: 1.5px solid var(--green-200);
+      color: var(--text-secondary);
+    }
+
+    .info-blue {
+      background: #eff6ff;
+      border: 1.5px solid #bfdbfe;
+      color: #1e40af;
+    }
+
+    .info-yellow {
+      background: #fffbeb;
+      border: 1.5px solid #fde68a;
+      color: #92400e;
+    }
+
+    body.dark .info-blue {
+      background: rgba(59, 130, 246, 0.08);
+      color: #93c5fd;
+      border-color: rgba(59, 130, 246, 0.25);
+    }
+
+    body.dark .info-yellow {
+      background: rgba(245, 158, 11, 0.08);
+      color: #fbbf24;
+      border-color: rgba(245, 158, 11, 0.25);
+    }
+
+    .info-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* PALETTE */
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .palette-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: all var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .palette-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .palette-swatch {
+      height: 72px;
+    }
+
+    .palette-info {
+      padding: 12px 14px;
+    }
+
+    .palette-name {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .palette-hex {
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .palette-role {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    /* PHILOSOPHY */
+    .philosophy-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .philosophy-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      transition: all var(--transition);
+    }
+
+    .philosophy-item:hover {
+      border-color: var(--green-400);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .phi-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    /* RULE 60-30-10 */
+    .rule-highlight {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: linear-gradient(135deg, var(--green-50), #fff);
+      border: 2px solid var(--green-300);
+      border-radius: var(--radius-md);
+      padding: 18px 22px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    body.dark .rule-highlight {
+      background: rgba(16, 185, 129, 0.07);
+    }
+
+    .rh-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .rh-pill {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin: 2px 2px;
+    }
+
+    .rh-60 {
+      background: var(--green-100);
+      color: var(--green-800);
+    }
+
+    .rh-30 {
+      background: var(--green-500);
+      color: #fff;
+    }
+
+    .rh-10 {
+      background: #bfdbfe;
+      color: #1e40af;
+    }
+
+    /* FONT SHOWCASE */
+    .font-showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 640px) {
+      .font-showcase-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .font-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      transition: all var(--transition);
+    }
+
+    .font-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--green-400);
+    }
+
+    .fc-heading {
+      border-top: 4px solid var(--green-600);
+    }
+
+    .fc-body {
+      border-top: 4px solid #38bdf8;
+    }
+
+    .fc-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .fc-sample-big {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    .fc-sample-sub {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    .fc-meta {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .fc-tag {
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: var(--green-50);
+      color: var(--green-700);
+      border: 1px solid var(--green-200);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .fc-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* TYPO HIERARCHY */
+    .typo-hierarchy {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1.5px solid var(--border-color);
+      margin-bottom: 24px;
+    }
+
+    .typo-row {
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--border-color);
+      background: var(--bg-card);
+      transition: background var(--transition);
+    }
+
+    .typo-row:last-child {
+      border-bottom: none;
+    }
+
+    .typo-row:hover {
+      background: var(--green-50);
+    }
+
+    body.dark .typo-row:hover {
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    .typo-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--green-600);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 4px;
+    }
+
+    .typo-sample {
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .typo-spec {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: monospace;
+    }
+
+    /* DO/DON'T */
+    .dodo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .dodo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .dodo-card {
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+
+    .dodo-do {
+      background: #f0fdf4;
+      border: 1.5px solid #86efac;
+    }
+
+    .dodo-dont {
+      background: #fef2f2;
+      border: 1.5px solid #fca5a5;
+    }
+
+    body.dark .dodo-do {
+      background: rgba(16, 185, 129, 0.08);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    body.dark .dodo-dont {
+      background: rgba(239, 68, 68, 0.08);
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    .dodo-header {
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+
+    .dodo-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-left: 4px;
+    }
+
+    .dodo-list li {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      display: flex;
+      gap: 8px;
+    }
+
+    .dodo-list li::before {
+      content: '•';
+      flex-shrink: 0;
+      color: var(--green-500);
+      font-weight: 900;
+    }
+
+    .dodo-dont .dodo-list li::before {
+      color: #ef4444;
+    }
+
+    /* WIREFRAME */
+    .wireframe-section {
+      margin-bottom: 24px;
+    }
+
+    .wf-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .wf-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .wf-sketch {
+      padding: 14px 22px;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-align: center;
+      cursor: default;
+      transition: all 0.2s;
+    }
+
+    .wf-btn-primary {
+      background: var(--green-600);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(5, 150, 105, 0.3);
+    }
+
+    .wf-btn-primary:hover {
+      background: var(--green-700);
+      transform: translateY(-2px);
+    }
+
+    .wf-btn-outline {
+      background: transparent;
+      color: var(--green-600);
+      border: 2px solid var(--green-500);
+    }
+
+    .wf-btn-outline:hover {
+      background: var(--green-50);
+    }
+
+    .wf-btn-ghost {
+      background: transparent;
+      color: var(--green-600);
+      font-weight: 600;
+    }
+
+    .wf-btn-ghost:hover {
+      color: var(--green-700);
+    }
+
+    .wf-spec-list {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .wf-spec-list span {
+      display: block;
+    }
+
+    /* BUTTON STATES */
+    .btn-states {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 18px 22px;
+    }
+
+    .bs-title {
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 14px;
+      color: var(--text-main);
+    }
+
+    .bs-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .bs-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .bs-swatch {
+      padding: 10px 20px;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .bs-normal {
+      background: var(--green-600);
+      color: #fff;
+    }
+
+    .bs-hover {
+      background: var(--green-700);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(5, 150, 105, 0.35);
+    }
+
+    .bs-active {
+      background: var(--green-800);
+      color: #fff;
+      transform: scale(0.97);
+    }
+
+    .bs-disabled {
+      background: #e5e7eb;
+      color: #9ca3af;
+      cursor: not-allowed;
+    }
+
+    body.dark .bs-disabled {
+      background: #374151;
+      color: #6b7280;
+    }
+
+    .bs-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* FORM WIREFRAME */
+    .wireframe-form-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 640px) {
+      .wireframe-form-demo {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .wf-form-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+
+    .wf-form-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    .wf-form-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--green-400);
+      border-radius: var(--radius-md);
+      background: var(--bg-main);
+      font-size: 1rem;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+    }
+
+    .wf-form-select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--green-300);
+      border-radius: var(--radius-md);
+      background: var(--bg-main);
+      font-size: 0.92rem;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .wf-form-hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .wf-form-spec {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .spec-tag {
+      padding: 3px 9px;
+      background: var(--green-50);
+      color: var(--green-700);
+      border: 1px solid var(--green-200);
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      font-family: monospace;
+    }
+
+    /* RESULT PANEL */
+    .wf-result-panel {
+      background: var(--bg-card);
+      border: 2px solid var(--green-300);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .wfr-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .wfr-icon {
+      font-size: 1.8rem;
+    }
+
+    .wfr-title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .wfr-total {
+      text-align: center;
+      padding: 20px;
+      background: var(--green-50);
+      border-radius: var(--radius-lg);
+      margin-bottom: 20px;
+    }
+
+    body.dark .wfr-total {
+      background: rgba(16, 185, 129, 0.08);
+    }
+
+    .wfrt-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .wfrt-value {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--green-600);
+    }
+
+    .wfrt-value span {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .wfrt-badge {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 5px 16px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .wfrt-medium {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .wfr-breakdown {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .wfrb-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .wfrb-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      min-width: 120px;
+      color: var(--text-main);
+    }
+
+    .wfrb-bar {
+      flex: 1;
+      height: 8px;
+      background: var(--green-100);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    body.dark .wfrb-bar {
+      background: rgba(16, 185, 129, 0.15);
+    }
+
+    .wfrb-fill {
+      height: 100%;
+      border-radius: 100px;
+    }
+
+    .wfrb-val {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-main);
+      min-width: 60px;
+      text-align: right;
+    }
+
+    .wfr-action {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .wfra-btn {
+      flex: 1;
+      text-align: center;
+      padding: 11px 20px;
+      background: var(--green-600);
+      color: #fff;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      min-width: 140px;
+    }
+
+    .wfra-outline {
+      background: transparent;
+      color: var(--green-600);
+      border: 2px solid var(--green-400);
+    }
+
+    .wf-annotation {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* KOMPOSISI */
+    .komposisi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 640px) {
+      .komposisi-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .komp-card {
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+
+    .komp-bad {
+      background: #fef2f2;
+      border: 1.5px solid #fca5a5;
+    }
+
+    .komp-good {
+      background: #f0fdf4;
+      border: 1.5px solid #86efac;
+    }
+
+    body.dark .komp-bad {
+      background: rgba(239, 68, 68, 0.07);
+      border-color: rgba(239, 68, 68, 0.25);
+    }
+
+    body.dark .komp-good {
+      background: rgba(16, 185, 129, 0.07);
+      border-color: rgba(16, 185, 129, 0.25);
+    }
+
+    .komp-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .komp-label-bad {
+      color: #dc2626;
+    }
+
+    .komp-label-good {
+      color: var(--green-700);
+    }
+
+    .komp-mockup {
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .dense-mock {
+      background: #fff;
+      border: 1px solid #fca5a5;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    body.dark .dense-mock {
+      background: #1a1a2e;
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    .dm-block {
+      background: #fca5a5;
+      border-radius: 4px;
+      padding: 6px 8px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #7f1d1d;
+    }
+
+    body.dark .dm-block {
+      background: rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+    }
+
+    .dm-text {
+      font-size: 0.65rem;
+      line-height: 1.3;
+    }
+
+    .dm-row {
+      display: flex;
+      gap: 4px;
+    }
+
+    .dm-full {
+      flex: 1;
+    }
+
+    .dm-half {
+      flex: 1;
+    }
+
+    .dm-third {
+      flex: 1;
+    }
+
+    .spaced-mock {
+      background: #fff;
+      border: 1px solid #86efac;
+      padding: 20px 16px;
+      text-align: center;
+    }
+
+    body.dark .spaced-mock {
+      background: #0d2b1c;
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .sm-title {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--green-700);
+      margin-bottom: 6px;
+    }
+
+    .sm-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .sm-cards {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .sm-card {
+      flex: 1;
+      background: var(--green-50);
+      border: 1px solid var(--green-200);
+      border-radius: 8px;
+      padding: 10px 6px;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+
+    body.dark .sm-card {
+      background: rgba(16, 185, 129, 0.08);
+      border-color: rgba(16, 185, 129, 0.2);
+    }
+
+    .komp-note {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* PRINSIP LIST */
+    .prinsip-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .prinsip-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      transition: all var(--transition);
+    }
+
+    .prinsip-item:hover {
+      border-color: var(--green-400);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .prinsip-num {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--green-200);
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .prinsip-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    /* EVALUASI */
+    .eval-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .eval-category {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .eval-cat-title {
+      background: var(--green-700);
+      color: #fff;
+      padding: 10px 18px;
+      font-weight: 800;
+      font-size: 0.88rem;
+    }
+
+    .eval-items {
+      padding: 12px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .eval-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .eval-item:last-child {
+      border-bottom: none;
+    }
+
+    .eval-checkbox {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .eval-ok {
+      background: var(--green-100);
+      color: var(--green-700);
+    }
+
+    .eval-warn {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    body.dark .eval-ok {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--green-400);
+    }
+
+    body.dark .eval-warn {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+    }
+
+    .eval-text {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-top: 2px;
+    }
+
+    /* COLOR CLASH */
+    .color-clash-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .clash-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .clash-label {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* RUBRIK TABLE */
+    .rubrik-table-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius-lg);
+      border: 1.5px solid var(--border-color);
+    }
+
+    .rubrik-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .rubrik-table thead th {
+      background: var(--green-700);
+      color: #fff;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .rubrik-table tbody td {
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+
+    .rubrik-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .rubrik-table tbody tr:hover td {
+      background: var(--green-50);
+    }
+
+    body.dark .rubrik-table tbody tr:hover td {
+      background: rgba(16, 185, 129, 0.05);
+    }
+
+    /* RANGKUMAN */
+    .rangkuman-box {
+      background: linear-gradient(135deg, var(--green-800) 0%, var(--green-900) 100%);
+      border-radius: var(--radius-xl);
+      padding: 36px 40px;
+      color: #fff;
+      margin-top: 16px;
+    }
+
+    .rb-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .rb-icon {
+      font-size: 2rem;
+    }
+
+    .rb-header h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    .rb-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 640px) {
+      .rb-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .rangkuman-box {
+        padding: 24px 20px;
+      }
+    }
+
+    .rb-item {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      font-size: 0.87rem;
+      line-height: 1.65;
+      color: #d1fae5;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .rb-num {
+      width: 26px;
+      height: 26px;
+      background: var(--green-400);
+      color: var(--green-900);
+      border-radius: 50%;
+      font-weight: 800;
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      padding: calc(var(--nav-height) + 40px) 24px 48px;
+    }
+
+    .page-hero-hist {
+      background: linear-gradient(135deg, #f0fdf6 0%, #ecfdf5 50%, #d1fae5 100%);
+      border-bottom: 2px solid var(--green-200);
+    }
+
+    body.dark .page-hero-hist {
+      background: linear-gradient(135deg, #071c12 0%, #0d2b1c 100%);
+      border-bottom-color: var(--border-color);
+    }
+
+    .page-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    /* WIREFRAME PAGES GRID */
+    .wf-pages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 24px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 900px) {
+      .wf-pages-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .wf-pages-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .wf-page-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wf-page-card:hover {
+      border-color: var(--green-400);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+
+    .wf-page-num {
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--green-600);
+      letter-spacing: 1.5px;
+      padding: 10px 14px 0;
+      text-transform: uppercase;
+    }
+
+    .wf-page-title {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-main);
+      padding: 2px 14px 10px;
+      border-bottom: 1.5px solid var(--border-color);
+    }
+
+    /* MOCKUP SHELL */
+    .wf-page-mockup {
+      background: #f8fafb;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.dark .wf-page-mockup {
+      background: #0d1a14;
+    }
+
+    /* NAVBAR inside mockup */
+    .wfp-navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 10px;
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      font-size: 0.62rem;
+      font-weight: 700;
+    }
+
+    body.dark .wfp-navbar {
+      background: #111b14;
+      border-bottom-color: #1f2d20;
+    }
+
+    .wfp-brand {
+      color: #059669;
+      font-size: 0.65rem;
+    }
+
+    .wfp-school {
+      color: #374151;
+      font-size: 0.58rem;
+      font-weight: 600;
+    }
+
+    body.dark .wfp-school {
+      color: #9ca3af;
+    }
+
+    .wfp-active-nav {
+      color: #059669;
+      border-bottom: 2px solid #059669;
+      padding-bottom: 2px;
+    }
+
+    .wfp-lang {
+      font-size: 0.55rem;
+      font-weight: 700;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      padding: 1px 4px;
+      color: #374151;
+    }
+
+    body.dark .wfp-lang {
+      border-color: #374151;
+      color: #9ca3af;
+    }
+
+    /* BAR placeholders */
+    .wfp-bar {
+      border-radius: 100px;
+      display: block;
+    }
+
+    .wfp-bar-xs {
+      height: 5px;
+      width: 80%;
+    }
+
+    .wfp-bar-sm {
+      height: 6px;
+      width: 60%;
+    }
+
+    .wfp-bar-md {
+      height: 8px;
+      width: 75%;
+    }
+
+    .wfp-bar-lg {
+      height: 10px;
+      width: 90%;
+    }
+
+    .wfp-bar-dark {
+      background: #1f2937;
+    }
+
+    body.dark .wfp-bar-dark {
+      background: #e5e7eb;
+    }
+
+    .wfp-bar-gray {
+      background: #d1d5db;
+    }
+
+    body.dark .wfp-bar-gray {
+      background: #374151;
+    }
+
+    .wfp-bar-green {
+      background: #059669;
+    }
+
+    /* HERO inside mockup */
+    .wfp-hero {
+      display: flex;
+      gap: 8px;
+      padding: 10px 10px 8px;
+      flex: 1;
+    }
+
+    .wfp-hero-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .wfp-btns {
+      display: flex;
+      gap: 5px;
+      margin-top: 4px;
+    }
+
+    .wfp-btn-primary {
+      background: #059669;
+      color: #fff;
+      border-radius: 100px;
+      padding: 4px 10px;
+      font-size: 0.6rem;
+      font-weight: 700;
+    }
+
+    .wfp-btn-outline {
+      background: transparent;
+      color: #059669;
+      border: 1px solid #059669;
+      border-radius: 100px;
+      padding: 4px 8px;
+      font-size: 0.6rem;
+      font-weight: 700;
+    }
+
+    /* FEATURES row */
+    .wfp-features {
+      display: flex;
+      gap: 4px;
+      padding: 6px 8px 8px;
+    }
+
+    .wfp-feat-item {
+      flex: 1;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 6px 4px;
+      text-align: center;
+    }
+
+    body.dark .wfp-feat-item {
+      background: #111b14;
+      border-color: #1f2d20;
+    }
+
+    .wfp-feat-icon {
+      font-size: 0.9rem;
+    }
+
+    /* FOOTER bar */
+    .wfp-footer-bar {
+      height: 12px;
+      background: #065f46;
+      margin-top: auto;
+    }
+
+    /* MATERI GRID */
+    .wfp-materi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      margin-bottom: 5px;
+    }
+
+    .wfp-materi-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 6px 4px;
+      text-align: center;
+      font-size: 0.75rem;
+      position: relative;
+    }
+
+    body.dark .wfp-materi-card {
+      background: #111b14;
+      border-color: #1f2d20;
+    }
+
+    .wfp-materi-icon {
+      font-size: 1rem;
+      margin-bottom: 3px;
+    }
+
+    .wfp-arrow-circle {
+      width: 14px;
+      height: 14px;
+      background: #059669;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.55rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 4px auto 0;
+    }
+
+    /* BERKAS GRID */
+    .wfp-berkas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+    }
+
+    .wfp-berkas-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 6px 4px;
+      text-align: center;
+      font-size: 0.75rem;
+    }
+
+    body.dark .wfp-berkas-card {
+      background: #111b14;
+      border-color: #1f2d20;
+    }
+
+    .wfp-berkas-add {
+      border: 1.5px dashed #d1d5db;
+      background: transparent !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wfp-berkas-icon {
+      font-size: 1rem;
+      margin-bottom: 3px;
+    }
+
+    .wfp-berkas-badge {
+      display: inline-block;
+      color: #fff;
+      font-size: 0.5rem;
+      font-weight: 800;
+      border-radius: 3px;
+      padding: 1px 4px;
+      margin-top: 3px;
+      letter-spacing: 0.5px;
+    }
+
+    /* STEP CIRCLE */
+    .wfp-step {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      background: #059669;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.55rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* SISWA GRID */
+    .wfp-siswa-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+    }
+
+    .wfp-siswa-item {
+      text-align: center;
+    }
+
+    .wfp-siswa-avatar {
+      width: 24px;
+      height: 24px;
+      background: #d1fae5;
+      color: #059669;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .wfp-contact-icon {
+      font-size: 0.6rem;
+    }
+
+    /* PAGE DESC */
+    .wf-page-desc {
+      padding: 8px 14px 12px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+  </style>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-text footer-logo">🌿 CarbonTrace</div>
+          <p data-id="footer-desc">Platform edukasi jejak karbon untuk generasi muda peduli lingkungan.</p>
+        </div>
+        <div class="footer-links">
+          <h4 data-id="footer-menu">Menu</h4>
+          <a data-id="nav-beranda" href="index.html">Beranda</a>
+          <a data-id="nav-materi" href="materi.html">Materi</a>
+          <a href="about.html">About Us</a>
+        </div>
+        <div class="footer-info">
+          <h4 data-id="footer-info-title">Info</h4>
+          <p data-id="footer-info-p1">Proyek RPL Final</p>
+          <p data-id="footer-info-p2">SMA/SMK 2025</p>
+          <p>🇮🇩 Indonesia</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="footer-quote">
+          <span class="fq-leaf" data-id="footer-quote-text">🌿 Rawatlah bumi dengan bijak, karena kebaikan kecil hari ini akan menjadi keberkahan
+            bagi kehidupan di masa depan</span>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 CarbonTrace — <span data-id="footer-copy">Dibuat dengan ❤️ untuk bumi yang lebih baik</span></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- TOMBOL BACK KE MATERI -->
+  <a class="back-to-materi-btn" data-id="back-to-materi" href="dokumen.html">
+    <span class="btn-arrow">←</span> Kembali ke Dokumen
+  </a>
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Basa Jawa — CarbonTrace</title>
+  <link href="style.css" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Space+Grotesk:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <style>
+    .back-to-materi-btn {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      background: var(--green-600);
+      color: white;
+      border-radius: 100px;
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(5, 150, 105, 0.38);
+      transition: all 0.25s ease;
+    }
+
+    .back-to-materi-btn:hover {
+      background: var(--green-700);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(5, 150, 105, 0.45);
+      color: white;
+    }
+
+    .back-to-materi-btn .btn-arrow {
+      transition: transform 0.2s;
+    }
+
+    .back-to-materi-btn:hover .btn-arrow {
+      transform: translateX(-3px);
+    }
+
+    @media (max-width: 600px) {
+      .back-to-materi-btn {
+        bottom: 20px;
+        right: 16px;
+        padding: 10px 16px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">🌿</span>
+      <span class="brand-text">CarbonTrace</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+
+      <a class="nav-link" data-id="beranda" href="index.html">Beranda</a><a class="nav-link" data-id="nav-profil"
+        href="profil.html">Profil</a><a class="nav-link" data-id="materi" href="materi.html">Materi</a><a
+        class="nav-link" data-id="about" href="about.html">About Us</a><a class="nav-link" data-id="nav-kontak"
+        href="kontak-guru.html">Kontak Guru</a>
+    </div>
+    <div class="nav-controls">
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">🌐 EN</button>
+      <button class="dark-toggle" id="darkToggle" onclick="toggleDark()">🌙</button>
+      <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+  </nav>
+  <div class="page-hero page-hero-jawa">
+    <div class="container">
+      <h1 class="page-title" data-id="jawa-title">🎋 Pacelathon Basa Jawa</h1>
+      <p class="page-subtitle" data-id="jawa-sub">Wicara bab njaga lingkungan ngangge basa Jawa</p>
+    </div>
+  </div>
+  <section class="content-section">
+    <div class="container">
+      <div class="article-intro">
+        <p>Ing kaca menika, kita badhe nyinau pacelathon (dialog) bab njaga lingkungan kanthi ngangge basa Jawa ngoko
+          lan krama inggil. Pacelathon menika minangka tuladha anggenipun ngrembag babagan lingkungan hidup ing saben
+          dinten, kanthi nggatosaken unggah-ungguhing basa Jawa.</p>
+      </div>
+      <!-- PENJELASAN TINGKATAN BAHASA -->
+      <div class="jawa-levels">
+        <h2 data-id="jawa-sec1-h">Tingkatan Basa Jawa</h2>
+        <div class="level-grid">
+          <div class="level-card">
+            <div class="level-badge ngoko">Ngoko</div>
+            <h4 data-id="jawa-ngoko">Basa Ngoko</h4>
+            <p>Basa ingkang dipunginakaken dhateng tiyang ingkang sampun rumaket utawi ingkang langkung enem. Tuladha:
+              <em>"Kowe arep menyang ngendi?"</em>
+            </p>
+          </div>
+          <div class="level-card">
+            <div class="level-badge krama">Krama</div>
+            <h4 data-id="jawa-krama">Basa Krama</h4>
+            <p>Basa ingkang dipunginakaken dhateng tiyang ingkang langkung sepuh utawi ingkang dereng rumaket. Tuladha:
+              <em>"Panjenengan badhe tindak pundi?"</em>
+            </p>
+          </div>
+          <div class="level-card">
+            <div class="level-badge krama-inggil">Krama Inggil</div>
+            <h4 data-id="jawa-inggil">Krama Inggil</h4>
+            <p>Basa ingkang paling alus, dipunginakaken kangge ngurmati tiyang ingkang langkung sepuh utawi nduweni
+              pangkat. Tuladha: <em>"Bapak badhe rawuh pundi?"</em></p>
+          </div>
+        </div>
+      </div>
+      <!-- PACELATHON TUNGGAL: 4 ORANG -->
+      <div class="pacelathon-card">
+        <div class="pacelathon-header">
+          <div class="pacelathon-num">Pacelathon</div>
+          <h3 data-id="jawa-dialog-title">Rembug Babagan Lingkungan Gesang lan Ngurangi Emisi Karbon</h3>
+          <p class="pacelathon-setting" data-id="jawa-dialog-setting">🌍 Papan: Ing sekolah | Basa Jawa Krama</p>
+          <img class="gambar-jawa" src="gjawa.jpg" />
+        </div>
+        <div class="tokoh-intro">
+          <div class="tokoh-badge"><span class="tokoh-dot bima"></span>Bima</div>
+          <div class="tokoh-badge"><span class="tokoh-dot sari"></span>Sari</div>
+          <div class="tokoh-badge"><span class="tokoh-dot dika"></span>Dika</div>
+          <div class="tokoh-badge"><span class="tokoh-dot maya"></span>Maya</div>
+        </div>
+        <div class="dialog-container">
+          <div class="dialog-line">
+            <div class="speaker bima">Bima</div>
+            <div class="dialog-bubble bubble-bima">
+              <p class="dialog-text krama">"Rencang-rencang, kula badhe ngajak rembagan babagan lingkungan gesang,
+                mliginipun cara ngirangi emisi karbon ingkang sapunika dados salah satunggaling masalah paling ageng ing
+                donya."</p>
+              <p class="dialog-terjemahan">— "Teman-teman, saya ingin mengajak berdiskusi tentang lingkungan hidup,
+                khususnya cara mengurangi emisi karbon yang kini menjadi salah satu masalah terbesar di dunia."</p>
+            </div>
+          </div>
+          <div class="dialog-line right">
+            <div class="dialog-bubble bubble-sari">
+              <p class="dialog-text krama">"Inggih, Bima. Kula ugi asring mireng pawartos babagan owah-owahan iklim,
+                nanging saestu emisi karbon menika punapa lan punapa pengaribawanipun tumrap gesang padintenan?"</p>
+              <p class="dialog-terjemahan">— "Iya, Bima. Saya juga sering mendengar berita tentang perubahan iklim, tapi
+                sebenarnya emisi karbon itu apa dan apa pengaruhnya terhadap kehidupan sehari-hari?"</p>
+            </div>
+            <div class="speaker sari">Sari</div>
+          </div>
+          <div class="dialog-line">
+            <div class="speaker bima">Bima</div>
+            <div class="dialog-bubble bubble-bima">
+              <p class="dialog-text krama">"Emisi karbon menika gas karbon dioksida ingkang kathah dipunasilaken saking
+                kendaraan bermotor, pabrik, pembangkit listrik, saha kagiyatan manungsa sanesipun ingkang migunakaken
+                bahan bakar fosil. Menawi cacahipun saya kathah, suhu bumi ugi badhe saya mundhak."</p>
+              <p class="dialog-terjemahan">— "Emisi karbon adalah gas karbon dioksida yang banyak dihasilkan dari
+                kendaraan bermotor, pabrik, pembangkit listrik, dan aktivitas manusia lainnya yang menggunakan bahan
+                bakar fosil. Jika jumlahnya semakin banyak, suhu bumi pun akan semakin naik."</p>
+            </div>
+          </div>
+          <div class="dialog-line right">
+            <div class="dialog-bubble bubble-dika">
+              <p class="dialog-text krama">"Leres menika. Akibatipun boten namung ndadosaken hawa langkung panas,
+                nanging ugi saged nyebabaken banjir, kekeringan, cuaca ekstrem, saha karusakan ekosistem wonten ing
+                maneka papan."</p>
+              <p class="dialog-terjemahan">— "Benar itu. Akibatnya tidak hanya membuat udara lebih panas, tetapi juga
+                dapat menyebabkan banjir, kekeringan, cuaca ekstrem, dan kerusakan ekosistem di berbagai tempat."</p>
+            </div>
+            <div class="speaker dika">Dika</div>
+          </div>
+          <div class="dialog-line right">
+            <div class="dialog-bubble bubble-maya">
+              <p class="dialog-text krama">"Kula nate maos bilih sawetawis wilayah sapunika langkung asring ngalami
+                mangsa ingkang boten teratur amargi pengaruh pemanasan global. Mila masalah menika saestu kedah
+                dipungatosaken sesarengan."</p>
+              <p class="dialog-terjemahan">— "Saya pernah membaca bahwa beberapa wilayah kini lebih sering mengalami
+                musim yang tidak teratur akibat pengaruh pemanasan global. Maka masalah ini sungguh perlu diperhatikan
+                bersama."</p>
+            </div>
+            <div class="speaker maya">Maya</div>
+          </div>
+          <div class="dialog-line">
+            <div class="speaker sari">Sari</div>
+            <div class="dialog-bubble bubble-sari">
+              <p class="dialog-text krama">"Menawi mekaten, punapa ingkang saged dipuntindakaken dening kita minangka
+                siswa? Kula kraos bilih masalah menika sanget ageng menawi namung dipuntangani dening sawetawis tiyang."
+              </p>
+              <p class="dialog-terjemahan">— "Kalau begitu, apa yang bisa kita lakukan sebagai siswa? Saya rasa masalah
+                ini sangat besar jika hanya ditangani oleh segelintir orang."</p>
+            </div>
+          </div>
+          <div class="dialog-line">
+            <div class="speaker bima">Bima</div>
+            <div class="dialog-bubble bubble-bima">
+              <p class="dialog-text krama">"Senajan kita taksih dados siswa, wonten kathah langkah prasaja ingkang saged
+                dipuntindakaken. Tuladhanipun, menawi badhe tindak dhateng papan ingkang caket, langkung sae mlampah
+                utawi numpak sepeda tinimbang migunakaken sepeda motor."</p>
+              <p class="dialog-terjemahan">— "Meskipun kita masih menjadi siswa, ada banyak langkah sederhana yang bisa
+                dilakukan. Contohnya, bila akan pergi ke tempat yang dekat, lebih baik berjalan kaki atau naik sepeda
+                daripada menggunakan sepeda motor."</p>
+            </div>
+          </div>
+          <div class="dialog-line right">
+            <div class="dialog-bubble bubble-dika">
+              <p class="dialog-text krama">"Kula sarujuk. Kajawi menika, migunakaken transportasi umum ugi saged mbantu
+                nyuda cacah kendaraan pribadi wonten ing dalan, saengga emisi karbon saged dipunirangi."</p>
+              <p class="dialog-terjemahan">— "Saya setuju. Selain itu, menggunakan transportasi umum juga dapat membantu
+                mengurangi jumlah kendaraan pribadi di jalan, sehingga emisi karbon dapat dikurangi."</p>
+            </div>
+            <div class="speaker dika">Dika</div>
+          </div>
+          <div class="dialog-line right">
+            <div class="dialog-bubble bubble-maya">
+              <p class="dialog-text krama">"Boten namung saking babagan transportasi, panggunaan listrik ugi kedah
+                dipungatosaken. Kathah tiyang ingkang taksih nilaraken lampu saha piranti elektronik tetep urip sanajan
+                boten dipunginakaken."</p>
+              <p class="dialog-terjemahan">— "Tidak hanya dari sisi transportasi, penggunaan listrik juga perlu
+                diperhatikan. Banyak orang yang masih membiarkan lampu dan perangkat elektronik tetap menyala meski
+                tidak digunakan."</p>
+            </div>
+            <div class="speaker maya">Maya</div>
+          </div>
+          <div class="dialog-line">
+            <div class="speaker sari">Sari</div>
+            <div class="dialog-bubble bubble-sari">
+              <p class="dialog-text krama">"Wonten griya kula ugi kadhangkala mekaten. Wiwit sapunika kula badhe
+                langkung disiplin mateni lampu, kipas angin, utawi televisi menawi sampun boten dipunginakaken."</p>
+              <p class="dialog-terjemahan">— "Di rumah saya pun kadang seperti itu. Mulai sekarang saya akan lebih
+                disiplin mematikan lampu, kipas angin, atau televisi kalau sudah tidak digunakan."</p>
+            </div>
+          </div>
+          <div class="dialog-line right">
+            <div class="dialog-bubble bubble-dika">
+              <p class="dialog-text krama">"Tindak prasaja kados mekaten saestu migunani. Listrik ingkang kita ginakaken
+                umumipun taksih kathah dipunasilaken saking pembangkit berbahan bakar fosil ingkang ngasilaken emisi
+                karbon cekap ageng."</p>
+              <p class="dialog-terjemahan">— "Tindakan sederhana seperti itu sungguh berguna. Listrik yang kita gunakan
+                umumnya masih banyak dihasilkan dari pembangkit berbahan bakar fosil yang menghasilkan emisi karbon
+                cukup besar."</p>
+            </div>
+            <div class="speaker dika">Dika</div>
+          </div>
+          <div class="dialog-line">
+            <div class="speaker bima">Bima</div>
+            <div class="dialog-bubble bubble-bima">
+              <p class="dialog-text krama">"Kajawi menika, kita ugi saged milih lampu LED amargi langkung irit energi
+                saha umur panganggénipun langkung dangu tinimbang lampu biyasa."</p>
+              <p class="dialog-terjemahan">— "Selain itu, kita juga bisa memilih lampu LED karena lebih hemat energi dan
+                masa pakainya lebih lama dibanding lampu biasa."</p>
+            </div>
+          </div>
+          <div class="dialog-line right">
+            <div class="dialog-bubble bubble-maya">
+              <p class="dialog-text krama">"Kula ugi badhe nambahi babagan sampah plastik. Produksi saha pembuangan
+                plastik ugi nyumbang emisi karbon, mila kita kedah ngirangi panggunaan plastik sepisan pakai."</p>
+              <p class="dialog-terjemahan">— "Saya juga ingin menambahkan soal sampah plastik. Produksi dan pembuangan
+                plastik juga menyumbang emisi karbon, maka kita perlu mengurangi penggunaan plastik sekali pakai."</p>
+            </div>
+            <div class="speaker maya">Maya</div>
+          </div>
+          <div class="dialog-line">
+            <div class="speaker sari">Sari</div>
+            <div class="dialog-bubble bubble-sari">
+              <p class="dialog-text krama">"Menika sebabipun kula sapunika asring nggawa tumbler piyambak nalika sekolah
+                utawi lelungan. Kanthi cara menika kula boten perlu tumbas ombenan migunakaken botol plastik saben
+                wekdal."</p>
+              <p class="dialog-terjemahan">— "Itulah mengapa saya kini sering membawa tumbler sendiri saat sekolah atau
+                bepergian. Dengan cara itu saya tidak perlu membeli minuman menggunakan botol plastik setiap saat."</p>
+            </div>
+          </div>
+          <div class="dialog-line right">
+            <div class="dialog-bubble bubble-dika">
+              <p class="dialog-text krama">"Gagasan menika sae sanget. Menawi langkung kathah tiyang nindakaken prekawis
+                ingkang sami, cacah sampah plastik mesthi saged dipunirangi kanthi signifikan."</p>
+              <p class="dialog-terjemahan">— "Gagasan itu sangat bagus. Bila lebih banyak orang melakukan hal yang sama,
+                jumlah sampah plastik pasti bisa dikurangi secara signifikan."</p>
+            </div>
+            <div class="speaker dika">Dika</div>
+          </div>
+          <div class="dialog-line">
+            <div class="speaker bima">Bima</div>
+            <div class="dialog-bubble bubble-bima">
+              <p class="dialog-text krama">"Kajawi nggawa tumbler, kita ugi saged misahaken sampah organik saha
+                anorganik supados langkung gampil dipundaur ulang."</p>
+              <p class="dialog-terjemahan">— "Selain membawa tumbler, kita juga bisa memisahkan sampah organik dan
+                anorganik agar lebih mudah didaur ulang."</p>
+            </div>
+          </div>
+          <div class="dialog-line right">
+            <div class="dialog-bubble bubble-maya">
+              <p class="dialog-text krama">"Leres. Sampah organik saged dipunolah dados kompos kangge tanduran, dene
+                sampah anorganik saged dipunkintun dhateng pusat daur ulang supados boten namung numpuk wonten ing papan
+                pembuangan pungkasan."</p>
+              <p class="dialog-terjemahan">— "Benar. Sampah organik bisa diolah menjadi kompos untuk tanaman, sedangkan
+                sampah anorganik bisa dikirim ke pusat daur ulang agar tidak hanya menumpuk di tempat pembuangan akhir."
+              </p>
+            </div>
+            <div class="speaker maya">Maya</div>
+          </div>
+          <div class="dialog-line">
+            <div class="speaker sari">Sari</div>
+            <div class="dialog-bubble bubble-sari">
+              <p class="dialog-text krama">"Ngendikan babagan tanduran, kula rumiyin manah bilih nandur wit ugi dados
+                salah satunggaling cara ingkang sae kangge mbantu lingkungan."</p>
+              <p class="dialog-terjemahan">— "Berbicara soal tanaman, saya rasa menanam pohon juga menjadi salah satu
+                cara yang baik untuk membantu lingkungan."</p>
+            </div>
+          </div>
+          <div class="dialog-line right">
+            <div class="dialog-bubble bubble-maya">
+              <p class="dialog-text krama">"Mesthi kemawon. Wit-witan saged nyerep karbon dioksida saking udara saha
+                ngasilaken oksigen ingkang dipunbetahaken dening makhluk gesang. Saya kathah wit, saya sae ugi kualitas
+                udara wonten ing sakiteripun."</p>
+              <p class="dialog-terjemahan">— "Tentu saja. Pohon-pohon dapat menyerap karbon dioksida dari udara dan
+                menghasilkan oksigen yang dibutuhkan oleh makhluk hidup. Semakin banyak pohon, semakin baik pula
+                kualitas udara di sekitarnya."</p>
+            </div>
+            <div class="speaker maya">Maya</div>
+          </div>
+          <div class="dialog-line right">
+            <div class="dialog-bubble bubble-dika">
+              <p class="dialog-text krama">"Mila sekolah saged ngawontenaken program nandur wit utawi penghijauan
+                supados para siswa langkung peduli dhateng lingkungan."</p>
+              <p class="dialog-terjemahan">— "Maka sekolah bisa mengadakan program menanam pohon atau penghijauan agar
+                para siswa lebih peduli terhadap lingkungan."</p>
+            </div>
+            <div class="speaker dika">Dika</div>
+          </div>
+          <div class="dialog-line">
+            <div class="speaker bima">Bima</div>
+            <div class="dialog-bubble bubble-bima">
+              <p class="dialog-text krama">"Kula sarujuk sanget. Program kados mekaten boten namung ndadosaken
+                lingkungan langkung asri, nanging ugi maringi paedah jangka panjang kangge bumi."</p>
+              <p class="dialog-terjemahan">— "Saya sangat setuju. Program seperti itu tidak hanya membuat lingkungan
+                lebih asri, tetapi juga memberikan manfaat jangka panjang bagi bumi."</p>
+            </div>
+          </div>
+          <div class="dialog-line">
+            <div class="speaker sari">Sari</div>
+            <div class="dialog-bubble bubble-sari">
+              <p class="dialog-text krama">"Dados kesimpulanipun, ngirangi emisi karbon saged dipunwiwiti saking
+                kabiyasan prasaja kados nyuda panggunaan kendaraan pribadi, ngirit listrik, nyuda sampah plastik, saha
+                nandur wit."</p>
+              <p class="dialog-terjemahan">— "Jadi kesimpulannya, mengurangi emisi karbon bisa dimulai dari kebiasaan
+                sederhana seperti mengurangi penggunaan kendaraan pribadi, hemat listrik, mengurangi sampah plastik, dan
+                menanam pohon."</p>
+            </div>
+          </div>
+          <div class="dialog-line right">
+            <div class="dialog-bubble bubble-maya">
+              <p class="dialog-text krama">"Inggih, lan ingkang paling wigati inggih menika konsistensi. Menawi sedaya
+                tiyang purun melu saha nindakaken wiwit sapunika, pengaribawanipun mesthi ageng sanget tumrap masa depan
+                lingkungan."</p>
+              <p class="dialog-terjemahan">— "Iya, dan yang paling penting adalah konsistensi. Jika semua orang mau ikut
+                dan melakukannya mulai sekarang, dampaknya pasti sangat besar bagi masa depan lingkungan."</p>
+            </div>
+            <div class="speaker maya">Maya</div>
+          </div>
+          <div class="dialog-line right">
+            <div class="dialog-bubble bubble-dika">
+              <p class="dialog-text krama">"Mugi-mugi kesadaran masyarakat babagan wigatosipun ngirangi emisi karbon
+                tansah mundhak supados bumi tetep lestari saha nyaman kangge generasi salajengipun."</p>
+              <p class="dialog-terjemahan">— "Semoga kesadaran masyarakat tentang pentingnya mengurangi emisi karbon
+                terus meningkat agar bumi tetap lestari dan nyaman bagi generasi berikutnya."</p>
+            </div>
+            <div class="speaker dika">Dika</div>
+          </div>
+          <div class="dialog-line">
+            <div class="speaker bima">Bima</div>
+            <div class="dialog-bubble bubble-bima">
+              <p class="dialog-text krama">"Amin. Mangga kita wiwiti saking diri piyambak, amargi saben langkah alit
+                ingkang dipuntindakaken dinten menika saged dados owah-owahan ageng kangge tembe wingking."</p>
+              <p class="dialog-terjemahan">— "Amin. Mari kita mulai dari diri sendiri, karena setiap langkah kecil yang
+                dilakukan hari ini bisa menjadi perubahan besar di masa mendatang."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- KAMUS BASA JAWA LINGKUNGAN -->
+      <div class="jawa-glossary">
+        <h2 data-id="jawa-sec2-h">📚 Kamus Istilah Lingkungan — Basa Jawa</h2>
+        <div class="glossary-grid">
+          <div class="glossary-item">
+            <span class="gl-id">Lingkungan</span>
+            <span class="gl-arrow">→</span>
+            <span class="gl-jawa">Lingkungan / Alam sakiwa tengen</span>
+          </div>
+          <div class="glossary-item">
+            <span class="gl-id">Sampah</span>
+            <span class="gl-arrow">→</span>
+            <span class="gl-jawa">Uwuh / Larahan</span>
+          </div>
+          <div class="glossary-item">
+            <span class="gl-id">Pohon</span>
+            <span class="gl-arrow">→</span>
+            <span class="gl-jawa">Wit / Wit-witan</span>
+          </div>
+          <div class="glossary-item">
+            <span class="gl-id">Menanam</span>
+            <span class="gl-arrow">→</span>
+            <span class="gl-jawa">Nandur (ngoko) / Nanem (krama)</span>
+          </div>
+          <div class="glossary-item">
+            <span class="gl-id">Listrik</span>
+            <span class="gl-arrow">→</span>
+            <span class="gl-jawa">Listrik / Daya</span>
+          </div>
+          <div class="glossary-item">
+            <span class="gl-id">Hemat</span>
+            <span class="gl-arrow">→</span>
+            <span class="gl-jawa">Ngirit (ngoko) / Ngèmat (krama)</span>
+          </div>
+          <div class="glossary-item">
+            <span class="gl-id">Bersih</span>
+            <span class="gl-arrow">→</span>
+            <span class="gl-jawa">Resik (ngoko) / Resik (krama)</span>
+          </div>
+          <div class="glossary-item">
+            <span class="gl-id">Bumi / Tanah</span>
+            <span class="gl-arrow">→</span>
+            <span class="gl-jawa">dunyo / Lemah</span>
+          </div>
+          <div class="glossary-item">
+            <span class="gl-id">Air</span>
+            <span class="gl-arrow">→</span>
+            <span class="gl-jawa">Banyu (ngoko) / Toya (krama)</span>
+          </div>
+          <div class="glossary-item">
+            <span class="gl-id">Udara</span>
+            <span class="gl-arrow">→</span>
+            <span class="gl-jawa">Angin / Hawa</span>
+          </div>
+          <div class="glossary-item">
+            <span class="gl-id">Menjaga</span>
+            <span class="gl-arrow">→</span>
+            <span class="gl-jawa">Njaga (ngoko) / Njagi (krama)</span>
+          </div>
+          <div class="glossary-item">
+            <span class="gl-id">Emisi Karbon</span>
+            <span class="gl-arrow">→</span>
+            <span class="gl-jawa">Abluk reged / Gas polutan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-text footer-logo">🌿 CarbonTrace</div>
+          <p data-id="footer-desc">Platform edukasi jejak karbon untuk generasi muda peduli lingkungan.</p>
+        </div>
+        <div class="footer-links">
+          <h4 data-id="footer-menu">Menu</h4>
+          <a data-id="nav-beranda" href="index.html">Beranda</a>
+          <a data-id="nav-materi" href="materi.html">Materi</a>
+          <a href="about.html">About Us</a>
+        </div>
+        <div class="footer-info">
+          <h4 data-id="footer-info-title">Info</h4>
+          <p data-id="footer-info-p1">Proyek RPL Final</p>
+          <p data-id="footer-info-p2">SMA/SMK 2025</p>
+          <p>🇮🇩 Indonesia</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="footer-quote">
+          <span class="fq-leaf" data-id="footer-quote-text">🌿 Rawatlah bumi dengan bijak, karena kebaikan kecil hari ini akan menjadi keberkahan
+            bagi kehidupan di masa depan</span>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 CarbonTrace — <span data-id="footer-copy">Dibuat dengan ❤️ untuk bumi yang lebih baik</span></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- TOMBOL BACK KE MATERI -->
+  <a class="back-to-materi-btn" data-id="back-to-materi" href="materi.html">
+    <span class="btn-arrow">←</span> Kembali ke Materi
+  </a>
+  <script src="script.js"></script>
+</body>
+
+</html>

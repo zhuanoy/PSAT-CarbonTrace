@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Kontak Guru — CarbonTrace</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Space+Grotesk:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+  <style>
+    /* ── HERO ── */
+    .guru-hero {
+      background: linear-gradient(135deg, #065f46 0%, #064e3b 100%);
+      padding: calc(var(--nav-height) + 48px) 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .guru-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 40%, rgba(255, 255, 255, 0.10) 0%, transparent 60%);
+    }
+
+    .guru-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .guru-hero p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+      position: relative;
+    }
+
+    .guru-hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 28px;
+      position: relative;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-num {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 800;
+      color: white;
+      display: block;
+    }
+
+    .hero-stat-label {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 600;
+    }
+
+    /* ── PAGE WRAP ── */
+    .guru-page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      margin-bottom: 28px;
+    }
+
+    .section-header-title {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .section-header-sub {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 32px 0 24px;
+    }
+
+    .section-divider-line {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green-400), transparent);
+      border-radius: 2px;
+    }
+
+    .section-divider-label {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      white-space: nowrap;
+      padding: 5px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 100px;
+    }
+
+    /* ── GURU GRID ── */
+    .guru-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* ── GURU CARD ── */
+    .guru-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .guru-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--green-400);
+    }
+
+    .guru-card-top {
+      background: linear-gradient(135deg, var(--green-600), var(--green-800));
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .guru-card-top::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(255, 255, 255, 0.12) 0%, transparent 60%);
+    }
+
+    .guru-avatar-big {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      border: 3px solid rgba(255, 255, 255, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 800;
+      font-family: var(--font-heading);
+      color: white;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .guru-card-top-info {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .guru-card-name {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 3px;
+      line-height: 1.25;
+    }
+
+    .guru-card-mapel {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .guru-card-body {
+      padding: 16px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .guru-nip-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .guru-nip-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .guru-nip-val {
+      font-size: 0.78rem;
+      color: var(--text-main);
+      font-family: monospace;
+      font-weight: 600;
+    }
+
+    /* ── WA BUTTON ── */
+    .wa-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: #25D366;
+      color: white;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .wa-link-btn:hover {
+      background: #1ebe5d;
+      transform: translateY(-1px);
+    }
+
+    .wa-no-number {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ── SEARCH ── */
+    .search-wrap {
+      margin-bottom: 32px;
+    }
+
+    .guru-search {
+      width: 100%;
+      max-width: 480px;
+      padding: 11px 18px;
+      border-radius: var(--radius-lg);
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .guru-search:focus {
+      border-color: var(--green-400);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+    }
+
+    .guru-search::placeholder {
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 700px) {
+      .guru-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .guru-page-wrap {
+        padding: 28px 16px 60px;
+      }
+
+      .guru-hero-stats {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">🌿</span>
+      <span class="brand-text">CarbonTrace</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+
+      <a class="nav-link" data-id="beranda" href="index.html">Beranda</a><a class="nav-link" data-id="nav-profil"
+        href="profil.html">Profil</a><a class="nav-link" data-id="materi" href="materi.html">Materi</a><a
+        class="nav-link" data-id="about" href="about.html">About Us</a><a class="nav-link" data-id="nav-kontak"
+        href="kontak-guru.html">Kontak Guru</a>
+    </div>
+    <div class="nav-controls">
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">🌐 EN</button>
+      <button class="dark-toggle" id="darkToggle" onclick="toggleDark()">🌙</button>
+      <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+  </nav>
+  <!-- HERO -->
+  <div class="guru-hero">
+    <h1 data-id="kontak-title">👨‍🏫 Kontak Guru Pengampu</h1>
+    <p data-id="kontak-sub">Daftar guru pengampu Projek RPL SMK Negeri 4 Kendal · Tahun Pelajaran 2025/2026</p>
+    <div class="guru-hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num" id="statJumlah">12</span>
+        <span class="hero-stat-label" data-id="kontak-stat-guru">Guru Pengampu</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">X PPLG</span>
+        <span class="hero-stat-label" data-id="kontak-stat-kelas">Kelas</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">2025/26</span>
+        <span class="hero-stat-label" data-id="kontak-stat-tahun">Tahun Pelajaran</span>
+      </div>
+    </div>
+  </div>
+  <div class="guru-page-wrap">
+    <!-- SEARCH -->
+    <div class="search-wrap">
+      <input class="guru-search" id="guruSearch" oninput="filterGuru(this.value)"
+        placeholder="🔍 Cari nama guru atau mata pelajaran..." type="text" />
+    </div>
+    <div class="section-header">
+      <div class="section-header-title" data-id="kontak-all-title">📋 Semua Guru Pengampu</div>
+      <p class="section-header-sub" data-id="kontak-section-sub">Data guru pengampu kelas X PPLG SMK Negeri 4 Kendal.
+      </p>
+    </div>
+    <div class="section-divider">
+      <div class="section-divider-line"></div>
+      <span class="section-divider-label" data-id="kontak-divider">Mapel Normatif &amp; Adaptif</span>
+      <div class="section-divider-line" style="background:linear-gradient(90deg,transparent,var(--green-400));"></div>
+    </div>
+    <div class="search-wrap">
+      <input class="guru-search" id="guruSearch" oninput="filterGuru(this.value)"
+        placeholder="🔍 Cari nama guru atau mata pelajaran..." type="text" />
+    </div>
+    <div class="section-header">
+      <div class="section-header-title">📋 Semua Guru Pengampu</div>
+      <p class="section-header-sub" data-id="kontak-section-sub">Data guru pengampu kelas X PPLG SMK Negeri 4 Kendal.
+      </p>
+    </div>
+    <div class="section-divider">
+      <div class="section-divider-line"></div>
+      <span class="section-divider-label">Mapel Normatif &amp; Adaptif</span>
+      <div class="section-divider-line" style="background:linear-gradient(90deg,transparent,var(--green-400));"></div>
+    </div>
+    <div class="guru-grid" id="guruGrid">
+      <!-- rendered by JS -->
+    </div>
+    <div id="noResult" style="display:none;text-align:center;padding:48px 0;color:var(--text-muted);font-size:1rem;">
+      😔 Tidak ada guru yang cocok dengan pencarian.
+    </div>
+  </div>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-text footer-logo">🌿 CarbonTrace</div>
+          <p data-id="footer-desc">Platform edukasi jejak karbon untuk generasi muda peduli lingkungan.</p>
+        </div>
+        <div class="footer-links">
+          <h4 data-id="footer-menu">Menu</h4>
+          <a data-id="nav-beranda" href="index.html">Beranda</a>
+          <a data-id="nav-materi" href="materi.html">Materi</a>
+          <a href="about.html">About Us</a>
+        </div>
+        <div class="footer-info">
+          <h4 data-id="footer-info-title">Info</h4>
+          <p data-id="footer-info-p1">Proyek RPL Final</p>
+          <p data-id="footer-info-p2">SMA/SMK 2025</p>
+          <p>🇮🇩 Indonesia</p>
+        </div>
+      </div>
+      <div class="footer-quote">
+        <span class="fq-leaf" data-id="footer-quote-text">🌿 Rawatlah bumi dengan bijak, karena kebaikan kecil hari ini akan menjadi keberkahan bagi
+          kehidupan di masa depan</span>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 CarbonTrace — <span data-id="footer-copy">Dibuat dengan ❤️ untuk bumi yang lebih baik</span></p>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+
+    const GURU_DATA = [
+      {
+        nama: 'Nadlrotunnaim, S.Pd',
+        mapel: 'Pend. Agama & Budi Pekerti (PABP)',
+        nip: '—',
+        wa: '+62 857-4164-2118 ',            // ← isi nomor WA di sini, contoh: '628123456789'
+      },
+      {
+        nama: 'Drs. Habib Sholeh',
+        mapel: 'Pendidikan Pancasila',
+        nip: '196811122008011005',
+        wa: '+62 812-2747-124 ',
+      },
+      {
+        nama: 'Yus Shita Aprilya, S.Pd.',
+        mapel: 'Bahasa Indonesia',
+        nip: '—',
+        wa: '+62 856-0337-8875 ',
+      },
+      {
+        nama: 'Zulham Sisca, S.Pd.',
+        mapel: 'Pend. Jasmani, Olahraga & Kesehatan',
+        nip: '197803012008011012',
+        wa: '+62 857-4064-1773',
+      },
+      {
+        nama: 'Wahyu Trisnajati, S.Pd.',
+        mapel: 'Sejarah',
+        nip: '199812102025211070',
+        wa: '+62 897-2577-654',
+      },
+      {
+        nama: 'Surtikanthi, S.Pd., M.Si',
+        mapel: 'Seni Budaya',
+        nip: '196712152022212005',
+        wa: '+62 813-9196-3600 ',
+      },
+      {
+        nama: 'Nur Halimah, S.Pd.',
+        mapel: 'Matematika',
+        nip: '198006292010012022',
+        wa: '+62 815-7620-944',
+      },
+      {
+        nama: 'Ika Setyowati, S.Pd.',
+        mapel: 'Bahasa Inggris',
+        nip: '—',
+        wa: '+62 822-4198-7910',
+      },
+      {
+        nama: 'Herli Kusuma Pradana, S.Kom.',
+        mapel: 'Informatika',
+        nip: '198608152022211007',
+        wa: '+62 856-4033-1270 ',
+      },
+      {
+        nama: 'Nofi Kusumawati, S.Pd., M.Si',
+        mapel: 'Projek IPAS',
+        nip: '197010282007012009',
+        wa: '+62 858-4884-8220 ',
+      },
+      {
+        nama: 'Fika Adin Laila, S.Pd',
+        mapel: 'Dasar-Dasar PPLG (DPK PPLG)',
+        nip: '199709242025212044',
+        wa: '+62 896-1440-4374',
+      },
+      {
+        nama: 'Usman Hanafi, S.Pd.',
+        mapel: 'Muatan Lokal Bahasa Jawa',
+        nip: '199308222025211043',
+        wa: '+62 856-0254-3768',
+      },
+    ];
+
+    /* ── Ambil 2 inisial nama ── */
+    function initials(name) {
+      return name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase();
+    }
+
+    /* ── Render kartu guru ── */
+    function renderGuru(filter = '') {
+      const grid = document.getElementById('guruGrid');
+      const noRes = document.getElementById('noResult');
+      const q = filter.toLowerCase();
+
+      const filtered = GURU_DATA.filter(g =>
+        !q || g.nama.toLowerCase().includes(q) || g.mapel.toLowerCase().includes(q)
+      );
+
+      noRes.style.display = filtered.length ? 'none' : 'block';
+
+      grid.innerHTML = filtered.map(g => {
+        const waHtml = g.wa
+          ? `<a href="https://wa.me/${g.wa.replace(/\D/g, '')}" target="_blank" class="wa-link-btn">💬 WhatsApp</a>`
+          : `<span class="wa-no-number">Nomor belum tersedia</span>`;
+
+        return `
+    <div class="guru-card">
+      <div class="guru-card-top">
+        <div class="guru-avatar-big">${initials(g.nama)}</div>
+        <div class="guru-card-top-info">
+          <div class="guru-card-name">${g.nama}</div>
+          <div class="guru-card-mapel">${g.mapel}</div>
+        </div>
+      </div>
+      <div class="guru-card-body">
+        <div class="guru-nip-row">
+          <span class="guru-nip-label">NIP</span>
+          <span class="guru-nip-val">${g.nip}</span>
+        </div>
+        ${waHtml}
+      </div>
+    </div>`;
+      }).join('');
+    }
+
+    function filterGuru(val) {
+      renderGuru(val);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('statJumlah').textContent = GURU_DATA.length;
+      renderGuru();
+    });
+  </script>
+</body>
+
+</html>

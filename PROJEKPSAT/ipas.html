@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Sejarah &amp; Analisis Emisi — CarbonTrace</title>
+  <link href="style.css" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Space+Grotesk:wght@300;400;500;600&amp;display=swap"
+    rel="stylesheet" />
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ===== BACK BUTTON ===== */
+    .back-to-materi-btn {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      background: var(--green-600, #059669);
+      color: white;
+      border-radius: 100px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(5, 150, 105, 0.38);
+      transition: all 0.25s ease;
+    }
+
+    .back-to-materi-btn:hover {
+      background: var(--green-700, #047857);
+      transform: translateY(-3px);
+      color: white;
+    }
+
+    @media (max-width:600px) {
+      .back-to-materi-btn {
+        bottom: 20px;
+        right: 16px;
+        padding: 10px 16px;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* ===== IPAS PAGE VARS ===== */
+    :root {
+      --eco-green: #059669;
+      --eco-green-light: #d1fae5;
+      --eco-blue: #0284c7;
+      --eco-amber: #d97706;
+      --eco-red: #dc2626;
+      --eco-purple: #7c3aed;
+      --card-bg: #ffffff;
+      --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      --radius: 16px;
+      --section-gap: 80px;
+      --body-font: 'Space Grotesk', sans-serif;
+      --head-font: 'Montserrat', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--body-font);
+      background: #f0fdf4;
+      color: #1a2e1a;
+      line-height: 1.7;
+    }
+
+    /* ── DARK MODE OVERRIDES ── */
+    body.dark {
+      background: #071c12 !important;
+      color: #ecfdf5 !important;
+    }
+    body.dark .ipas-wrap { background: #071c12 !important; }
+    body.dark h1, body.dark h2, body.dark h3, body.dark h4 { color: #a7f3d0 !important; }
+    body.dark p, body.dark li, body.dark td, body.dark th,
+    body.dark span:not(.badge), body.dark label { color: #d1fae5 !important; }
+    body.dark section, body.dark article,
+    body.dark .card, body.dark .ref-card, body.dark .source-card,
+    body.dark .ipas-card, body.dark .content-box, body.dark .info-panel {
+      background: #0d2b1c !important;
+      border-color: #134d33 !important;
+    }
+    body.dark table { border-color: #134d33; }
+    body.dark thead th {
+      background: #0d2b1c !important;
+      color: #6ee7b7 !important;
+      border-color: #134d33 !important;
+    }
+    body.dark tbody tr:nth-child(even) { background: rgba(16,185,129,0.05); }
+    body.dark tbody tr:hover { background: rgba(16,185,129,0.09); }
+    body.dark td { border-color: #134d33 !important; }
+    body.dark footer, body.dark .site-footer {
+      background: #071c12 !important;
+      border-top-color: #134d33;
+    }
+    body.dark .page-hero, body.dark .page-hero-ipas {
+      background: linear-gradient(135deg, #071c12, #0d2b1c) !important;
+    }
+
+    .ipas-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ===== NAVBAR fallback ===== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 32px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #d1fae5;
+      box-shadow: 0 2px 12px rgba(5, 150, 105, 0.08);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-brand a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      font-size: 1.4rem;
+    }
+
+    .brand-text {
+      font-family: var(--head-font);
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #065f46;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+    }
+
+    .nav-link {
+      padding: 6px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #374151;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .nav-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .lang-toggle,
+    .dark-toggle,
+    .nav-hamburger {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .nav-hamburger {
+      display: none;
+      font-size: 1.4rem;
+    }
+
+    @media(max-width:768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-hamburger {
+        display: block;
+      }
+    }
+
+    /* ===== PAGE HERO ===== */
+    .page-hero-hist {
+      background: linear-gradient(135deg, #065f46 0%, #047857 40%, #0284c7 100%);
+      padding: 72px 24px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero-hist::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .page-title {
+      font-family: var(--head-font);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .page-subtitle {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.82);
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* ===== SECTION HEADINGS ===== */
+    .sec-heading {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 3px solid #d1fae5;
+    }
+
+    .sec-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #059669;
+      color: white;
+      font-family: var(--head-font);
+      font-size: 1rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .sec-heading h2 {
+      font-family: var(--head-font);
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #065f46;
+    }
+
+    .sec-heading p {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-top: 2px;
+    }
+
+    .section-block {
+      margin-bottom: var(--section-gap);
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      border: 1px solid #e5f7ee;
+    }
+
+    .card-title {
+      font-family: var(--head-font);
+      font-weight: 700;
+      font-size: 1rem;
+      color: #065f46;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ===== TABLES ===== */
+    .eco-table-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid #d1fae5;
+    }
+
+    .eco-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+
+    .eco-table thead tr {
+      background: linear-gradient(90deg, #065f46, #047857);
+      color: white;
+    }
+
+    .eco-table th {
+      padding: 12px 16px;
+      font-family: var(--head-font);
+      font-weight: 700;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .eco-table td {
+      padding: 11px 16px;
+      border-bottom: 1px solid #f0fdf4;
+      color: #374151;
+    }
+
+    .eco-table tbody tr:nth-child(even) {
+      background: #f0fdf4;
+    }
+
+    .eco-table tbody tr:hover {
+      background: #d1fae5;
+      transition: background 0.15s;
+    }
+
+    .eco-table tfoot tr {
+      background: #dcfce7;
+    }
+
+    .eco-table tfoot td {
+      border-top: 2px solid #059669;
+      padding: 12px 16px;
+      font-family: var(--head-font);
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    /* ===== EMISSION RESULT BANNER ===== */
+    .emission-result {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .em-card {
+      flex: 1;
+      min-width: 180px;
+      border-radius: 14px;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .em-card.green {
+      background: linear-gradient(135deg, #059669, #047857);
+      color: white;
+    }
+
+    .em-card.blue {
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: white;
+    }
+
+    .em-card.amber {
+      background: linear-gradient(135deg, #d97706, #b45309);
+      color: white;
+    }
+
+    .em-card .em-label {
+      font-size: 0.82rem;
+      opacity: 0.88;
+      font-weight: 500;
+    }
+
+    .em-card .em-value {
+      font-family: var(--head-font);
+      font-size: 1.7rem;
+      font-weight: 800;
+    }
+
+    .em-card .em-unit {
+      font-size: 0.8rem;
+      opacity: 0.75;
+    }
+
+    /* ===== REACTION BOX ===== */
+    .reaction-box {
+      background: #fef9c3;
+      border: 2px solid #fbbf24;
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+
+    .reaction-box h4 {
+      font-family: var(--head-font);
+      font-weight: 700;
+      color: #92400e;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .reaction-formula {
+      font-family: 'Courier New', monospace;
+      font-size: 1.05rem;
+      background: #fffbeb;
+      border-radius: 8px;
+      padding: 10px 16px;
+      color: #78350f;
+      border-left: 4px solid #f59e0b;
+      margin: 8px 0;
+    }
+
+    .reaction-note {
+      font-size: 0.88rem;
+      color: #78350f;
+      margin-top: 8px;
+    }
+
+    /* ===== EXPLAIN ===== */
+    .explain-text {
+      background: #f0fdf4;
+      border-left: 4px solid #059669;
+      border-radius: 0 12px 12px 0;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      font-size: 0.93rem;
+      color: #374151;
+    }
+
+    .explain-text strong {
+      color: #065f46;
+    }
+
+    /* ===== IMPACT GRID ===== */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .impact-item {
+      background: white;
+      border-radius: 14px;
+      padding: 22px;
+      border: 1px solid #e5f7ee;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .impact-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(5, 150, 105, 0.12);
+    }
+
+    .impact-icon {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .impact-item h4 {
+      font-family: var(--head-font);
+      font-weight: 700;
+      color: #065f46;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+
+    .impact-item p {
+      font-size: 0.87rem;
+      color: #6b7280;
+    }
+
+    /* ===== CHART GRID ===== */
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 24px;
+    }
+
+    @media(max-width:600px) {
+      .chart-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .chart-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid #e5f7ee;
+    }
+
+    .chart-card h4 {
+      font-family: var(--head-font);
+      font-weight: 700;
+      color: #065f46;
+      margin-bottom: 4px;
+      font-size: 0.97rem;
+    }
+
+    .chart-card p {
+      font-size: 0.83rem;
+      color: #6b7280;
+      margin-bottom: 16px;
+    }
+
+    /* ===== SOLUTION CARDS ===== */
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .solution-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .solution-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+    }
+
+    .solution-card.s1::before {
+      background: linear-gradient(90deg, #059669, #34d399);
+    }
+
+    .solution-card.s2::before {
+      background: linear-gradient(90deg, #0284c7, #38bdf8);
+    }
+
+    .solution-card.s3::before {
+      background: linear-gradient(90deg, #7c3aed, #a78bfa);
+    }
+
+    .solution-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+    }
+
+    .sol-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      font-family: var(--head-font);
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 14px;
+      color: white;
+    }
+
+    .s1 .sol-num {
+      background: #059669;
+    }
+
+    .s2 .sol-num {
+      background: #0284c7;
+    }
+
+    .s3 .sol-num {
+      background: #7c3aed;
+    }
+
+    .solution-card h3 {
+      font-family: var(--head-font);
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: #1f2937;
+      margin-bottom: 8px;
+    }
+
+    .solution-card p {
+      font-size: 0.88rem;
+      color: #6b7280;
+      margin-bottom: 14px;
+    }
+
+    .sol-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .sol-tag {
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: #f0fdf4;
+      color: #065f46;
+      border: 1px solid #d1fae5;
+    }
+
+    .s2 .sol-tag {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border-color: #bfdbfe;
+    }
+
+    .s3 .sol-tag {
+      background: #f5f3ff;
+      color: #6d28d9;
+      border-color: #ddd6fe;
+    }
+
+    /* ===== TOC ===== */
+    .toc-bar {
+      background: white;
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid #d1fae5;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .toc-item {
+      padding: 7px 14px;
+      border-radius: 100px;
+      background: #f0fdf4;
+      color: #065f46;
+      font-size: 0.83rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid #d1fae5;
+    }
+
+    .toc-item:hover {
+      background: #059669;
+      color: white;
+      border-color: #059669;
+    }
+
+    /* ===== BADGES ===== */
+    .info-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #dbeafe;
+      color: #1d4ed8;
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .warning-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fee2e2;
+      color: #991b1b;
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    /* ===== FOOTER fallback ===== */
+    .footer {
+      background: #065f46;
+      color: #d1fae5;
+      padding: 48px 24px 24px;
+      font-family: var(--body-font);
+    }
+
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      padding-bottom: 32px;
+    }
+
+    .footer-logo {
+      font-family: var(--head-font);
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .footer-grid p {
+      font-size: 0.88rem;
+      color: rgba(209, 250, 229, 0.75);
+    }
+
+    .footer-links h4,
+    .footer-info h4 {
+      font-family: var(--head-font);
+      font-weight: 700;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      display: block;
+      color: rgba(209, 250, 229, 0.75);
+      text-decoration: none;
+      margin-bottom: 6px;
+      font-size: 0.88rem;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.85rem;
+      color: rgba(209, 250, 229, 0.6);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-quote {
+      text-align: center;
+      padding: 16px 24px;
+      font-size: 0.9rem;
+      color: rgba(209, 250, 229, 0.8);
+      font-style: italic;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ===== ANALISIS BARU ===== */
+    .analisis-wrap {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .analisis-main-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: linear-gradient(135deg, #065f46, #0369a1);
+      border-radius: 16px;
+      padding: 20px 26px;
+      color: #fff;
+    }
+
+    .amh-icon {
+      font-size: 2.2rem;
+      flex-shrink: 0;
+    }
+
+    .amh-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      opacity: 0.75;
+      margin-bottom: 3px;
+    }
+
+    .amh-title {
+      font-family: var(--head-font);
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    .analisis-causes {
+      background: #fff;
+      border-radius: 16px;
+      padding: 22px 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+      border: 1px solid #e5f7ee;
+    }
+
+    .cause-title {
+      font-family: var(--head-font);
+      font-weight: 800;
+      color: #065f46;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .cause-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .cause-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: #f8fffe;
+      border: 1.5px solid #d1fae5;
+      border-radius: 12px;
+      padding: 14px 16px;
+      transition: all 0.2s;
+    }
+
+    .cause-item:hover {
+      border-color: #059669;
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .cause-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .cause-text {
+      font-size: 0.86rem;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    .analisis-mechanism {
+      background: #fff;
+      border-radius: 16px;
+      padding: 22px 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+      border: 1px solid #e5f7ee;
+    }
+
+    .mech-title {
+      font-family: var(--head-font);
+      font-weight: 800;
+      color: #065f46;
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .mech-flow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .mf-step {
+      flex: 1;
+      min-width: 130px;
+      max-width: 200px;
+      background: #f0fdf4;
+      border: 1.5px solid #a7f3d0;
+      border-radius: 14px;
+      padding: 20px 14px 14px;
+      text-align: center;
+      position: relative;
+    }
+
+    .mf-num {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 22px;
+      height: 22px;
+      background: #059669;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mf-icon {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .mf-text {
+      font-size: 0.8rem;
+      color: #374151;
+      line-height: 1.55;
+    }
+
+    .mf-arrow {
+      font-size: 1.5rem;
+      color: #059669;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .analisis-data-highlight {
+      background: #fff;
+      border-radius: 16px;
+      padding: 22px 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+      border: 1px solid #e5f7ee;
+    }
+
+    .adh-title {
+      font-family: var(--head-font);
+      font-weight: 800;
+      color: #065f46;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .adh-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 560px) {
+      .adh-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .adh-item {
+      border-radius: 14px;
+      padding: 20px 18px;
+      text-align: center;
+    }
+
+    .adh-co2 {
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      border: 1.5px solid #93c5fd;
+    }
+
+    .adh-temp {
+      background: linear-gradient(135deg, #fef2f2, #fee2e2);
+      border: 1.5px solid #fca5a5;
+    }
+
+    .adh-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .adh-metric {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .adh-from,
+    .adh-to {
+      font-family: var(--head-font);
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    .adh-co2 .adh-from,
+    .adh-co2 .adh-to {
+      color: #1d4ed8;
+    }
+
+    .adh-temp .adh-from,
+    .adh-temp .adh-to {
+      color: #dc2626;
+    }
+
+    .adh-from span,
+    .adh-to span {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      opacity: 0.7;
+    }
+
+    .adh-arrow-big {
+      font-size: 1.4rem;
+      color: #6b7280;
+    }
+
+    .adh-label-bottom {
+      font-size: 0.82rem;
+      color: #374151;
+    }
+
+    .adh-korelasi {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: #f0fdf4;
+      border: 1.5px solid #6ee7b7;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 0.88rem;
+      color: #374151;
+      line-height: 1.65;
+    }
+
+    .adk-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .analisis-kesimpulan-final {
+      background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+      border-radius: 16px;
+      padding: 24px 28px;
+      color: #fff;
+      box-shadow: 0 6px 28px rgba(5, 150, 105, 0.22);
+    }
+
+    .akf-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .akf-icon {
+      font-size: 1.4rem;
+    }
+
+    .akf-header strong {
+      font-family: var(--head-font);
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .akf-text {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .akf-impacts {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .akf-tag {
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      .mech-flow {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .mf-step {
+        max-width: 100%;
+      }
+
+      .mf-arrow {
+        transform: rotate(90deg);
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">🌿</span>
+      <span class="brand-text">CarbonTrace</span>
+    </div>
+    <div class="nav-links" id="navLinks">
+
+      <a class="nav-link" data-id="beranda" href="index.html">Beranda</a><a class="nav-link" data-id="nav-profil"
+        href="profil.html">Profil</a><a class="nav-link" data-id="materi" href="materi.html">Materi</a><a
+        class="nav-link" data-id="about" href="about.html">About Us</a><a class="nav-link" data-id="nav-kontak"
+        href="kontak-guru.html">Kontak Guru</a>
+    </div>
+    <div class="nav-controls">
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">🌐 EN</button>
+      <button class="dark-toggle" id="darkToggle" onclick="toggleDark()">🌙</button>
+      <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+  </nav>
+  <!-- PAGE HERO -->
+  <div class="page-hero-hist">
+    <div style="position:relative;">
+      <h1 class="page-title" data-id="ipas-title">📜 Sejarah &amp; Analisis Emisi Karbon</h1>
+      <p class="page-subtitle" data-id="ipas-sub">Penyelidikan data, analisis ilmiah, dan solusi nyata untuk masa depan
+        bumi yang lebih baik</p>
+    </div>
+  </div>
+  <!-- MAIN CONTENT -->
+  <div class="ipas-wrap" style="padding-top:40px;">
+    <!-- TABLE OF CONTENTS -->
+    <nav class="toc-bar">
+      <a class="toc-item" href="#sec1">📋 1. Penyelidikan Data</a>
+      <a class="toc-item" href="#sec2">⚗️ 2. Analisis Emisi</a>
+      <a class="toc-item" href="#sec3">🌍 3. Korelasi Ekologis</a>
+      <a class="toc-item" href="#sec4">📊 4. Bukti Ilmiah</a>
+      <a class="toc-item" href="#sec5">💡 5. Refleksi Solutif</a>
+    </nav>
+    <section class="section-block" id="sec1">
+      <div class="sec-heading">
+        <div class="sec-num">1</div>
+        <div>
+          <h2 data-id="ipas-sec1-h">Penyelidikan Data</h2>
+          <p>Data konsumsi listrik dan BBM dalam 1 rumah / keluarga</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">⚡ Tabel Konsumsi Perangkat Listrik dalam 1 Rumah</div>
+        <div class="eco-table-wrap">
+          <table class="eco-table">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Jenis Perangkat</th>
+                <th>Jumlah Perangkat</th>
+                <th>Daya Listrik (Watt)</th>
+                <th>Lama Penggunaan/Hari (jam)</th>
+                <th>Total Konsumsi/Hari (Wh)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Lampu LED</td>
+                <td>10 unit</td>
+                <td>10 W</td>
+                <td>8 jam</td>
+                <td>800 Wh</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Televisi (LED 32")</td>
+                <td>2 unit</td>
+                <td>60 W</td>
+                <td>5 jam</td>
+                <td>600 Wh</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Kulkas (1 pintu)</td>
+                <td>1 unit</td>
+                <td>100 W</td>
+                <td>24 jam</td>
+                <td>2.400 Wh</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Mesin Cuci</td>
+                <td>1 unit</td>
+                <td>300 W</td>
+                <td>1 jam</td>
+                <td>300 Wh</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>AC (½ PK)</td>
+                <td>2 unit</td>
+                <td>400 W</td>
+                <td>6 jam</td>
+                <td>4.800 Wh</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Kipas Angin</td>
+                <td>3 unit</td>
+                <td>50 W</td>
+                <td>8 jam</td>
+                <td>1.200 Wh</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Laptop / Komputer</td>
+                <td>2 unit</td>
+                <td>65 W</td>
+                <td>6 jam</td>
+                <td>780 Wh</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Charger HP</td>
+                <td>4 unit</td>
+                <td>10 W</td>
+                <td>3 jam</td>
+                <td>120 Wh</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>Rice Cooker</td>
+                <td>1 unit</td>
+                <td>400 W</td>
+                <td>2 jam</td>
+                <td>800 Wh</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>Pompa Air</td>
+                <td>1 unit</td>
+                <td>125 W</td>
+                <td>2 jam</td>
+                <td>250 Wh</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="5">Total Konsumsi Listrik per Hari</td>
+                <td>12.050 Wh = 12,05 kWh</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <p style="font-size:0.82rem;color:#6b7280;margin-top:10px;">* Rumus: Total Wh = Daya (W) × Jumlah Perangkat ×
+          Lama Penggunaan (jam)</p>
+      </div>
+      <div class="card">
+        <div class="card-title">⛽ Tabel Konsumsi BBM Kendaraan Bermotor dalam 1 Keluarga</div>
+        <div class="eco-table-wrap">
+          <table class="eco-table">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Jenis Kendaraan</th>
+                <th>Jumlah Kendaraan</th>
+                <th>Jenis BBM</th>
+                <th>Konsumsi BBM/Bulan (liter/unit)</th>
+                <th>Total BBM/Bulan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Sepeda Motor (Matic)</td>
+                <td>2 unit</td>
+                <td>Pertalite (RON 90)</td>
+                <td>12 L/unit</td>
+                <td>24 liter</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Mobil Sedan</td>
+                <td>1 unit</td>
+                <td>Pertamax (RON 92)</td>
+                <td>60 L/unit</td>
+                <td>60 liter</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Motor Trail / Sport</td>
+                <td>1 unit</td>
+                <td>Pertamax Plus (RON 95)</td>
+                <td>10 L/unit</td>
+                <td>10 liter</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="5">Total Konsumsi BBM per Bulan (seluruh kendaraan)</td>
+                <td>94 liter</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <p style="font-size:0.82rem;color:#6b7280;margin-top:10px;">* Data representatif untuk keluarga kelas menengah
+          di Indonesia.</p>
+      </div>
+    </section>
+    <section class="section-block" id="sec2">
+      <div class="sec-heading">
+        <div class="sec-num">2</div>
+        <div>
+          <h2 data-id="ipas-sec2-h">Analisis Emisi Karbon</h2>
+          <p>Perhitungan emisi dari listrik &amp; BBM menggunakan faktor emisi standar internasional</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">⚡ Total Emisi Karbon dari Listrik — 1 Bulan</div>
+        <div class="info-badge">ℹ️ Faktor Emisi PLN Indonesia: 0,87 kg CO₂ / kWh (MEMR 2022)</div>
+        <div class="eco-table-wrap" style="margin-bottom:16px;">
+          <table class="eco-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>Nilai</th>
+                <th>Satuan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Konsumsi listrik per hari</td>
+                <td>12,05</td>
+                <td>kWh/hari</td>
+              </tr>
+              <tr>
+                <td>Konsumsi listrik per bulan (× 30)</td>
+                <td>361,5</td>
+                <td>kWh/bulan</td>
+              </tr>
+              <tr>
+                <td>Faktor emisi listrik PLN</td>
+                <td>0,87</td>
+                <td>kg CO₂/kWh</td>
+              </tr>
+              <tr>
+                <td><strong>Total Emisi Listrik / Bulan</strong></td>
+                <td><strong>314,5</strong></td>
+                <td><strong>kg CO₂</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="font-size:0.88rem;color:#374151;background:#f0fdf4;padding:12px 16px;border-radius:10px;">
+          <strong>Rumus:</strong> Emisi CO₂ (kg) = Konsumsi kWh × Faktor Emisi PLN<br />
+          = 361,5 kWh × 0,87 kg CO₂/kWh = <strong>314,5 kg CO₂/bulan</strong>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">⛽ Total Emisi Karbon dari BBM — 1 Bulan</div>
+        <div class="info-badge">ℹ️ Faktor Emisi: Bensin = 2,31 kg CO₂/liter (IPCC default)</div>
+        <div class="eco-table-wrap" style="margin-bottom:16px;">
+          <table class="eco-table">
+            <thead>
+              <tr>
+                <th>Jenis BBM</th>
+                <th>Konsumsi (L)</th>
+                <th>Faktor Emisi (kg CO₂/L)</th>
+                <th>Emisi (kg CO₂)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Pertalite (Sepeda Motor)</td>
+                <td>24</td>
+                <td>2,31</td>
+                <td>55,44</td>
+              </tr>
+              <tr>
+                <td>Pertamax (Mobil Sedan)</td>
+                <td>60</td>
+                <td>2,31</td>
+                <td>138,60</td>
+              </tr>
+              <tr>
+                <td>Pertamax Plus (Motor Sport)</td>
+                <td>10</td>
+                <td>2,31</td>
+                <td>23,10</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>94 L</strong></td>
+                <td>—</td>
+                <td><strong>217,14 kg CO₂</strong></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="emission-result">
+        <div class="em-card green">
+          <span class="em-label">⚡ Emisi Listrik / Bulan</span>
+          <span class="em-value">314,5</span>
+          <span class="em-unit">kg CO₂</span>
+        </div>
+        <div class="em-card blue">
+          <span class="em-label">⛽ Emisi BBM / Bulan</span>
+          <span class="em-value">217,1</span>
+          <span class="em-unit">kg CO₂</span>
+        </div>
+        <div class="em-card amber">
+          <span class="em-label">🌍 Total Emisi Keluarga</span>
+          <span class="em-value">531,6</span>
+          <span class="em-unit">kg CO₂ / bulan</span>
+        </div>
+      </div>
+      <div class="card" style="margin-top:24px;">
+        <div class="card-title">🔬 Reaksi Pembakaran Bahan Bakar Fosil &amp; Penggunaan Listrik PLN</div>
+        <div class="reaction-box">
+          <h4>1️⃣ Pembakaran Bensin (Oktana, C₈H₁₈)</h4>
+          <div class="reaction-formula">2 C₈H₁₈ + 25 O₂ → 16 CO₂ + 18 H₂O + Energi Panas</div>
+          <p class="reaction-note">Pembakaran bensin di mesin kendaraan mengoksidasi hidrokarbon menjadi CO₂ dan uap
+            air. Setiap 1 liter bensin menghasilkan ±2,31 kg CO₂.</p>
+        </div>
+        <div class="reaction-box">
+          <h4>2️⃣ Pembakaran Batu Bara di PLTU (untuk Listrik PLN)</h4>
+          <div class="reaction-formula">C + O₂ → CO₂ + Energi Panas → Turbin → Generator → Listrik</div>
+          <p class="reaction-note">Sebagian besar listrik PLN Indonesia (±65%) dihasilkan dari PLTU berbahan bakar batu
+            bara. Pembakaran karbon murni menghasilkan CO₂ yang dilepas ke atmosfer.</p>
+        </div>
+        <div class="reaction-box" style="background:#f0f9ff;border-color:#38bdf8;">
+          <h4 style="color:#075985;">3️⃣ Pembakaran Gas Alam (Metana, CH₄) di PLTG</h4>
+          <div class="reaction-formula" style="color:#0c4a6e;border-left-color:#0284c7;">CH₄ + 2 O₂ → CO₂ + 2 H₂O +
+            Energi</div>
+          <p class="reaction-note" style="color:#075985;">Gas alam menghasilkan CO₂ lebih sedikit dibanding batu bara,
+            namun masih berkontribusi pada emisi karbon.</p>
+        </div>
+        <div class="explain-text">
+          <strong>Bagaimana CO₂ Sampai ke Atmosfer?</strong><br />
+          Gas CO₂ dilepaskan melalui knalpot kendaraan dan cerobong PLTU. Gas ringan ini naik ke troposfer dan
+          terakumulasi. CO₂ adalah <strong>gas rumah kaca</strong> — ia menyerap radiasi inframerah dari bumi dan
+          memantulkannya kembali, sehingga suhu atmosfer meningkat (efek rumah kaca).
+        </div>
+      </div>
+    </section>
+    <section class="section-block" id="sec3">
+      <div class="sec-heading">
+        <div class="sec-num">3</div>
+        <div>
+          <h2 data-id="ipas-sec3-h">Korelasi Ekologis</h2>
+          <p>Dampak akumulasi CO₂ terhadap pemanasan ekosistem global</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="warning-badge">⚠️ Konsentrasi CO₂ telah melampaui 422 ppm — tertinggi dalam 3 juta tahun terakhir
+        </div>
+        <p style="margin-bottom:20px;color:#374151;font-size:0.93rem;">
+          Tingginya konsentrasi CO₂ di atmosfer memicu rangkaian efek domino yang mengancam seluruh ekosistem bumi:
+        </p>
+        <div class="impact-grid">
+          <div class="impact-item">
+            <div class="impact-icon">🌡️</div>
+            <h4>Pemanasan Global</h4>
+            <p>CO₂ memperkuat efek rumah kaca alami, menyebabkan suhu rata-rata bumi naik 1,1°C sejak era pra-industri.
+              Target Paris Agreement: batasi kenaikan di bawah 1,5°C.</p>
+          </div>
+          <div class="impact-item">
+            <div class="impact-icon">🧊</div>
+            <h4>Pencairan Es Kutub</h4>
+            <p>Kenaikan suhu mencairkan es Arktik &amp; Antartika. Greenland kehilangan ±280 miliar ton es per tahun,
+              berkontribusi pada kenaikan permukaan laut ±3,7 mm/tahun.</p>
+          </div>
+          <div class="impact-item">
+            <div class="impact-icon">🌊</div>
+            <h4>Kenaikan Permukaan Laut</h4>
+            <p>Proyeksi: permukaan laut naik 0,3–1 meter pada 2100. Kota pesisir Indonesia seperti Jakarta, Semarang,
+              dan Surabaya terancam tenggelam.</p>
+          </div>
+          <div class="impact-item">
+            <div class="impact-icon">🌪️</div>
+            <h4>Cuaca Ekstrem</h4>
+            <p>Suhu lautan yang lebih hangat memicu badai lebih kuat, banjir parah, dan kekeringan berkepanjangan.
+              Frekuensi bencana alam meningkat 5× lipat dalam 50 tahun.</p>
+          </div>
+          <div class="impact-item">
+            <div class="impact-icon">🐠</div>
+            <h4>Pengasaman Laut</h4>
+            <p>Laut menyerap 30% CO₂ atmosfer, menurunkan pH laut. Ini mengancam terumbu karang, kerang, dan rantai
+              makanan laut secara keseluruhan.</p>
+          </div>
+          <div class="impact-item">
+            <div class="impact-icon">🌾</div>
+            <h4>Gangguan Pertanian</h4>
+            <p>Perubahan pola curah hujan dan suhu mengganggu musim tanam. FAO memperkirakan produksi pangan global bisa
+              turun 25% pada 2050 tanpa aksi iklim.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section-block" id="sec4">
+      <div class="sec-heading">
+        <div class="sec-num">4</div>
+        <div>
+          <h2 data-id="ipas-sec4-h">Bukti Ilmiah</h2>
+          <p>Data konsentrasi CO₂ &amp; perubahan suhu bumi 10 tahun terakhir (2015–2024)</p>
+        </div>
+      </div>
+      <div class="chart-grid">
+        <div class="chart-card">
+          <h4>📈 Konsentrasi CO₂ Atmosfer (ppm)</h4>
+          <p>Sumber: NOAA Mauna Loa Observatory 2015–2024</p>
+          <canvas height="230" id="co2Chart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h4>🌡️ Perubahan Suhu Global (°C)</h4>
+          <p>Sumber: NASA GISS — data suhu rata-rata global 2015–2024</p>
+          <canvas height="230" id="tempChart"></canvas>
+        </div>
+      </div>
+      <div class="analisis-wrap">
+        <!-- Header Analisis -->
+        <div class="analisis-main-header">
+          <div class="amh-icon">🔬</div>
+          <div>
+            <div class="amh-label">Analisis Ilmiah</div>
+            <h3 class="amh-title">Mengapa Emisi CO₂ dan Suhu Bumi Meningkat?</h3>
+          </div>
+        </div>
+        <!-- Penyebab Utama -->
+        <div class="analisis-causes">
+          <div class="cause-title">⚠️ Penyebab Peningkatan Emisi CO₂</div>
+          <div class="cause-grid">
+            <div class="cause-item">
+              <div class="cause-icon">🚗</div>
+              <div class="cause-text"><strong>Kendaraan Bermotor</strong><br />Pembakaran BBM di mesin kendaraan melepas
+                CO₂ langsung ke atmosfer setiap saat.</div>
+            </div>
+            <div class="cause-item">
+              <div class="cause-icon">🏭</div>
+              <div class="cause-text"><strong>Pembangkit Listrik Fosil</strong><br />PLTU berbahan bakar batu bara
+                menghasilkan emisi besar untuk menyuplai listrik.</div>
+            </div>
+            <div class="cause-item">
+              <div class="cause-icon">⚙️</div>
+              <div class="cause-text"><strong>Kegiatan Industri</strong><br />Proses produksi manufaktur, semen, dan
+                baja melepas CO₂ dalam skala masif.</div>
+            </div>
+            <div class="cause-item">
+              <div class="cause-icon">🔥</div>
+              <div class="cause-text"><strong>Pembakaran &amp; Penebangan Hutan</strong><br />Deforestasi melepas karbon
+                tersimpan sekaligus mengurangi kemampuan bumi menyerap CO₂.</div>
+            </div>
+          </div>
+        </div>
+        <div class="analisis-mechanism">
+          <div class="mech-title">🌿 Mekanisme: Dari CO₂ ke Pemanasan Global</div>
+          <div class="mech-flow">
+            <div class="mf-step">
+              <div class="mf-num">1</div>
+              <div class="mf-icon">🏭</div>
+              <div class="mf-text">Aktivitas manusia membakar bahan bakar fosil &amp; menebang hutan</div>
+            </div>
+            <div class="mf-arrow">→</div>
+            <div class="mf-step">
+              <div class="mf-num">2</div>
+              <div class="mf-icon">💨</div>
+              <div class="mf-text">CO₂ dilepaskan ke atmosfer; berkurangnya hutan = daya serap CO₂ menurun</div>
+            </div>
+            <div class="mf-arrow">→</div>
+            <div class="mf-step">
+              <div class="mf-num">3</div>
+              <div class="mf-icon">☀️</div>
+              <div class="mf-text">CO₂ menyerap &amp; menahan panas matahari yang dipantulkan bumi (efek rumah kaca)
+              </div>
+            </div>
+            <div class="mf-arrow">→</div>
+            <div class="mf-step">
+              <div class="mf-num">4</div>
+              <div class="mf-icon">🌡️</div>
+              <div class="mf-text">Panas terperangkap di atmosfer → suhu rata-rata bumi terus meningkat</div>
+            </div>
+          </div>
+        </div>
+        <div class="analisis-data-highlight">
+          <div class="adh-title">📊 Bukti Data 10 Tahun (2015–2024)</div>
+          <div class="adh-grid">
+            <div class="adh-item adh-co2">
+              <div class="adh-icon">🌫️</div>
+              <div class="adh-metric">
+                <div class="adh-from">400 ppm <span>2015</span></div>
+                <div class="adh-arrow-big">→</div>
+                <div class="adh-to">422 ppm <span>2024</span></div>
+              </div>
+              <div class="adh-label-bottom">Konsentrasi CO₂ naik <strong>+22 ppm</strong> dalam 10 tahun</div>
+            </div>
+            <div class="adh-item adh-temp">
+              <div class="adh-icon">🌡️</div>
+              <div class="adh-metric">
+                <div class="adh-from">0,90°C <span>2015</span></div>
+                <div class="adh-arrow-big">→</div>
+                <div class="adh-to">1,40°C <span>2024</span></div>
+              </div>
+              <div class="adh-label-bottom">Suhu rata-rata bumi naik <strong>+0,50°C</strong> dalam 10 tahun</div>
+            </div>
+          </div>
+          <div class="adh-korelasi">
+            <span class="adk-icon">🔗</span>
+            <span>Data menunjukkan bahwa peningkatan konsentrasi CO₂ <strong>berkaitan langsung</strong> dengan
+              meningkatnya suhu bumi — keduanya naik secara konsisten dalam periode yang sama.</span>
+          </div>
+        </div>
+        <div class="analisis-kesimpulan-final">
+          <div class="akf-header">
+            <span class="akf-icon">📌</span>
+            <strong>Kesimpulan</strong>
+          </div>
+          <p class="akf-text">Semakin tinggi konsentrasi CO₂ di atmosfer, semakin kuat efek rumah kaca yang terjadi.
+            Akibatnya, suhu bumi terus meningkat dan dapat menyebabkan berbagai dampak lingkungan seperti:</p>
+          <div class="akf-impacts">
+            <span class="akf-tag">🌪️ Perubahan Iklim</span>
+            <span class="akf-tag">⛈️ Cuaca Ekstrem</span>
+            <span class="akf-tag">🧊 Mencairnya Es di Kutub</span>
+            <span class="akf-tag">🌊 Kenaikan Permukaan Laut</span>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:24px;">
+        <div class="card-title">📋 Ringkasan Data Numerik</div>
+        <div class="eco-table-wrap">
+          <table class="eco-table">
+            <thead>
+              <tr>
+                <th>Tahun</th>
+                <th>Konsentrasi CO₂ (ppm)</th>
+                <th>Suhu Global (°C)</th>
+                <th>Kenaikan CO₂ dari 2015</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2015</td>
+                <td>400</td>
+                <td>0,90</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>2016</td>
+                <td>404</td>
+                <td>0,94</td>
+                <td>+4 ppm</td>
+              </tr>
+              <tr>
+                <td>2017</td>
+                <td>406</td>
+                <td>0,95</td>
+                <td>+6 ppm</td>
+              </tr>
+              <tr>
+                <td>2018</td>
+                <td>408</td>
+                <td>1,00</td>
+                <td>+8 ppm</td>
+              </tr>
+              <tr>
+                <td>2019</td>
+                <td>411</td>
+                <td>1,06</td>
+                <td>+11 ppm</td>
+              </tr>
+              <tr>
+                <td>2020</td>
+                <td>414</td>
+                <td>1,10</td>
+                <td>+14 ppm</td>
+              </tr>
+              <tr>
+                <td>2021</td>
+                <td>416</td>
+                <td>1,11</td>
+                <td>+16 ppm</td>
+              </tr>
+              <tr>
+                <td>2022</td>
+                <td>418</td>
+                <td>1,19</td>
+                <td>+18 ppm</td>
+              </tr>
+              <tr>
+                <td>2023</td>
+                <td>419</td>
+                <td>1,30</td>
+                <td>+19 ppm</td>
+              </tr>
+              <tr>
+                <td>2024</td>
+                <td>422</td>
+                <td>1,40 ⚠️</td>
+                <td>+22 ppm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.82rem;color:#6b7280;margin-top:10px;">* Data konsentrasi CO₂ dari NOAA Mauna Loa
+          Observatory. Suhu global dari NASA GISS. Angka 2024 mendekati ambang batas 1,5°C Paris Agreement.</p>
+      </div>
+    </section>
+    <section class="section-block" id="sec5">
+      <div class="sec-heading">
+        <div class="sec-num">5</div>
+        <div>
+          <h2 data-id="ipas-sec5-h">Refleksi Solutif</h2>
+          <p>3 aksi nyata penyeimbangan emisi CO₂ (Carbon Offset)</p>
+        </div>
+      </div>
+      <p style="margin-bottom:24px;color:#374151;font-size:0.93rem;">
+        <strong>Carbon Offset</strong> adalah aksi nyata untuk menyeimbangkan emisi CO₂ yang kita hasilkan — dengan
+        menyerap kembali karbon dari atmosfer, beralih ke energi bersih, atau mengubah pola konsumsi sehari-hari.
+      </p>
+      <div class="solution-grid">
+        <div class="solution-card s1">
+          <div class="sol-num">1</div>
+          <h3>🌳 Penanaman Pohon &amp; Reforestasi</h3>
+          <p>Pohon menyerap CO₂ melalui fotosintesis dan menyimpannya sebagai biomassa. 1 pohon dewasa mampu menyerap
+            ±21 kg CO₂/tahun. Dengan merawat pohon secara konsisten, kita menciptakan "penyerap karbon" alami yang juga
+            memulihkan biodiversitas.</p>
+          <div class="sol-actions">
+            <span class="sol-tag">🌱 Tanam pohon buah</span>
+            <span class="sol-tag">🌿 Berkebun di rumah</span>
+            <span class="sol-tag">🏕️ Ikut program reforestasi</span>
+            <span class="sol-tag">💧 Hemat air &amp; tanah</span>
+          </div>
+          <p style="margin-top:14px;font-size:0.83rem;color:#059669;font-weight:600;">💡 Target: 1 keluarga menanam 5
+            pohon/tahun → offset ±105 kg CO₂/tahun</p>
+        </div>
+        <div class="solution-card s2">
+          <div class="sol-num">2</div>
+          <h3>☀️ Beralih ke Energi Terbarukan</h3>
+          <p>Energi surya, angin, dan air tidak menghasilkan emisi CO₂ saat beroperasi. Memasang panel surya di rumah
+            dapat memangkas emisi listrik hingga 80–100%. Di tingkat komunitas, mendukung program PLTS atap dari PLN
+            adalah langkah strategis.</p>
+          <div class="sol-actions">
+            <span class="sol-tag">☀️ Panel surya atap</span>
+            <span class="sol-tag">💡 Ganti ke LED</span>
+            <span class="sol-tag">🔋 Baterai penyimpan energi</span>
+            <span class="sol-tag">🌬️ Ventilasi alami</span>
+          </div>
+          <p style="margin-top:14px;font-size:0.83rem;color:#0284c7;font-weight:600;">💡 Panel surya 2 kWp → hemat
+            ±1.460 kWh/tahun → offset ±1.270 kg CO₂/tahun</p>
+        </div>
+        <div class="solution-card s3">
+          <div class="sol-num">3</div>
+          <h3>🚲 Mobilitas Rendah Emisi &amp; Gaya Hidup Hijau</h3>
+          <p>Mengubah kebiasaan transportasi dan konsumsi harian adalah cara tercepat mengurangi jejak karbon. Berjalan
+            kaki, bersepeda, atau naik transportasi umum mengurangi emisi langsung. Pola makan berbasis tanaman juga
+            menurunkan emisi secara signifikan.</p>
+          <div class="sol-actions">
+            <span class="sol-tag">🚲 Bersepeda ke sekolah</span>
+            <span class="sol-tag">🚌 Gunakan angkutan umum</span>
+            <span class="sol-tag">🥦 Kurangi konsumsi daging</span>
+            <span class="sol-tag">♻️ Zero-waste lifestyle</span>
+          </div>
+          <p style="margin-top:14px;font-size:0.83rem;color:#7c3aed;font-weight:600;">💡 Bersepeda 5 km/hari gantikan
+            motor → hemat ±92 kg CO₂/tahun</p>
+        </div>
+      </div>
+      <div
+        style="background:linear-gradient(135deg,#065f46,#0284c7);border-radius:18px;padding:28px 32px;margin-top:28px;color:white;text-align:center;">
+        <h3 style="font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:800;margin-bottom:8px;">🎯 Gabungkan
+          Ketiga Aksi — Dampak Maksimal</h3>
+        <p style="opacity:0.88;font-size:0.92rem;max-width:640px;margin:0 auto;">
+          Keluarga yang menggabungkan penanaman pohon, panel surya, dan mobilitas rendah emisi berpotensi mengoffset
+          lebih dari <strong>1,4 ton CO₂/tahun</strong> — hampir 3× total emisi BBM keluarga dalam contoh di atas!
+        </p>
+      </div>
+    </section>
+  </div>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">🌿 CarbonTrace</div>
+        <p data-id="footer-desc">Platform edukasi jejak karbon untuk generasi muda peduli lingkungan.</p>
+      </div>
+      <div class="footer-links">
+        <h4 data-id="footer-menu">Menu</h4>
+        <a data-id="nav-beranda" href="index.html">Beranda</a>
+        <a data-id="nav-materi" href="materi.html">Materi</a>
+        <a href="about.html">About Us</a>
+      </div>
+      <div class="footer-info">
+        <h4 data-id="footer-info-title">Info</h4>
+        <p data-id="footer-info-p1">Proyek RPL Final</p>
+        <p data-id="footer-info-p2">SMA/SMK 2025</p>
+        <p>🇮🇩 Indonesia</p>
+      </div>
+    </div>
+    <div class="footer-quote">
+      <span data-id="footer-quote-text">🌿 Rawatlah bumi dengan bijak, karena kebaikan kecil hari ini akan menjadi keberkahan bagi kehidupan di masa depan</span>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 CarbonTrace — <span data-id="footer-copy">Dibuat dengan ❤️ untuk bumi yang lebih baik</span></p>
+    </div>
+  </footer>
+  <a class="back-to-materi-btn" data-id="back-to-materi" href="dokumen.html">
+    <span>←</span> Kembali ke Dokumen
+  </a>
+  <script src="script.js"></script>
+  <script>
+    // CO2 Concentration Line Chart (2015-2024)
+    const co2Ctx = document.getElementById('co2Chart').getContext('2d');
+    new Chart(co2Ctx, {
+      type: 'line',
+      data: {
+        labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+        datasets: [{
+          label: 'Konsentrasi CO₂ (ppm)',
+          data: [400, 404, 406, 408, 411, 414, 416, 418, 419, 422],
+          borderColor: '#0284c7',
+          backgroundColor: 'rgba(2,132,199,0.13)',
+          tension: 0.4, pointRadius: 6,
+          pointBackgroundColor: '#0284c7',
+          pointBorderColor: '#fff', pointBorderWidth: 2,
+          fill: true, borderWidth: 3,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: c => ' ' + c.parsed.y + ' ppm' } }
+        },
+        scales: {
+          y: { min: 397, max: 425, ticks: { callback: v => v + ' ppm' }, grid: { color: '#f0fdf4' } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+
+    // Temperature Change Line Chart (2015-2024)
+    const tempCtx = document.getElementById('tempChart').getContext('2d');
+    new Chart(tempCtx, {
+      type: 'line',
+      data: {
+        labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+        datasets: [
+          {
+            label: 'Suhu Global (°C)',
+            data: [0.90, 0.94, 0.95, 1.00, 1.06, 1.10, 1.11, 1.19, 1.30, 1.40],
+            borderColor: '#dc2626', backgroundColor: 'rgba(220,38,38,0.10)',
+            tension: 0.4, pointRadius: 6,
+            pointBackgroundColor: (ctx) => ctx.parsed.y >= 1.3 ? '#dc2626' : '#f97316',
+            pointBorderColor: '#fff', pointBorderWidth: 2,
+            fill: true, borderWidth: 3,
+          },
+          {
+            label: 'Batas 1,5°C (Paris)',
+            data: Array(10).fill(1.5),
+            borderColor: '#7c3aed', borderDash: [8, 4], borderWidth: 2,
+            pointRadius: 0, fill: false,
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { labels: { font: { size: 11 }, boxWidth: 16 } },
+          tooltip: { callbacks: { label: c => ' ' + c.parsed.y + '°C' } }
+        },
+        scales: {
+          y: { min: 0.85, max: 1.55, ticks: { callback: v => v.toFixed(2) + '°C' }, grid: { color: '#f0fdf4' } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+
+    // Smooth scroll TOC
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+
+</html>
