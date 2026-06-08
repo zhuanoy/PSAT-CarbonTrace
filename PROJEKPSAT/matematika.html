@@ -1291,7 +1291,7 @@
     })();
 
     let no = 1;
-    let emisiSebelumny = 0;
+    let emisiSebelumnya = 0;
     let hasHistory = false;
 
     function hitung() {
@@ -1501,75 +1501,6 @@
     </tr>`;
       });
     })();
-
-    // ── KALKULATOR
-    let noRiwayat = 1;
-    let emisiSebelumnya = 0;
-    let adaData = false;
-
-    function hitung() {
-      const x = parseFloat(document.getElementById('bbm').value);
-      const y = parseFloat(document.getElementById('listrik').value);
-      if (isNaN(x) || isNaN(y) || x < 0 || y < 0) {
-        alert('Masukkan nilai BBM dan Listrik terlebih dahulu!');
-        return;
-      }
-      const eBBM = 2.3 * x;
-      const eList = 0.85 * y;
-      const total = eBBM + eList;
-      const kat = getKategori(total);
-
-      document.getElementById('val-bbm').textContent = fmt(eBBM);
-      document.getElementById('val-listrik').textContent = fmt(eList);
-      document.getElementById('val-total').textContent = fmt(total);
-      document.getElementById('persamaan-label').textContent = `f(${x}, ${y}) = 2,3×${x} + 0,85×${y}`;
-      document.getElementById('status-badge').textContent = kat.label;
-
-      const bar = document.getElementById('status-bar');
-      bar.className = 'status-bar ' + kat.bar;
-
-      let perStr = '—';
-      if (emisiSebelumnya > 0) {
-        const p = (total - emisiSebelumnya) / emisiSebelumnya * 100;
-        perStr = (p >= 0 ? '▲ +' : '▼ ') + fmt(Math.abs(p)) + '% dari simulasi sebelumnya';
-      }
-      document.getElementById('perubahan-label').textContent = perStr;
-      document.getElementById('hasil-section').classList.remove('hidden');
-
-      // Tambah ke riwayat
-      const tbody = document.getElementById('riwayat');
-      if (!adaData) { tbody.innerHTML = ''; adaData = true; }
-      let perRow = '—';
-      let perCls = '';
-      if (emisiSebelumnya > 0) {
-        const p = (total - emisiSebelumnya) / emisiSebelumnya * 100;
-        perRow = (p >= 0 ? '+' : '') + fmt(p) + '%';
-        perCls = p > 0
-          ? 'color:#b7ss1c1c;font-weight:600'
-          : p < 0
-            ? 'color:#1b5e20;font-weight:600'
-            : '';
-      }
-      tbody.innerHTML += `<tr>
-    <td><b style="color:#2e7d32">${noRiwayat++}</b></td>
-    <td>${x}</td>
-    <td>${y}</td>
-    <td>${fmt(eBBM)}</td>
-    <td>${fmt(eList)}</td>
-    <td><b>${fmt(total)}</b></td>
-    <td><span class="cat-pill ${kat.pill}">${kat.label}</span></td>
-    <td style="${perCls}">${perRow}</td>
-  </tr>`;
-      emisiSebelumnya = total;
-    }
-
-    function hapusRiwayat() {
-      noRiwayat = 1;
-      emisiSebelumnya = 0;
-      adaData = false;
-      document.getElementById('riwayat').innerHTML =
-        '<tr class="empty-msg"><td colspan="8">Belum ada data — masukkan nilai dan klik Hitung</td></tr>';
-    }
 
   </script>
   <!-- FOOTER -->
